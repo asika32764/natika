@@ -1,0 +1,17 @@
+# Category
+category:
+    pattern: /category(/id)
+    controller: Category
+    variables:
+        layout: category
+
+# Categories
+categories:
+    pattern: /categories(/page)
+    controller: Categories
+    action:
+        post: CopyController
+        patch: BatchController
+        put: FilterController
+    variables:
+        layout: categories

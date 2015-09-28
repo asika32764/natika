@@ -1,0 +1,17 @@
+# Topic
+topic:
+    pattern: /topic(/id)
+    controller: Topic
+    variables:
+        layout: topic
+
+# Topics
+topics:
+    pattern: /topics(/page)
+    controller: Topics
+    action:
+        post: CopyController
+        patch: BatchController
+        put: FilterController
+    variables:
+        layout: topics

@@ -1,0 +1,23 @@
+login:
+    pattern: login
+    controller: Login
+    action:
+        get:  IndexController
+        post: LoginController
+    extra:
+        flower: sakura
+logout:
+    pattern: logout
+    controller: Logout
+    variables: {}
+registration:
+    pattern: registration
+    controller: Registration
+    variables: {}
+forgot:
+    pattern: forgot-password(/task)
+    controller: Forgot
+reset:
+    pattern: reset-password(/username,token)
+    controller: Reset
+

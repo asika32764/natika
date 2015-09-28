@@ -1,0 +1,17 @@
+# Notification
+notification:
+    pattern: /notification(/id)
+    controller: Notification
+    variables:
+        layout: notification
+
+# Notifications
+notifications:
+    pattern: /notifications(/page)
+    controller: Notifications
+    action:
+        post: CopyController
+        patch: BatchController
+        put: FilterController
+    variables:
+        layout: notifications

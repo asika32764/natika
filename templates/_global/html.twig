@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block page_title %}{% endblock %}</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{ uri.media.path }}images/favicon.ico" />
+    <meta name="generator" content="Windwalker Framework" />
+    {% block meta %}
+    {% endblock %}
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ uri.media.path }}css/acme/main.css" />
+    {% block style %}
+    {% endblock %}
+
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    {% block script %}
+    {% endblock %}
+</head>
+<body>
+    {% block navbar %}
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ router.html('home') }}">Windwalker</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    {% block nav %}
+                        <li class="active"><a href="{{ router.html('home') }}">Home</a></li>
+                    {% endblock %}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {#<li class="pull-right"><a href="{{ uri.base.path }}admin">Admin</a></li>#}
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block body %}Content{% endblock %}
+
+    {% block copyright %}
+    <div id="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <hr />
+
+                    <footer>
+                        &copy; Windwalker {{ datetime.format('Y') }}
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

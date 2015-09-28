@@ -1,0 +1,17 @@
+# Article
+article:
+    pattern: /article(/id)
+    controller: Article
+    variables:
+        layout: article
+
+# Articles
+articles:
+    pattern: /articles(/page)
+    controller: Articles
+    action:
+        post: CopyController
+        patch: BatchController
+        put: FilterController
+    variables:
+        layout: articles
