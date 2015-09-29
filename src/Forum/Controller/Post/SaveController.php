@@ -8,8 +8,6 @@
 
 namespace Forum\Controller\Post;
 
-use Forum\Model\PostModel;
-use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Data\Data;
 
 /**
@@ -24,21 +22,14 @@ class SaveController extends \Phoenix\Controller\SaveController
 	 *
 	 * @var  string
 	 */
-	protected $name = 'topic';
+	protected $name = 'post';
 
 	/**
-	 * Property postModel.
+	 * Property post.
 	 *
-	 * @var  PostModel
+	 * @var  Data
 	 */
-	protected $postModel;
-
-	/**
-	 * Property category.
-	 *
-	 * @var  int
-	 */
-	protected $category;
+	protected $post;
 
 	/**
 	 * prepareExecute
@@ -48,58 +39,27 @@ class SaveController extends \Phoenix\Controller\SaveController
 	protected function prepareExecute()
 	{
 		parent::prepareExecute();
-
-		$this->useTransaction(true);
-
-		$this->category = $this->input->get('category');
-		$this->postModel = $this->getModel('Post');
-
-		$this->data['category_id'] = $this->category;
-	}
-
-	protected function postSave(Data $data)
-	{
-		$post = new Data;
-
-		$post->topic_id = $data->id;
-		$post->body = $data->body;
-
-		die;
 	}
 
 	/**
-	 * validate
+	 * postSave
 	 *
 	 * @param Data $data
 	 *
 	 * @return  void
-	 *
-	 * @throws ValidFailException
 	 */
-	protected function validate(Data $data)
+	protected function postSave(Data $data)
 	{
-		if (!trim($data->title))
-		{
-			throw new ValidFailException('Require Title');
-		}
-
-		if (!trim($data->body))
-		{
-			throw new ValidFailException('Require Content');
-		}
+		$this->post = $data;
 	}
 
 	/**
-	 * getFailRedirect
+	 * Method to get property Post
 	 *
-	 * @param Data $data
-	 *
-	 * @return  string
+	 * @return  Data
 	 */
-	protected function getFailRedirect(Data $data = null)
+	public function getPost()
 	{
-		$pk = $this->model['item.pk'];
-
-		return $this->router->http($this->getName(), array($this->pkName => $pk, 'category' => $this->input->get('category')));
+		return $this->post;
 	}
 }

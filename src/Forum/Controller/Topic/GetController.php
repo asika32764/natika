@@ -83,6 +83,9 @@ class GetController extends ListDisplayController
 		$this->view['posts'] = $posts;
 		$this->view['pagination'] = $pagination;
 
+		// Add hits
+		$topicModel->addHit($topic->id, 1);
+
 		return $this->view->render();
 	}
 

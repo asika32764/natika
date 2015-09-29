@@ -10,6 +10,7 @@ namespace Forum\View\Category;
 
 use Forum\Helper\BreadcrumbHelper;
 use Phoenix\View\AbstractRadHtmView;
+use Windwalker\Registry\Registry;
 
 /**
  * The CategoryHtmlView class.
@@ -35,5 +36,17 @@ class CategoryHtmlView extends AbstractRadHtmView
 		{
 			$this->setTitle($data->currentCategory->title);
 		}
+
+		// Prepare format
+		foreach ($data->categories as $category)
+		{
+			$category->last_post->user_params = new Registry($category->last_post->user_params);
+		}
+
+		foreach ($data->topics as $topic)
+		{
+			$topic->last_user_params = new Registry($topic->last_user_params);
+		}
+
 	}
 }

@@ -27,10 +27,17 @@ class TopicHtmlView extends ItemView
 	 */
 	protected function prepareData($data)
 	{
-		$paths = $this['topic']->category->path;
+		if ($this->layout == 'default')
+		{
+			$paths = $this['topic']->category->path;
 
-		$data->breadcrumbs = BreadcrumbHelper::getBreadcrumbs($paths);
+			$data->breadcrumbs = BreadcrumbHelper::getBreadcrumbs($paths);
 
-		$this->setTitle($data->topic->title);
+			$this->setTitle($data->topic->title);
+		}
+		else
+		{
+			$this->setTitle('New Topic');
+		}
 	}
 }

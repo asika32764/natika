@@ -9,6 +9,7 @@
 namespace Forum\Model;
 
 use Admin\DataMapper\CategoryMapper;
+use Admin\Table\Table;
 use Phoenix\Model\CrudModel;
 use Windwalker\Core\Authentication\User;
 use Windwalker\Core\DateTime\DateTime;
@@ -43,23 +44,56 @@ class TopicModel extends CrudModel
 		return $item;
 	}
 
+	/**
+	 * prepareRecord
+	 *
+	 * @param Record $record
+	 *
+	 * @return  void
+	 */
 	protected function prepareRecord(Record $record)
 	{
 		$user = User::get();
 		$date = DateTime::create();
 
-		$record->user_id = $user->id;
-		$record->created_by = $user->id;
+		// New
+		if (!$record->id)
+		{
+			$record->user_id = $user->id;
+			$record->created_by = $user->id;
+			$record->version = 1;
+			$record->replies = 1;
+			$record->hits = 0;
+			$record->favorites = 0;
+			$record->rating = 0;
+			$record->created = $date->toSql();
+			$record->state = 1;
+		}
+
 		$record->last_reply_user = $user->id;
 		$record->last_reply_date = $date->toSql();
+	}
 
-		$record->version = $record->version++;
-		$record->replies = 1;
-		$record->hits = 0;
-		$record->favorites = 0;
-		$record->rating = 0;
+	/**
+	 * addHit
+	 *
+	 * @param int $pk
+	 * @param int $num
+	 *
+	 * @return  bool
+	 */
+	public function addHit($pk = null, $num = 1)
+	{
+		$pk = $pk ? : $this['item.pk'];
 
-		$record->created = $date->toSql();
-		$record->state = 1;
+		$query = $this->db->getQuery(true);
+
+		$query->update(Table::TOPICS)
+			->set('hits = hits + 1')
+			->where('id = ' . $pk);
+
+		$this->db->setQuery($query)->execute();
+
+		return true;
 	}
 }

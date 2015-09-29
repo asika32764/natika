@@ -4,6 +4,13 @@ home:
 topic:
     pattern: /topic/(*path)/(id)
     controller: Topic
+topic_new:
+    pattern: /topic/new
+    controller: Topic
+    action:
+        get: NewController
+    variables:
+        layout: edit
 
 post:
     pattern: /post(/id)

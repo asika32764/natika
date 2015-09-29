@@ -19,7 +19,7 @@
             @endforeach
         </ol>
 
-        <a class="tool-button btn btn-default btn-lg pull-right" href="{{ $router->html('post', array('category' => $currentCategory->id)) }}">
+        <a class="tool-button btn btn-default btn-lg pull-right" href="{{ $router->html('topic_new', array('category' => $currentCategory->id)) }}">
             <span class="fa fa-comment"></span>
             Create Topic
         </a>
@@ -71,7 +71,10 @@
                             </span>
                         </div>
                         <div class="col-md-3">
-                            <strong>{{ $category->last_post->user_name }}</strong> <span>{{ $helper->date->since($category->last_post->created) }}</span>
+                            <a href="{{ $category->last_post->user_params->get('raw_data.html_url', 'javascript:void(0)') }}" target="_blank">
+                                <strong>{{ $category->last_post->user_name }}</strong>
+                            </a>
+                            <span>{{ $helper->date->since($category->last_post->created) }}</span>
                             <br />
                             {{ $category->last_post->topic_title }}
                         </div>
@@ -124,7 +127,9 @@
                             </span>
                         </div>
                         <div class="col-md-3">
-                            <strong>{{ $topic->last_user_name }}</strong>
+                            <a href="{{ $topic->last_user_params->get('raw_data.html_url', 'javascript:void(0)') }}" target="_blank">
+                                <strong>{{ $topic->last_user_name }}</strong>
+                            </a>
                             <br />
                             <span>{{ $helper->date->since($topic->last_reply_date) }}</span>
                             {{--<br />--}}

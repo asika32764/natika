@@ -155,5 +155,7 @@ class LoginController extends AbstractPhoenixController
 		$model->save($data);
 
 		$user['id'] = $model['item.pk'];
+
+		return $user;
 	}
 }

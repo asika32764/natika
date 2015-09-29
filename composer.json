@@ -18,6 +18,7 @@
         "monolog/monolog": "~1.0",
         "windwalker/phoenix": "1.*",
         "joomla/datetime": "~2.0",
+        "erusev/parsedown": "~1.0",
 
         "twig/twig" : "~1.0"
     },
