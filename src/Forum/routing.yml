@@ -1,0 +1,15 @@
+home:
+    pattern: /
+    controller: Category
+topic:
+    pattern: /topic/(*path)(/id)
+    controller: Topic
+topics:
+    pattern: /topics
+    controller: Topics
+
+category:
+    pattern: /category/(*path)(/page)
+    controller: Category
+
+

@@ -24,9 +24,11 @@ class UserInit extends AbstractMigration
 
 		$db->getTable(\Admin\Table\Table::USERS, true)
 			->addColumn('id',          DataType::INTEGER,  Column::UNSIGNED, Column::NOT_NULL, null, 'Primary Key', ['primary' => true])
+			->addColumn('name',        DataType::VARCHAR,  Column::SIGNED,   Column::NOT_NULL, null, 'Name')
 			->addColumn('username',    DataType::VARCHAR,  Column::SIGNED,   Column::NOT_NULL, null, 'Username')
 			->addColumn('email',       DataType::VARCHAR,  Column::SIGNED,   Column::NOT_NULL, null, 'Email')
 			->addColumn('password',    DataType::VARCHAR,  Column::SIGNED,   Column::NOT_NULL, null, 'Password')
+			->addColumn('avatar',      DataType::VARCHAR,  Column::SIGNED,   Column::NOT_NULL, null, 'Avatar')
 			->addColumn('group',       DataType::INTEGER,  Column::UNSIGNED, Column::NOT_NULL, null, 'Group')
 			->addColumn('activation',  DataType::VARCHAR,  Column::SIGNED,   Column::NOT_NULL, null, 'Activated')
 			->addColumn('reset_token', DataType::VARCHAR,  Column::SIGNED,   Column::NOT_NULL, null, 'Reset Password Token')

@@ -35,29 +35,33 @@ class PostSeeder extends AbstractSeeder
 		$faker = Factory::create();
 
 		$users = (new UserMapper)->findColumn('id');
-		$topics = (new TopicMapper)->findColumn('id', array());
+		$topics = (new TopicMapper)->findAll();
 		$mapper = new PostMapper;
 
-		foreach (range(1, 30) as $i)
+		foreach ($topics as $topic)
 		{
-			$data = new Data;
+			foreach (range(1, 10) as $i)
+			{
+				$data = new Data;
 
-			$data['topic_id']    = $faker->randomElement($topics);
-			$data['user_id']     = $faker->randomElement($users);
-			$data['body']        = $faker->paragraph(5);
-			$data['version']     = rand(1, 50);
-			$data['rating']      = rand(1, 5);
-			$data['created']     = $faker->dateTime->format(DateTime::FORMAT_SQL);
-			$data['created_by']  = rand(20, 100);
-			$data['modified']    = $faker->dateTime->format(DateTime::FORMAT_SQL);
-			$data['modified_by'] = rand(20, 100);
-			$data['ordering']    = $i;
-			$data['state']       = $faker->randomElement(array(1, 1, 1, 1, 0, 0));
-			$data['params']      = '';
+				$data['topic_id']    = $topic->id;
+				$data['user_id']     = $i == 1 ? $topic->user_id : $faker->randomElement($users);
+				$data['primary']     = $i == 1 ? 1 : 0;
+				$data['body']        = $faker->paragraph(5);
+				$data['version']     = rand(1, 50);
+				$data['rating']      = rand(1, 5);
+				$data['created']     = $faker->dateTime->format(DateTime::FORMAT_SQL);
+				$data['created_by']  = rand(20, 100);
+				$data['modified']    = $faker->dateTime->format(DateTime::FORMAT_SQL);
+				$data['modified_by'] = rand(20, 100);
+				$data['ordering']    = $i;
+				$data['state']       = $faker->randomElement(array(1, 1, 1, 1, 0, 0));
+				$data['params']      = '';
 
-			$mapper->createOne($data);
+				$mapper->createOne($data);
 
-			$this->command->out('.', false);
+				$this->command->out('.', false);
+			}
 		}
 
 		$this->command->out();

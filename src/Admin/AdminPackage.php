@@ -43,6 +43,12 @@ class AdminPackage extends AbstractPackage
 	public function initialise()
 	{
 		parent::initialise();
+
+		// Prepare Resolvers
+		RecordResolver::addNamespace(__NAMESPACE__ . '\Record');
+		DataMapperResolver::addNamespace(__NAMESPACE__ . '\DataMapper');
+		FieldHelper::addNamespace(__NAMESPACE__ . '\Field');
+		ValidatorHelper::addNamespace(__NAMESPACE__ . 'Validator');
 	}
 
 	/**
@@ -52,12 +58,6 @@ class AdminPackage extends AbstractPackage
 	 */
 	protected function prepareExecute()
 	{
-		// Prepare Resolvers
-		RecordResolver::addNamespace(__NAMESPACE__ . '\Record');
-		DataMapperResolver::addNamespace(__NAMESPACE__ . '\DataMapper');
-		FieldHelper::addNamespace(__NAMESPACE__ . '\Field');
-		ValidatorHelper::addNamespace(__NAMESPACE__ . 'Validator');
-
 		// Assets
 		BootstrapScript::css();
 		BootstrapScript::script();

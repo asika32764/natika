@@ -26,6 +26,7 @@ class PostInit extends AbstractMigration
 			->addColumn(new Column\Primary('id'))
 			->addColumn(new Column\Integer('topic_id'))
 			->addColumn(new Column\Integer('user_id'))
+			->addColumn(new Column\Tinyint('primary'))
 			->addColumn(new Column\Text('body'))
 			->addColumn(new Column\Integer('version'))
 			->addColumn(new Column\Integer('rating'))

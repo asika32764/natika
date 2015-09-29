@@ -34,6 +34,8 @@ class CategoryInit extends AbstractMigration
 			->addColumn(new Column\Text('description'))
 			->addColumn(new Column\Text('images'))
 			->addColumn(new Column\Integer('version'))
+			->addColumn(new Column\Integer('topics'))
+			->addColumn(new Column\Integer('posts'))
 			->addColumn(new Column\Datetime('created'))
 			->addColumn(new Column\Integer('created_by'))
 			->addColumn(new Column\Datetime('modified'))

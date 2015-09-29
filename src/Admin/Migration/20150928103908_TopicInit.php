@@ -26,9 +26,10 @@ class TopicInit extends AbstractMigration
 			->addColumn(new Column\Primary('id'))
 			->addColumn(new Column\Integer('category_id'))
 			->addColumn(new Column\Integer('user_id'))
-			->addColumn(new Column\Integer('last_reply'))
+			->addColumn(new Column\Integer('last_reply_user'))
+			->addColumn(new Column\Integer('last_reply_post'))
+			->addColumn(new Column\Datetime('last_reply_date'))
 			->addColumn(new Column\Varchar('title'))
-			->addColumn(new Column\Text('body'))
 			->addColumn(new Column\Text('images'))
 			->addColumn(new Column\Integer('version'))
 			->addColumn(new Column\Integer('replies'))
@@ -43,7 +44,8 @@ class TopicInit extends AbstractMigration
 			->addColumn(new Column\Tinyint('state'))
 			->addColumn(new Column\Text('params'))
 			->addIndex(Key::TYPE_INDEX, 'idx_topics_user_id', 'user_id')
-			->addIndex(Key::TYPE_INDEX, 'idx_topics_last_reply', 'last_reply')
+			->addIndex(Key::TYPE_INDEX, 'idx_topics_last_reply_user', 'last_reply_user')
+			->addIndex(Key::TYPE_INDEX, 'idx_topics_last_reply_post', 'last_reply_post')
 			->addIndex(Key::TYPE_INDEX, 'idx_topics_created_by', 'created_by')
 			->create(true);
 	}

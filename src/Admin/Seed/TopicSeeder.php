@@ -16,7 +16,6 @@ use Faker\Factory;
 use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Seeder\AbstractSeeder;
 use Windwalker\Data\Data;
-use Windwalker\Filter\OutputFilter;
 
 /**
  * The TopicSeeder class.
@@ -35,18 +34,20 @@ class TopicSeeder extends AbstractSeeder
 		$faker = Factory::create();
 
 		$users = (new UserMapper)->findColumn('id');
-		$categories = (new CategoryMapper)->findColumn('id', array());
+		$categories = (new CategoryMapper)->findColumn('id', array('id > 1'));
 		$mapper = new TopicMapper;
 
-		foreach (range(1, 100) as $i)
+		foreach (range(1, 300) as $i)
 		{
 			$data = new Data;
 
 			$data['title']       = $faker->sentence(rand(3, 5));
 			$data['category_id'] = $faker->randomElement($categories);
 			$data['user_id']     = $faker->randomElement($users);
-			$data['last_reply']  = $faker->randomElement($users);
-			$data['body']        = $faker->paragraph(5);
+			$data['last_reply_user'] = $faker->randomElement($users);
+			$data['last_reply_post'] = rand(1, 150);
+			$data['last_reply_date'] = $faker->dateTime->format(DateTime::FORMAT_SQL);
+//			$data['body']        = $faker->paragraph(5);
 			$data['images']      = $faker->imageUrl();
 			$data['version']     = rand(1, 50);
 			$data['replies']     = rand(1, 50);

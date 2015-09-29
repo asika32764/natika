@@ -25,6 +25,42 @@ use Windwalker\Filter\OutputFilter;
 class CategorySeeder extends AbstractSeeder
 {
 	/**
+	 * Property icons.
+	 *
+	 * @var  array
+	 */
+	protected $icons = array(
+		'fa fa-fw fa-bullhorn',
+		'fa fa-fw fa-comment',
+		'fa fa-fw fa-github',
+		'fa fa-fw fa-wrench',
+		'fa fa-fw fa-magic',
+		'fa fa-fw fa-fire',
+		'fa fa-fw fa-warning'
+	);
+
+	/**
+	 * Property colors.
+	 *
+	 * @var  array
+	 */
+	protected $colors = array(
+		'#68A8D4',
+		'#F0DB4F',
+		'#6C7EB7',
+		'#EB5745',
+		'#FC7362',
+		'#106EAD',
+		'#FFAB37',
+		'#AACA3C',
+		'#358BC6',
+		'#BCDB79',
+		'#BFA3CF',
+		'#333333',
+		'#FF705E',
+	);
+
+	/**
 	 * doExecute
 	 *
 	 * @return  void
@@ -46,15 +82,24 @@ class CategorySeeder extends AbstractSeeder
 
 			$data['title']       = $faker->sentence(rand(1, 3));
 			$data['alias']       = OutputFilter::stringURLSafe($data['title']);
-			$data['description'] = $faker->paragraph(5);
+			$data['description'] = $faker->sentence(5);
 			$data['images']      = $faker->imageUrl();
 			$data['version']     = rand(1, 50);
+			$data['topics']      = rand(10, 100);
+			$data['posts']       = rand(10, 100);
 			$data['created']     = $faker->dateTime->format(DateTime::FORMAT_SQL);
 			$data['created_by']  = $faker->randomElement($users);
 			$data['modified']    = $faker->dateTime->format(DateTime::FORMAT_SQL);
 			$data['modified_by'] = $faker->randomElement($users);
 			$data['state']       = $faker->randomElement(array(1, 1, 1, 1, 0, 0));
-			$data['params']      = '';
+
+			// Color Image
+			$params = array(
+				'bg_color' => $faker->randomElement($this->colors),
+				'image_icon' => $faker->randomElement($this->icons)
+			);
+
+			$data['params'] = json_encode($params);
 
 			$record->bind($data->dump());
 

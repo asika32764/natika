@@ -40,9 +40,11 @@ class UserSeeder extends AbstractSeeder
 			$password = new Password;
 
 			$data = array(
+				'name'     => $faker->name,
 				'username' => $faker->userName,
-				'email' => $faker->email,
+				'email'    => $faker->email,
 				'password' => $password->create('1234'),
+				'avatar'   => 'https://avatars.githubusercontent.com/u/' . rand(1000, 500000),
 			);
 
 			$mapper->createOne($data);

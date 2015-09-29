@@ -1,11 +1,12 @@
-home:
-    pattern: '/'
-    controller: 'Acme\Controller\Page\'
 
-admin:
-    pattern: /admin
-    package: admin
+forum:
+    pattern: /
+    package: forum
 
 user:
     pattern: '/'
     package: wwuser
+
+admin:
+    pattern: /admin
+    package: admin

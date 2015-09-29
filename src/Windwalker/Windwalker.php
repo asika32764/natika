@@ -9,6 +9,7 @@
 namespace Windwalker;
 
 use Admin\AdminPackage;
+use Forum\ForumPackage;
 use Phoenix\PhoenixPackage;
 use Symfony\Component\Yaml\Yaml;
 use Windwalker\Core\Package\AbstractPackage;
@@ -37,7 +38,8 @@ class Windwalker extends \Windwalker\Core\Windwalker
 		return array(
 			'system' => new SystemPackage,
 			'phoenix' => new PhoenixPackage,
-			'admin' => new AdminPackage
+			'admin' => new AdminPackage,
+			'forum' => new ForumPackage
 		);
 	}
 
