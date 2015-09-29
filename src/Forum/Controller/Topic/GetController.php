@@ -8,21 +8,21 @@
 
 namespace Forum\Controller\Topic;
 
-use Forum\Model\TopicModel;
+use Admin\Model\PostsModel;
 use Forum\View\Topic\TopicHtmlView;
-use Windwalker\Core\Controller\Controller;
+use Phoenix\Controller\Display\ListDisplayController;
 
 /**
  * The GetController class.
  * 
  * @since  {DEPLOY_VERSION}
  */
-class GetController extends Controller
+class GetController extends ListDisplayController
 {
 	/**
 	 * Property model.
 	 *
-	 * @var  TopicModel
+	 * @var  PostsModel
 	 */
 	protected $model;
 
@@ -34,13 +34,20 @@ class GetController extends Controller
 	protected $view;
 
 	/**
+	 * Property id.
+	 *
+	 * @var  int
+	 */
+	protected $id;
+
+	/**
 	 * prepareExecute
 	 *
 	 * @return  void
 	 */
 	protected function prepareExecute()
 	{
-		$this->model = $this->getModel();
+		$this->model = $this->getModel('Posts');
 		$this->view = $this->getView();
 	}
 
@@ -51,8 +58,45 @@ class GetController extends Controller
 	 */
 	protected function doExecute()
 	{
-		$this->view->setModel($this->model);
+		$this->app->set('list.limit', 5);
+
+		$id = $this->id = $this->input->get('id');
+
+		$this->prepareUserState($this->model);
+
+		$topicModel  = $this->getModel('Topic');
+		$postsModel  = $this->model;
+
+		// Topic
+		$topic = $topicModel->getItem($id);
+
+		$postsModel['list.ordering'] = 'post.ordering';
+		$postsModel['list.direction'] = 'ASC';
+		$postsModel['list.filter'] = array(
+			'post.topic_id' => $topic->id
+		);
+
+		$posts = $postsModel->getItems();
+		$pagination = $postsModel->getPagination();
+
+		$this->view['topic'] = $topic;
+		$this->view['posts'] = $posts;
+		$this->view['pagination'] = $pagination;
 
 		return $this->view->render();
+	}
+
+	/**
+	 * getContext
+	 *
+	 * @param   string $task
+	 *
+	 * @return  string
+	 */
+	public function getContext($task = null)
+	{
+		$task =  $task . '.' . $this->id;
+
+		return parent::getContext($task);
 	}
 }

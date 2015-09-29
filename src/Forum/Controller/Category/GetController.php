@@ -48,11 +48,8 @@ class GetController extends ListDisplayController
 	 */
 	protected function prepareExecute()
 	{
-		$this->format = $this->input->get('format', 'html');
-		$this->layout = $this->input->get('layout', 'default');
-
 		$this->model = $this->getModel('Topics');
-		$this->view = $this->getView(null, $this->format);
+		$this->view = $this->getView();
 	}
 
 	/**
@@ -62,7 +59,7 @@ class GetController extends ListDisplayController
 	 */
 	protected function doExecute()
 	{
-		$this->app->set('list.limit', 5);
+		// $this->app->set('list.limit', 5);
 		$page = 1;
 		$path = (array) $this->input->getVar('path');
 
@@ -121,7 +118,7 @@ class GetController extends ListDisplayController
 
 		$this->assignModels($this->view);
 
-		return $this->view->setLayout($this->layout)->render();
+		return $this->view->render();
 	}
 
 	/**

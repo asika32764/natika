@@ -8,7 +8,9 @@
 
 namespace Forum\View\Topic;
 
+use Admin\Record\CategoryRecord;
 use Windwalker\Core\View\BladeHtmlView;
+use Windwalker\Data\Data;
 
 /**
  * The TopicHtmlView class.
@@ -26,6 +28,33 @@ class TopicHtmlView extends BladeHtmlView
 	 */
 	protected function prepareData($data)
 	{
-		$data->item = $this->model->getSomething();
+		$paths = $this['topic']->category->path;
+		$paths = explode('/', $paths);
+		$record = new CategoryRecord;
+		$breadcrumbs = array();
+
+		$breadcrumbs[] = new Data(array(
+			'title' => 'Home',
+			'path' => '',
+			'link' => $this->getRouter()->html('home')
+		));
+
+		foreach (range(1, count($paths)) as $i)
+		{
+			$item = new Data;
+
+			$item->path = implode('/', $paths);
+			$item->link = $this->getRouter()->html('category', array('path' => $paths));
+
+			$record->load(array('path' => $item->path));
+
+			$item->title = $record->title;
+
+			$breadcrumbs[] = $item;
+
+			array_pop($paths);
+		}
+
+		$data->breadcrumbs = $breadcrumbs;
 	}
 }

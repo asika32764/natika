@@ -6,7 +6,6 @@
 
 # Composer
 /vendor
-composer.lock
 
 #Windwalker
 /etc/secret.yml

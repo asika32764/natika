@@ -17,6 +17,7 @@
         "fzaninotto/faker": "~1.0",
         "monolog/monolog": "~1.0",
         "windwalker/phoenix": "1.*",
+        "joomla/datetime": "~2.0",
 
         "twig/twig" : "~1.0"
     },

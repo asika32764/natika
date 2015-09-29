@@ -2,7 +2,7 @@ home:
     pattern: /
     controller: Category
 topic:
-    pattern: /topic/(*path)(/id)
+    pattern: /topic/(*path)/(id)
     controller: Topic
 topics:
     pattern: /topics

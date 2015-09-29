@@ -51,7 +51,7 @@ Category
                             </span>
                         </div>
                         <div class="col-md-3">
-                            <strong>{{ $category->last_post->user_name }}</strong> <span>{{ $category->last_post->created }}</span>
+                            <strong>{{ $category->last_post->user_name }}</strong> <span>{{ $helper->date->since($category->last_post->created) }}</span>
                             <br />
                             {{ $category->last_post->topic_title }}
                         </div>
@@ -82,7 +82,7 @@ Category
                                 </a>
                             </h2>
                             <span class="text-muted">
-                                {{ $topic->created }}
+                                {{ $helper->date->since($topic->created) }}
                             </span>
                         </div>
                         <div class="col-md-1 hidden-sm hidden-xs text-center">
@@ -106,7 +106,7 @@ Category
                         <div class="col-md-3">
                             <strong>{{ $topic->last_user_name }}</strong>
                             <br />
-                            <span>{{ $topic->last_reply_date }}</span>
+                            <span>{{ $helper->date->since($topic->last_reply_date) }}</span>
                             {{--<br />--}}
                             {{--{{ $topic->last_post_title }}--}}
                         </div>
