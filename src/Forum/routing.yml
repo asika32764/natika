@@ -4,12 +4,23 @@ home:
 topic:
     pattern: /topic/(*path)/(id)
     controller: Topic
-topics:
-    pattern: /topics
-    controller: Topics
+
+post:
+    pattern: /post(/id)
+    controller: Post
 
 category:
     pattern: /category/(*path)(/page)
     controller: Category
 
+login:
+    pattern: /github/login
+    controller: User
+    action:
+        '*': LoginController
 
+logout:
+    pattern: /github/logout
+    controller: User
+    action:
+        '*': LogoutController

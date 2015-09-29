@@ -16,6 +16,7 @@ use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\DI\ServiceProviderInterface;
 use Windwalker\Registry\Registry;
 use Windwalker\SystemPackage\SystemPackage;
+use Windwalker\User\UserPackage;
 
 /**
  * The main Windwalker instantiate class.
@@ -39,7 +40,8 @@ class Windwalker extends \Windwalker\Core\Windwalker
 			'system' => new SystemPackage,
 			'phoenix' => new PhoenixPackage,
 			'admin' => new AdminPackage,
-			'forum' => new ForumPackage
+			'forum' => new ForumPackage,
+			// 'user' => new UserPackage
 		);
 	}
 

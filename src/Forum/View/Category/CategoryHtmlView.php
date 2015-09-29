@@ -8,15 +8,15 @@
 
 namespace Forum\View\Category;
 
-use Windwalker\Core\View\BladeHtmlView;
-use Windwalker\Registry\Registry;
+use Forum\Helper\BreadcrumbHelper;
+use Phoenix\View\AbstractRadHtmView;
 
 /**
  * The CategoryHtmlView class.
  * 
  * @since  {DEPLOY_VERSION}
  */
-class CategoryHtmlView extends BladeHtmlView
+class CategoryHtmlView extends AbstractRadHtmView
 {
 	/**
 	 * prepareData
@@ -27,6 +27,13 @@ class CategoryHtmlView extends BladeHtmlView
 	 */
 	protected function prepareData($data)
 	{
+		$paths = $data->currentCategory->path;
 
+		$data->breadcrumbs = BreadcrumbHelper::getBreadcrumbs($paths);
+
+		if ($data->currentCategory->id != 1)
+		{
+			$this->setTitle($data->currentCategory->title);
+		}
 	}
 }

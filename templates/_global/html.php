@@ -29,14 +29,14 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="<?php echo $data->router->html('home'); ?>">
+			<a class="navbar-brand" href="<?php echo $data->router->html('forum:home'); ?>">
 				<img src="https://cloud.githubusercontent.com/assets/1639206/2870854/176b987a-d2e4-11e3-8be6-9f70304a8499.png" alt="Windwalker LOGO" />
 			</a>
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<?php $this->block('nav'); ?>
-				<li class="active"><a href="<?php echo $data->router->html('home'); ?>">Home</a></li>
+				<li class="active"><a href="<?php echo $data->router->html('forum:home'); ?>">Home</a></li>
 				<?php $this->endblock(); ?>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

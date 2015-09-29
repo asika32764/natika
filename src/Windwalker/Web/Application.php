@@ -111,7 +111,6 @@ class Application extends WebApplication
 		 */
 
 		// Your packages here...
-		$packages['wwuser'] = new UserPackage;
 
 		return $packages;
 	}

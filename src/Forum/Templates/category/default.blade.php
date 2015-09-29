@@ -2,9 +2,29 @@
 
 @extends('_global.html')
 
-@section('page_title')
-Category
-@stop
+@if ($currentCategory->id != 1)
+    @section('banner_inner')
+        <h1 class="category-title">
+            <span class="fa fa-folder-open"></span>
+            {{ \Phoenix\Html\Document::getTitle() }}
+        </h1>
+
+        <ol class="breadcrumb">
+            @foreach ($breadcrumbs as $breadcrumb)
+                <li>
+                    <a href="{{ $breadcrumb->link }}">
+                        {{ $breadcrumb->title }}
+                    </a>
+                </li>
+            @endforeach
+        </ol>
+
+        <a class="tool-button btn btn-default btn-lg pull-right" href="{{ $router->html('post', array('category' => $currentCategory->id)) }}">
+            <span class="fa fa-comment"></span>
+            Create Topic
+        </a>
+    @stop
+@endif
 
 @section('content')
     @if ($categories->notNull())

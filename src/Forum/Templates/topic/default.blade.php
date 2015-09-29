@@ -6,21 +6,25 @@
 Topic
 @stop
 
+@section('banner_inner')
+
+    <h1>
+        <span class="fa fa-bullhorn"></span>
+        {{ \Phoenix\Html\Document::getTitle() }}
+    </h1>
+
+    <ol class="breadcrumb">
+        @foreach ($breadcrumbs as $breadcrumb)
+            <li>
+                <a href="{{ $breadcrumb->link }}">
+                    {{ $breadcrumb->title }}
+                </a>
+            </li>
+        @endforeach
+    </ol>
+@stop
+
 @section('content')
-<div class="jumbotron">
-    <div class="container">
-        <h1>{{ $topic->title }}</h1>
-        <ol class="breadcrumb">
-            @foreach ($breadcrumbs as $breadcrumb)
-                <li>
-                    <a href="{{ $breadcrumb->link }}">
-                        {{ $breadcrumb->title }}
-                    </a>
-                </li>
-            @endforeach
-        </ol>
-    </div>
-</div>
 
 <div class="container topic-item">
 
