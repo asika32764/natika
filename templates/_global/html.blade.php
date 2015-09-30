@@ -7,16 +7,14 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ $uri['media.path'] }}images/favicon.ico" />
     <meta name="generator" content="Windwalker Framework" />
+
+    {!! \Phoenix\Html\Document::renderMetadata() !!}
     @yield('meta')
 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ $uri['media.path'] }}css/main.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
+    {!! \Phoenix\Asset\Asset::renderStyles(true) !!}
     @yield('style')
 
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    @yield('script')
+    {!! \Phoenix\Html\Document::renderCustomTags() !!}
 </head>
 <body>
     @section('navbar')
@@ -28,18 +26,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ $router->html('forum:home') }}">Windwalker</a>
+                <a class="navbar-brand" href="{{ $router->html('forum:home') }}">{{ \Phoenix\Html\Document::getSiteName() }}</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                      @section('nav')
-                        <li class="active"><a href="{{ $router->html('forum:home') }}">Home</a></li>
+                        <li>
+                            <a href="{{ $router->html('forum:home') }}">
+                                <span class="fa fa-home"></span>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/asika32764/natika" target="_blank">
+                                <span class="fa fa-github"></span>
+                                Source Code
+                            </a>
+                        </li>
                      @show
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if ($user->isGuest())
                     <li>
-                        <a href="{{ $router->html('login') }}">
+                        <a href="{{ $router->html('login', array('return' => base64_encode($uri['full']))) }}">
                             <span class="fa fa-github"></span>
                             Login
                         </a>
@@ -52,7 +61,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ $router->html('logout') }}">
+                        <a href="{{ $router->html('logout', array('return' => base64_encode($uri['full']))) }}">
                             <span class="fa fa-sign-out"></span>
                             Logout
                         </a>
@@ -74,7 +83,9 @@
     <div class="jumbotron banner-wrap">
         <div class="container">
             @section('banner_inner')
-
+            <h1 class="text-center text-uppercase">
+                {{ $app->get('banner.default', 'Welcome to ' . \Phoenix\Html\Document::getSiteName()) }}
+            </h1>
             @show
         </div>
     </div>
@@ -91,12 +102,15 @@
                     <hr />
 
                     <footer>
-                        &copy; Windwalker {{ $datetime->format('Y') }}
+                        &copy; {{ \Phoenix\Html\Document::getSiteName() }} {{ $datetime->format('Y') }}
                     </footer>
                 </div>
             </div>
         </div>
     </div>
     @show
+
+    {!! \Phoenix\Asset\Asset::renderScripts(true) !!}
+    @yield('script')
 </body>
 </html>

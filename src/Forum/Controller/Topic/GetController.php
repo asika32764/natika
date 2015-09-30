@@ -70,6 +70,11 @@ class GetController extends ListDisplayController
 		// Topic
 		$topic = $topicModel->getItem($id);
 
+		if ($topic->isNull())
+		{
+			throw new \UnexpectedValueException('Topic not found', 404);
+		}
+
 		$postsModel['list.ordering'] = 'post.ordering';
 		$postsModel['list.direction'] = 'ASC';
 		$postsModel['list.filter'] = array(

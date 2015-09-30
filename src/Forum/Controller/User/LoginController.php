@@ -44,6 +44,11 @@ class LoginController extends AbstractPhoenixController
 		$this->setUserState('github.state', $state);
 		$this->setUserState('github.access_token', null);
 
+		if ($return = $this->input->getString('return'))
+		{
+			$this->setUserState('uri.return', base64_decode($return));
+		}
+
 		$params = array(
 			'client_id' => $this->app->get('github.id'),
 			'redirect_uri' => $this->router->http('login', array('task' => 'token'), Router::TYPE_FULL),
@@ -95,9 +100,18 @@ class LoginController extends AbstractPhoenixController
 
 		$user = $this->saveUser($user);
 
+		$user->bind(User::get(array('username' => $user->username)));
+
 		User::makeUserLogin($user);
 
-		$this->setRedirect($this->router->http('home'), 'Login success');
+		$return = $this->getUserState('uri.return');
+
+		if (!$return)
+		{
+			$return = $this->router->http('home');
+		}
+
+		$this->setRedirect($return, 'Login success');
 
 		return true;
 	}

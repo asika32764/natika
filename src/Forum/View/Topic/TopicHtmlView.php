@@ -9,6 +9,8 @@
 namespace Forum\View\Topic;
 
 use Forum\Helper\BreadcrumbHelper;
+use Natika\Markdown\Markdown;
+use Natika\Script\EditorScript;
 use Phoenix\View\ItemView;
 
 /**
@@ -33,7 +35,15 @@ class TopicHtmlView extends ItemView
 
 			$data->breadcrumbs = BreadcrumbHelper::getBreadcrumbs($paths);
 
+			foreach ($data->posts as $post)
+			{
+				$post->raw_body = $post->body;
+				$post->body = Markdown::render($post->body);
+			}
+
 			$this->setTitle($data->topic->title);
+
+			EditorScript::highlight('.topic-post pre');
 		}
 		else
 		{

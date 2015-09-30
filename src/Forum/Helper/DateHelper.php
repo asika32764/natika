@@ -37,7 +37,7 @@ class DateHelper extends AbstractHelper
 		$now = DateTime::now();
 
 		$compare = DateTime::now();
-		$compare->addDays(30);
+		$compare = $compare->subDays(30);
 
 		if ($date->isBefore($compare))
 		{

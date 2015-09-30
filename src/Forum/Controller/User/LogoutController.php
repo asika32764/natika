@@ -27,7 +27,18 @@ class LogoutController extends AbstractPhoenixController
 	{
 		User::logout(array());
 
-		$this->setRedirect($this->router->http('home'), 'Logout success');
+		$return = $this->input->getString('return');
+
+		if (!$return)
+		{
+			$return = $this->router->http('home');
+		}
+		else
+		{
+			$return = base64_decode($return);
+		}
+
+		$this->setRedirect($return, 'Logout success');
 
 		return true;
 	}

@@ -10,7 +10,10 @@ namespace Forum;
 
 use Forum\Listener\ForumListener;
 use Forum\User\UserHandler;
+use Phoenix\Asset\Asset;
 use Phoenix\Html\Document;
+use Phoenix\Script\BootstrapScript;
+use Phoenix\Script\JQueryScript;
 use Windwalker\Core\Authentication\User;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Event\Dispatcher;
@@ -50,5 +53,25 @@ class ForumPackage extends AbstractPackage
 		parent::registerListeners($dispatcher);
 
 		$dispatcher->addListener(new ForumListener);
+	}
+
+	/**
+	 * prepareExecute
+	 *
+	 * @return  void
+	 */
+	protected function prepareExecute()
+	{
+		BootstrapScript::css();
+		Asset::addStyle('css/main.css');
+		Asset::addStyle('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css');
+		Asset::addStyle('css/github-markdown-css.min.css');
+
+		if (WINDWALKER_PUBLIC . '/media/css/custom.css')
+		{
+			Asset::addStyle('css/custom.css');
+		}
+
+		BootstrapScript::script();
 	}
 }

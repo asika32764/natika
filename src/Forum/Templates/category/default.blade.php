@@ -19,10 +19,12 @@
             @endforeach
         </ol>
 
+        @if (\Natika\User\UserHelper::isLogin())
         <a class="tool-button btn btn-default btn-lg pull-right" href="{{ $router->html('topic_new', array('category' => $currentCategory->id)) }}">
             <span class="fa fa-comment"></span>
             Create Topic
         </a>
+        @endif
     @stop
 @endif
 
@@ -127,11 +129,12 @@
                             </span>
                         </div>
                         <div class="col-md-3">
+                            <span">Updated by:</span>
                             <a href="{{ $topic->last_user_params->get('raw_data.html_url', 'javascript:void(0)') }}" target="_blank">
                                 <strong>{{ $topic->last_user_name }}</strong>
                             </a>
                             <br />
-                            <span>{{ $helper->date->since($topic->last_reply_date) }}</span>
+                            <span class="text-muted">{{ $helper->date->since($topic->last_reply_date) }}</span>
                             {{--<br />--}}
                             {{--{{ $topic->last_post_title }}--}}
                         </div>
