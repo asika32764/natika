@@ -8,6 +8,7 @@
 
 namespace Admin\Record;
 
+use Admin\DataMapper\CategoryMapper;
 use Admin\DataMapper\TopicMapper;
 use Admin\Table\Table;
 use Monolog\Registry;
@@ -21,6 +22,13 @@ use Windwalker\Record\NestedRecord;
  */
 class CategoryRecord extends NestedRecord
 {
+	/**
+	 * Property children.
+	 *
+	 * @var  array
+	 */
+	protected $children = array();
+
 	/**
 	 * Property table.
 	 *
@@ -72,6 +80,22 @@ class CategoryRecord extends NestedRecord
 	}
 
 	/**
+	 * onBeforeDelete
+	 *
+	 * @param Event $event
+	 *
+	 * @return  void
+	 */
+	public function onBeforeDelete(Event $event)
+	{
+		$record = $event['record'];
+
+		$catMapper = new CategoryMapper;
+
+		$this->children = $catMapper->findColumn('id', array('lft > ' . $record->lft, 'rgt < ' . $record->rgt));
+	}
+
+	/**
 	 * onAfterDelete
 	 *
 	 * @param Event $event
@@ -91,6 +115,17 @@ class CategoryRecord extends NestedRecord
 		foreach ($topics as $topicId)
 		{
 			$topicRecord->load($topicId)->delete();
+		}
+
+		// Delete children
+		foreach ($this->children as $child)
+		{
+			$topics = $topicMapper->findColumn('id', array('category_id' => $child));
+
+			foreach ($topics as $topicId)
+			{
+				$topicRecord->load($topicId)->delete();
+			}
 		}
 	}
 }

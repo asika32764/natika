@@ -1089,12 +1089,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ventoviro/windwalker-core.git",
-                "reference": "91341def4ecc3157f7143651f2d35ddc3e56d5da"
+                "reference": "4173825c2018460fbaf75b897a844e1fac95e3a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ventoviro/windwalker-core/zipball/91341def4ecc3157f7143651f2d35ddc3e56d5da",
-                "reference": "91341def4ecc3157f7143651f2d35ddc3e56d5da",
+                "url": "https://api.github.com/repos/ventoviro/windwalker-core/zipball/4173825c2018460fbaf75b897a844e1fac95e3a8",
+                "reference": "4173825c2018460fbaf75b897a844e1fac95e3a8",
                 "shasum": ""
             },
             "require": {
@@ -1124,7 +1124,7 @@
             ],
             "description": "A modern PHP framework.",
             "homepage": "https://github.com/ventoviro/windwalker-core",
-            "time": "2015-10-01 07:17:56"
+            "time": "2015-10-01 07:54:40"
         },
         {
             "name": "windwalker/framework",
@@ -1132,12 +1132,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ventoviro/windwalker.git",
-                "reference": "a81a4bddd91088f43310b7b0a3bb29b6d6f9d822"
+                "reference": "7e92028d8139a039e2af1537d0273ebe524f3602"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ventoviro/windwalker/zipball/a81a4bddd91088f43310b7b0a3bb29b6d6f9d822",
-                "reference": "a81a4bddd91088f43310b7b0a3bb29b6d6f9d822",
+                "url": "https://api.github.com/repos/ventoviro/windwalker/zipball/7e92028d8139a039e2af1537d0273ebe524f3602",
+                "reference": "7e92028d8139a039e2af1537d0273ebe524f3602",
                 "shasum": ""
             },
             "require": {
@@ -1222,7 +1222,7 @@
             ],
             "description": "A Modern PHP framework.",
             "homepage": "https://github.com/ventoviro/windwalker",
-            "time": "2015-09-29 05:57:28"
+            "time": "2015-10-01 07:16:34"
         },
         {
             "name": "windwalker/phoenix",

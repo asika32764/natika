@@ -38,8 +38,12 @@ post_edit:
     variables:
         layout: edit
 
+category_root:
+    pattern: /category
+    controller: Category
+
 category:
-    pattern: /category/(*path)(/page)
+    pattern: /category/(*path)
     controller: Category
 
 login:
