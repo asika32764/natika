@@ -29,7 +29,7 @@ if (is_file(WINDWALKER_PUBLIC . '/media/css/custom.css'))
 
     {!! \Phoenix\Html\Document::renderCustomTags() !!}
 </head>
-<body>
+<body class="natika-body {{ $package->getName() }}-body view-{{ $view->name }} layout-{{ $view->layout }} category-{{ isset($currentCategory) ? $currentCategory->get('alias', 'root') : null }}">
     @section('navbar')
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
