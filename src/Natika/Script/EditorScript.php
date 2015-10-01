@@ -75,7 +75,10 @@ JS;
 		if (!static::inited(__METHOD__))
 		{
 			$asset->addScript('js/highlight/highlight.pack.js');
-			$asset->addStyle('js/highlight/styles/github.css');
+
+			$style = isset($options['style']) ? $options['style'] : 'github';
+
+			$asset->addStyle('js/highlight/styles/' . $style . '.css');
 		}
 
 		if (!static::inited(__METHOD__, func_get_args()))
