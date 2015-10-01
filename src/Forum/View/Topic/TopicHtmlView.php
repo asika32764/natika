@@ -10,7 +10,6 @@ namespace Forum\View\Topic;
 
 use Forum\Helper\BreadcrumbHelper;
 use Natika\Markdown\Markdown;
-use Natika\Script\EditorScript;
 use Phoenix\View\ItemView;
 
 /**
@@ -42,8 +41,6 @@ class TopicHtmlView extends ItemView
 			}
 
 			$this->setTitle($data->topic->title);
-
-			EditorScript::highlight('.topic-post pre');
 		}
 		else
 		{

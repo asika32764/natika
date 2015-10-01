@@ -7,6 +7,6 @@ user:
     pattern: '/'
     package: user
 
-admin:
-    pattern: /admin
-    package: admin
+#admin:
+#    pattern: /admin
+#    package: admin

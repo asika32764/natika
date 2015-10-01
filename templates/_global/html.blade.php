@@ -1,5 +1,18 @@
 {{-- Part of Windwalker project. --}}
-<!doctype html>
+<?php
+use Phoenix\Asset\Asset;use Phoenix\Script\BootstrapScript;
+
+BootstrapScript::css();
+BootstrapScript::script();
+Asset::addStyle('css/main.css');
+Asset::addStyle('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css');
+Asset::addStyle('css/github-markdown-css.min.css');
+
+if (is_file(WINDWALKER_PUBLIC . '/media/css/custom.css'))
+{
+    Asset::addStyle('css/custom.css');
+}
+?><!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

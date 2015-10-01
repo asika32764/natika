@@ -1,6 +1,12 @@
 {{-- Part of phoenix project. --}}
 
-<?php \Phoenix\Script\PhoenixScript::core(); ?>
+<?php
+use Phoenix\Asset\Asset;
+use Phoenix\Script\PhoenixScript;
+
+PhoenixScript::core();
+Asset::addScript('js/category.js');
+?>
 
 @extends('_global.html')
 

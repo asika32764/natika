@@ -7,7 +7,7 @@
  */
 
 // Start composer
-$autoload = __DIR__ . '/../vendor/autoload.php';
+$autoload = __DIR__ . '/vendor/autoload.php';
 
 if (!is_file($autoload))
 {
@@ -16,7 +16,7 @@ if (!is_file($autoload))
 
 include_once $autoload;
 
-include_once __DIR__ . '/../etc/define.php';
+include_once __DIR__ . '/etc/define.php';
 
 // Get allow remote ips from config.
 \Windwalker\Windwalker::loadConfiguration($config = new \Windwalker\Registry\Registry);

@@ -9,7 +9,6 @@
 namespace Forum\View\Category;
 
 use Forum\Helper\BreadcrumbHelper;
-use Phoenix\Asset\Asset;
 use Phoenix\View\AbstractRadHtmView;
 use Windwalker\Registry\Registry;
 
@@ -48,7 +47,5 @@ class CategoryHtmlView extends AbstractRadHtmView
 		{
 			$topic->last_user_params = new Registry($topic->last_user_params);
 		}
-
-		Asset::addScript('js/category.js');
 	}
 }

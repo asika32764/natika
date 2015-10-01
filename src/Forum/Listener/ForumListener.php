@@ -10,6 +10,8 @@ namespace Forum\Listener;
 
 use Windwalker\Core\Authentication\User;
 use Windwalker\Event\Event;
+use Windwalker\Ioc;
+use Windwalker\Utilities\Queue\Priority;
 
 /**
  * The ForumListener class.
@@ -28,5 +30,12 @@ class ForumListener
 	public function onViewBeforeRender(Event $event)
 	{
 		$event['data']->user = User::get();
+
+		// Template
+		$config = Ioc::getConfig();
+
+		$paths = $event['view']->getRenderer()->getPaths();
+
+		$paths->insert(WINDWALKER_TEMPLATES . '/theme/' . $config['theme'] . '/' . $event['view']->getName(), Priority::HIGH);
 	}
 }

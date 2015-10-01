@@ -1,7 +1,10 @@
 {{-- Part of phoenix project. --}}
-
 <?php
-\Phoenix\Script\PhoenixScript::core('#admin-form');
+use Natika\Script\EditorScript;
+use Phoenix\Script\PhoenixScript;
+
+PhoenixScript::core('#admin-form');
+EditorScript::highlight('.topic-post pre');
 ?>
 
 @extends('_global.html')

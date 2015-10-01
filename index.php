@@ -6,7 +6,7 @@
  * @license    GNU Lesser General Public License version 3 or later. see LICENSE
  */
 
-$autoload = __DIR__ . '/../vendor/autoload.php';
+$autoload = __DIR__ . '/vendor/autoload.php';
 
 if (!is_file($autoload))
 {
@@ -15,7 +15,7 @@ if (!is_file($autoload))
 
 include_once $autoload;
 
-include_once __DIR__ . '/../etc/define.php';
+include_once __DIR__ . '/etc/define.php';
 
 $app = new Windwalker\Web\Application(\Windwalker\Ioc::factory());
 

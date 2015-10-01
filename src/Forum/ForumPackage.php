@@ -16,7 +16,9 @@ use Phoenix\Script\BootstrapScript;
 use Phoenix\Script\JQueryScript;
 use Windwalker\Core\Authentication\User;
 use Windwalker\Core\Package\AbstractPackage;
+use Windwalker\Core\Renderer\RendererHelper;
 use Windwalker\Event\Dispatcher;
+use Windwalker\Utilities\Queue\Priority;
 
 /**
  * The ForumPackage class.
@@ -39,6 +41,8 @@ class ForumPackage extends AbstractPackage
 		$config = $this->container->get('config');
 
 		Document::setSiteName($config->get('site_name'));
+
+		RendererHelper::addGlobalPath(WINDWALKER_TEMPLATES . '/theme/' . $config->get('theme'), Priority::HIGH);
 	}
 
 	/**
@@ -62,16 +66,6 @@ class ForumPackage extends AbstractPackage
 	 */
 	protected function prepareExecute()
 	{
-		BootstrapScript::css();
-		Asset::addStyle('css/main.css');
-		Asset::addStyle('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css');
-		Asset::addStyle('css/github-markdown-css.min.css');
 
-		if (WINDWALKER_PUBLIC . '/media/css/custom.css')
-		{
-			Asset::addStyle('css/custom.css');
-		}
-
-		BootstrapScript::script();
 	}
 }
