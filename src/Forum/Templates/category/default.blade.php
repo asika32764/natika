@@ -13,7 +13,7 @@ Asset::addScript('js/category.js');
 @if ($currentCategory->id != 1)
     @section('banner_inner')
         <h1 class="category-title">
-            <span class="fa fa-folder-open"></span>
+            <span class="{{ isset($currentCategory->params->image_icon) ? $currentCategory->params->image_icon : 'fa fa-folder-open' }}"></span>
             {{ \Phoenix\Html\Document::getTitle() }}
         </h1>
 
