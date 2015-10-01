@@ -129,5 +129,8 @@ class CategorySeeder extends AbstractSeeder
 	public function doClean()
 	{
 		$this->db->getTable(Table::CATEGORIES)->truncate();
+
+		$record = new CategoryRecord;
+		$record->createRoot();
 	}
 }

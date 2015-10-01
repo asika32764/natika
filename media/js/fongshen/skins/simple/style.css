@@ -1,0 +1,129 @@
+/**
+ * Part of Fongshen project.
+ *
+ * @copyright  Copyright (C) 2008 - 2014 Asikart.com. All rights reserved.
+ * @license    GNU General Public License version 2 or later;
+ */
+
+.fongshen * {
+	margin:0px; padding:0px;
+	outline:none;
+}
+.fongshen a:link,
+.fongshen a:visited {
+	color:#000;
+	text-decoration:none;
+}
+.fongshen {
+	margin:5px 0 5px 0;
+    clear: both;
+}
+.fongshen-container  {
+	font:11px Verdana, Arial, Helvetica, sans-serif;
+}
+.fongshen-editor {
+	font:12px 'Courier New', Courier, monospace;
+
+	height:320px;
+	clear:both;
+	line-height:18px;
+	overflow:auto;
+}
+.fongshen-preview	{
+	overflow:auto;
+	background-color:#FFF;
+	width:99.9%;
+	height:300px;
+	margin:5px 0;
+}
+.fongshen-footer {
+	width:100%;
+}
+.fongshen-resize-handler {
+	overflow:hidden;
+	width:22px; height:5px;
+	margin-left:auto;
+	margin-right:auto;
+	background-image:url(images/handle.png);
+	cursor:n-resize;
+}
+/***************************************************************************************/
+
+/* first row of buttons */
+.fongshen-toolbar::after {
+	display: block;
+	height: 1px;
+	content: "";
+	clear: both;
+}
+
+.fongshen-toolbar ul li	{
+	list-style:none;
+	float:left;
+	position:relative;
+	margin: 3px;
+}
+.fongshen-toolbar ul li:hover > ul{
+	display:block;
+}
+.fongshen-toolbar ul .markItUpDropMenu {
+	background:transparent url(images/menu.png) no-repeat 115% 50%;
+	margin-right:5px;
+}
+.fongshen-toolbar ul .markItUpDropMenu li {
+	margin-right:0px;
+}
+/* next rows of buttons */
+.fongshen-toolbar ul ul {
+	display:none;
+	position:absolute;
+	top:18px; left:0px;	
+	background:#FFF;
+	border:1px solid #000;
+}
+.fongshen-toolbar ul ul li {
+	float:none;
+	border-bottom:1px solid #000;
+}
+.fongshen-toolbar ul ul .fongshen-dropmenu {
+	background:#FFF url(images/submenu.png) no-repeat 100% 50%;
+}
+.fongshen-toolbar ul .fongshen-separator {
+	margin:0 10px;
+	width:1px;
+	height:16px;
+	overflow:hidden;
+	background-color:#CCC;
+}
+.fongshen-toolbar ul ul .fongshen-separator {
+	width:auto; height:1px;
+	margin:0px;
+}
+/* next rows of buttons */
+.fongshen-toolbar ul ul ul {
+	position:absolute;
+	top:-1px; left:150px; 
+}
+.fongshen-toolbar ul ul ul li {
+	float:none;
+}
+.fongshen-toolbar ul a {
+	display:block;
+	width:16px; height:16px;
+	text-indent:-10000px;
+	background-repeat:no-repeat;
+	padding:3px;
+	margin:0px;
+}
+.fongshen-toolbar ul ul a {
+	display:block;
+	padding-left:0px;
+	text-indent:0;
+	width:120px; 
+	padding:5px 5px 5px 25px;
+	background-position:2px 50%;
+}
+.fongshen-toolbar ul ul a:hover  {
+	color:#FFF;
+	background-color:#000;
+}

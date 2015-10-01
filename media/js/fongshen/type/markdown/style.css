@@ -1,0 +1,70 @@
+/* -------------------------------------------------------------------
+// markItUp!
+// By Jay Salvat - http://markitup.jaysalvat.com/
+// ------------------------------------------------------------------*/
+.fongshen .fongshen-button-1 a {
+	background-image:url(images/h1.png); 
+}
+.fongshen .fongshen-button-2 a {
+	background-image:url(images/h2.png); 
+}
+.fongshen .fongshen-button-3 a {
+	background-image:url(images/h3.png); 
+}
+.fongshen .fongshen-button-4 a {
+	background-image:url(images/h4.png); 
+}
+.fongshen .fongshen-button-5 a {
+	background-image:url(images/h5.png); 
+}
+.fongshen .fongshen-button-6 a {
+	background-image:url(images/h6.png); 
+}
+
+.fongshen .fongshen-button-7 a {
+	background-image:url(images/bold.png);
+}
+.fongshen .fongshen-button-8 a {
+	background-image:url(images/italic.png);
+}
+
+.fongshen .fongshen-button-9 a {
+	background-image:url(images/list-bullet.png);
+}
+.fongshen .fongshen-button-10 a {
+	background-image:url(images/list-numeric.png);
+}
+
+.fongshen .fongshen-button-11 a {
+	background-image:url(images/picture.png); 
+}
+.fongshen .fongshen-button-12 a {
+	background-image:url(images/link.png);
+}
+
+.fongshen .fongshen-button-13 a	{
+	background-image:url(images/quotes.png);
+}
+.fongshen .fongshen-button-14 a	{
+	background-image:url(images/code.png);
+}
+
+.fongshen .code-inline a	{
+	background-image:url(images/code-inline.png);
+}
+
+.fongshen .preview a {
+	background-image:url(images/preview.png);
+}
+.btn-upload {
+    font-size: 11px;
+    padding-left: 20px;
+    position: relative;
+}
+.btn-upload input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    margin-left: -20px;
+}

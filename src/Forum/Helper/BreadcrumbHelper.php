@@ -28,6 +28,11 @@ class BreadcrumbHelper
 	 */
 	public static function getBreadcrumbs($paths)
 	{
+		if (!$paths)
+		{
+			return array();
+		}
+
 		$paths = explode('/', $paths);
 		$record = new CategoryRecord;
 		$breadcrumbs = array();

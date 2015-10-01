@@ -6,6 +6,7 @@
  * @license    GNU General Public License version 2 or later;
  */
 
+use Admin\Record\CategoryRecord;
 use Admin\Table\Table;
 use Windwalker\Core\Migration\AbstractMigration;
 use Windwalker\Database\Schema\Column;
@@ -49,6 +50,9 @@ class CategoryInit extends AbstractMigration
 			->addIndex(Key::TYPE_INDEX, 'idx_categories_alias', 'alias')
 			->addIndex(Key::TYPE_INDEX, 'idx_categories_created_by', 'created_by')
 			->create(true);
+
+		$record = new CategoryRecord;
+		$record->createRoot();
 	}
 
 	/**
