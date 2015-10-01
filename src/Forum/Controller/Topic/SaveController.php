@@ -10,8 +10,10 @@ namespace Forum\Controller\Topic;
 
 use Admin\Record\CategoryRecord;
 use Forum\Model\PostModel;
+use Natika\User\UserHelper;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Data\Data;
+use Windwalker\Record\NestedRecord;
 
 /**
  * The SaveController class.
@@ -39,6 +41,13 @@ class SaveController extends \Phoenix\Controller\SaveController
 	 *
 	 * @var  int
 	 */
+	protected $catid;
+
+	/**
+	 * Property category.
+	 *
+	 * @var  NestedRecord
+	 */
 	protected $category;
 
 	/**
@@ -52,9 +61,17 @@ class SaveController extends \Phoenix\Controller\SaveController
 
 		$this->useTransaction(true);
 
-		$this->category = $this->input->get('category');
+		if (isset($this->data['id']))
+		{
+			$this->record->load($this->data['id']);
+		}
 
-		$this->data['category_id'] = $this->category;
+		$this->catid = $this->input->get('category');
+
+		$this->category = new CategoryRecord;
+		$this->category->load($this->catid);
+
+		$this->data['category_id'] = $this->catid;
 	}
 
 	/**
@@ -62,7 +79,7 @@ class SaveController extends \Phoenix\Controller\SaveController
 	 *
 	 * @param Data $data
 	 *
-	 * @return  void
+	 * @throws ValidFailException
 	 */
 	protected function postSave(Data $data)
 	{
@@ -74,7 +91,12 @@ class SaveController extends \Phoenix\Controller\SaveController
 			)
 		);
 
-		$this->hmvc($controller = new \Forum\Controller\Post\SaveController, $input);
+		if (!$this->hmvc($controller = new \Forum\Controller\Post\SaveController, $input))
+		{
+			list($url, $msg, $type) = $controller->getRedirect(true);
+
+			throw new ValidFailException($msg);
+		}
 
 		$post = $controller->getPost();
 
@@ -101,6 +123,11 @@ class SaveController extends \Phoenix\Controller\SaveController
 		{
 			throw new ValidFailException('Require Content');
 		}
+
+		if ($this->record->id && !UserHelper::canEditTopic($this->record))
+		{
+			throw new ValidFailException('Permission deny');
+		}
 	}
 
 	/**
@@ -114,10 +141,7 @@ class SaveController extends \Phoenix\Controller\SaveController
 	{
 		$pk = $this->model['item.pk'];
 
-		$category = new CategoryRecord;
-		$category->load($this->category);
-
-		return $this->router->http($this->getName(), array($this->pkName => $pk, 'path' => $category->path));
+		return $this->router->http($this->getName(), array($this->pkName => $pk, 'path' => $this->category->path));
 	}
 
 	/**
@@ -131,6 +155,6 @@ class SaveController extends \Phoenix\Controller\SaveController
 	{
 		$pk = $this->model['item.pk'];
 
-		return $this->router->http($this->getName(), array($this->pkName => $pk, 'category' => $this->category));
+		return $this->router->http('topic_new', array($this->pkName => $pk, 'category' => $this->catid));
 	}
 }

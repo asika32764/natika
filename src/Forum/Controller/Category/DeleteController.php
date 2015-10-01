@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of phoenix project. 
+ * Part of natika project.
  *
  * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
@@ -8,19 +8,32 @@
 
 namespace Forum\Controller\Category;
 
-use Forum\Record\CategoryRecord;
 use Natika\User\UserHelper;
-use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Data\Data;
+use Windwalker\Record\Record;
 
 /**
- * The SaveController class.
- * 
+ * The DeleteCategory class.
+ *
  * @since  {DEPLOY_VERSION}
  */
-class SaveController extends \Phoenix\Controller\SaveController
+class DeleteController extends \Phoenix\Controller\Batch\DeleteController
 {
+	/**
+	 * Property parent.
+	 *
+	 * @var  Record
+	 */
+	protected $parent;
+
+	/**
+	 * Property id.
+	 *
+	 * @var  int
+	 */
+	protected $id;
+
 	/**
 	 * prepareExecute
 	 *
@@ -30,28 +43,35 @@ class SaveController extends \Phoenix\Controller\SaveController
 	{
 		parent::prepareExecute();
 
-		if (isset($this->data['id']))
+		if (isset($this->pks))
 		{
-			$this->record->load($this->data['id']);
+			$this->id = $this->pks;
 		}
 
-		if ($this->data['id'])
-		{
-			$this->data['parent_id'] = null;
-		}
+		$this->parent = $this->model->getRecord('Category');
+		$this->record->load($this->id);
+		$this->parent->load($this->record->parent_id);
 	}
 
-	protected function validate(Data $data)
+	/**
+	 * save
+	 *
+	 * @param int|string $pk
+	 * @param Data       $data
+	 *
+	 * @return  void
+	 *
+	 * @throws ValidFailException
+	 */
+	protected function save($pk, Data $data)
 	{
-		if (!$data->title)
-		{
-			throw new ValidFailException('Require Title');
-		}
-
+		// Validate
 		if (!UserHelper::isAdmin())
 		{
 			throw new ValidFailException('Permission deny');
 		}
+
+		parent::save($pk, $data);
 	}
 
 	/**
@@ -63,7 +83,7 @@ class SaveController extends \Phoenix\Controller\SaveController
 	 */
 	protected function getSuccessRedirect(Data $data = null)
 	{
-		return $this->app->get('uri.full');
+		return $this->router->http('category', array('path' => $this->parent->path));
 	}
 
 	/**

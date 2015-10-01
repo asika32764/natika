@@ -17,7 +17,27 @@ use Phoenix\View\EditView;
  */
 class PostHtmlView extends EditView
 {
-	public function setTitle($title = 'Post')
+	/**
+	 * prepareData
+	 *
+	 * @param \Windwalker\Data\Data $data
+	 *
+	 * @return  void
+	 */
+	protected function prepareData($data)
+	{
+		$data->topic = $this->model['topic']->getItem($data->item->topic_id);
+		$data->category = $this->model['category']->getItem($data->topic->category_id);
+	}
+
+	/**
+	 * setTitle
+	 *
+	 * @param string $title
+	 *
+	 * @return  static
+	 */
+	public function setTitle($title = 'Edit Post')
 	{
 		return parent::setTitle($title);
 	}

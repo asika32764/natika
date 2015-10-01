@@ -8,6 +8,7 @@
 
 namespace Admin\Record;
 
+use Admin\DataMapper\PostMapper;
 use Admin\Table\Table;
 use Windwalker\Event\Event;
 use Windwalker\Record\Record;
@@ -59,6 +60,10 @@ class TopicRecord extends Record
 	 */
 	public function onAfterDelete(Event $event)
 	{
-		// Add your logic
+		$record = $event['record'];
+
+		$postMapper = new PostMapper;
+
+		$postMapper->delete(array('topic_id' => $record->id));
 	}
 }

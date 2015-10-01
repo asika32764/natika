@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="panel-body">
-        @if (empty($reply))
+        @if (!empty($title_field))
         <div class="form-group">
             <label for="input-title" class="sr-only">Title</label>
             <input type="text" class="form-control input-lg" id="input-title" name="item[title]" placeholder="Title" value="{{ $post->title }}">
@@ -79,7 +79,7 @@
             <textarea class="form-control input-lg" id="input-body" name="item[body]" placeholder="Your content here...">{{ $post->body }}</textarea>
         </div>
 
-        @if (!empty($reply))
+        @if (!empty($reply_button))
         <div class="post-buttons">
             <button class="btn btn-success btn-lg pull-right">Reply</button>
         </div>

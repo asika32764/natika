@@ -11,10 +11,32 @@ topic_new:
         get: NewController
     variables:
         layout: edit
+topic_update:
+    pattern: /topic/update
+    controller: Topic
+    method:
+        - POST
+        - PATCH
+        - PUT
+    action:
+        '*': UpdateController
 
 post:
     pattern: /post(/id)
     controller: Post
+    method:
+        - POST
+        - PATCH
+        - PUT
+        - DELETE
+
+post_edit:
+    pattern: /post/edit/(id)
+    controller: Post
+    action:
+        get: EditController
+    variables:
+        layout: edit
 
 category:
     pattern: /category/(*path)(/page)

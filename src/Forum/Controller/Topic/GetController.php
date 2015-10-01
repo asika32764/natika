@@ -58,7 +58,7 @@ class GetController extends ListDisplayController
 	 */
 	protected function doExecute()
 	{
-		$this->app->set('list.limit', 5);
+		$this->app->set('list.limit', 15);
 
 		$id = $this->id = $this->input->get('id');
 

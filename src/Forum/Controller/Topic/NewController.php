@@ -10,6 +10,7 @@ namespace Forum\Controller\Topic;
 
 use Admin\DataMapper\CategoryMapper;
 use Phoenix\Controller\Display\EditGetController;
+use Windwalker\Data\Data;
 
 /**
  * The NewController class.
@@ -30,5 +31,6 @@ class NewController extends EditGetController
 		$catId = $this->input->get('category');
 
 		$this->view['category'] = (new CategoryMapper)->findOne($catId);
+		$this->view['post'] = new Data($this->getUserState($this->getContext('edit.data')));
 	}
 }

@@ -9,17 +9,98 @@
 namespace Forum\Model;
 
 use Admin\Table\Table;
+use Phoenix\Model\AdminModel;
 use Phoenix\Model\CrudModel;
+use Windwalker\Core\Authentication\User;
+use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Data\Data;
 use Windwalker\DataMapper\RelationDataMapper;
+use Windwalker\Filter\OutputFilter;
+use Windwalker\Record\NestedRecord;
+use Windwalker\Record\Record;
 
 /**
  * The CategoryModel class.
  *
  * @since  {DEPLOY_VERSION}
  */
-class CategoryModel extends CrudModel
+class CategoryModel extends AdminModel
 {
+	/**
+	 * prepareRecord
+	 *
+	 * @param NestedRecord|Record $record
+	 *
+	 * @return  void
+	 */
+	protected function prepareRecord(Record $record)
+	{
+		$user = User::get();
+		$date = DateTime::create();
+
+		if (!$record->alias)
+		{
+			$record->alias = $record->title;
+		}
+
+		$record->alias = OutputFilter::stringURLUnicodeSlug($record->alias);
+
+		if (!$record->alias)
+		{
+			$record->alias = OutputFilter::stringURLSafe($date->format('Y-m-d-H-i-s'));
+		}
+
+		// Created date
+		if (!$record->created)
+		{
+			$record->created = $date->toSql();
+		}
+
+		// Modified date
+		if ($record->id)
+		{
+			$record->modified = $date->toSql();
+		}
+
+		// Created user
+		if (!$record->created_by)
+		{
+			$record->created_by = $user->id;
+		}
+
+		// Modified user
+		if ($record->id)
+		{
+			$record->modified_by = $user->id;
+		}
+
+		// Set Ordering or Nested ordering
+		if (!$record->id)
+		{
+			$record->setLocation($record->parent_id, $record::LOCATION_LAST_CHILD);
+		}
+
+		if (!$record->id)
+		{
+			$record->state = 1;
+			$record->access = 1;
+			$record->topics = 0;
+			$record->posts = 0;
+		}
+	}
+
+	/**
+	 * postSaveHook
+	 *
+	 * @param NestedRecord|Record $record
+	 *
+	 * @return  void
+	 */
+	protected function postSaveHook(Record $record)
+	{
+		$record->rebuildPath();
+	}
+
 	/**
 	 * getLastPost
 	 *

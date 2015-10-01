@@ -1,5 +1,7 @@
 {{-- Part of phoenix project. --}}
 
+<?php \Phoenix\Script\PhoenixScript::core(); ?>
+
 @extends('_global.html')
 
 @if ($currentCategory->id != 1)
@@ -29,6 +31,42 @@
 @endif
 
 @section('content')
+
+    @if (\Natika\User\UserHelper::isAdmin())
+    <script>
+        var category = {!! json_encode($currentCategory->dump()) !!};
+    </script>
+    <div class="container">
+        <div class="panel panel-default category-toolbar">
+            <div class="panel-body">
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#categoryModal" onclick="NatikaCategory.create({{ $currentCategory->id }});">
+                    <span class="fa fa-plus"></span>
+                    New Category
+                </button>
+
+                @if ($currentCategory->id > 1)
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#categoryModal" onclick="NatikaCategory.edit(category);">
+                    <span class="fa fa-edit"></span>
+                    Edit
+                </button>
+
+                <button class="btn btn-default" onclick="if (confirm('Are you sure?'))Phoenix.sendDelete(null, {cid: [{{ $currentCategory->id }}]});">
+                    <span class="fa fa-trash"></span>
+                    Delete This Category
+                </button>
+                @endif
+            </div>
+        </div>
+
+        @include('category.new')
+    </div>
+    @endif
+
+    <form action="{{ $uri['full'] }}" method="post" id="admin-form">
+        {!! \Windwalker\Core\Security\CsrfProtection::input() !!}
+        <input type="hidden" name="_method" value="" />
+    </form>
+
     @if ($categories->notNull())
     <div class="container category-list item-list">
         <div class="panel panel-default list-panel">

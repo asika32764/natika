@@ -11,6 +11,7 @@ namespace Forum\Controller\User;
 use Phoenix\Controller\AbstractPhoenixController;
 use Windwalker\Core\Authentication\User;
 use Windwalker\Core\Router\Router;
+use Windwalker\Core\Security\CsrfProtection;
 use Windwalker\Crypt\CryptHelper;
 use Windwalker\Data\Data;
 use Windwalker\Http\HttpClient;
@@ -103,6 +104,8 @@ class LoginController extends AbstractPhoenixController
 		$user->bind(User::get(array('username' => $user->username)));
 
 		User::makeUserLogin($user);
+
+		CsrfProtection::getToken(true);
 
 		$return = $this->getUserState('uri.return');
 

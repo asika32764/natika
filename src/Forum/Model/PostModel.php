@@ -49,13 +49,13 @@ class PostModel extends AdminModel
 			$record->user_id = $user->id;
 			$record->created = $date->toSql();
 			$record->created_by = $user->id;
+
+			$this->setOrderPosition($record);
 		}
 		else
 		{
 			$record->modified = $date->toSql();
 			$record->modified_by = $user->id;
 		}
-
-		$this->setOrderPosition($record);
 	}
 }

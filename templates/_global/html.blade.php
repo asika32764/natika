@@ -75,10 +75,6 @@
     </div>
     @show
 
-    @section('message')
-        {!! \Windwalker\Core\Widget\WidgetHelper::render('windwalker.message.default', array('flashes' => $flashes)) !!}
-    @show
-
     @section('banner')
     <div class="jumbotron banner-wrap">
         <div class="container">
@@ -89,6 +85,12 @@
             @show
         </div>
     </div>
+    @show
+
+    @section('message')
+        <div class="container">
+            {!! \Windwalker\Core\Widget\WidgetHelper::render('windwalker.message.default', array('flashes' => $flashes)) !!}
+        </div>
     @show
 
     @yield('content', 'Content')

@@ -8,7 +8,9 @@
 
 namespace Admin\Record;
 
+use Admin\DataMapper\TopicMapper;
 use Admin\Table\Table;
+use Monolog\Registry;
 use Windwalker\Event\Event;
 use Windwalker\Record\NestedRecord;
 
@@ -35,7 +37,26 @@ class CategoryRecord extends NestedRecord
 	 */
 	public function onAfterLoad(Event $event)
 	{
-		// Add your logic
+		$event['record']->params = json_decode($event['record']->params);
+	}
+
+	/**
+	 * onBeforeStore
+	 *
+	 * @param Event $event
+	 *
+	 * @return  void
+	 */
+	public function onBeforeStore(Event $event)
+	{
+		if ($event['record']->params instanceof Registry)
+		{
+			$event['record']->params = $event['record']->params->toString();
+		}
+		elseif (!is_string($event['record']->params))
+		{
+			$event['record']->params = json_encode($event['record']->params);
+		}
 	}
 
 	/**
@@ -59,6 +80,17 @@ class CategoryRecord extends NestedRecord
 	 */
 	public function onAfterDelete(Event $event)
 	{
-		// Add your logic
+		$record = $event['record'];
+
+		$topicMapper = new TopicMapper;
+
+		$topics = $topicMapper->findColumn('id', array('category_id' => $record->id));
+
+		$topicRecord = new TopicRecord;
+
+		foreach ($topics as $topicId)
+		{
+			$topicRecord->load($topicId)->delete();
+		}
 	}
 }
