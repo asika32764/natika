@@ -1,4 +1,9 @@
-{{-- Part of phoenix project. --}}
+{{-- Part of Admin project. --}}
+<?php
+/**
+ * @var $batchForm \Windwalker\Form\Form
+ */
+?>
 
 <div class="modal fade" id="batch-modal" tabindex="-1" role="dialog" aria-labelledby="batch-modal-title">
     <div class="modal-dialog">

@@ -2,8 +2,10 @@
 post:
     pattern: /post(/id)
     controller: Post
-    variables:
+    extra:
         layout: post
+        active:
+            mainmenu: posts
 
 # Posts
 posts:
@@ -13,5 +15,7 @@ posts:
         post: CopyController
         patch: BatchController
         put: FilterController
-    variables:
+    extra:
         layout: posts
+        active:
+            mainmenu: posts

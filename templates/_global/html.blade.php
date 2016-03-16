@@ -1,6 +1,7 @@
 {{-- Part of Windwalker project. --}}
 <?php
-use Phoenix\Asset\Asset;use Phoenix\Script\BootstrapScript;
+use Phoenix\Asset\Asset;
+use Phoenix\Script\BootstrapScript;
 
 BootstrapScript::css();
 BootstrapScript::script();
@@ -21,13 +22,13 @@ if (is_file(WINDWALKER_PUBLIC . '/media/css/custom.css'))
     <link rel="shortcut icon" type="image/x-icon" href="{{ $uri['media.path'] }}images/favicon.ico" />
     <meta name="generator" content="Windwalker Framework" />
 
-    {!! \Phoenix\Html\Document::renderMetadata() !!}
+    {!! \Phoenix\Html\HtmlHeader::renderMetadata() !!}
     @yield('meta')
 
     {!! \Phoenix\Asset\Asset::renderStyles(true) !!}
     @yield('style')
 
-    {!! \Phoenix\Html\Document::renderCustomTags() !!}
+    {!! \Phoenix\Html\HtmlHeader::renderCustomTags() !!}
 </head>
 <body class="natika-body {{ $package->getName() }}-body view-{{ $view->name }} layout-{{ $view->layout }} category-{{ isset($currentCategory) ? $currentCategory->get('alias', 'root') : null }}">
     @section('navbar')
@@ -39,7 +40,7 @@ if (is_file(WINDWALKER_PUBLIC . '/media/css/custom.css'))
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ $router->html('forum:home') }}">{{ \Phoenix\Html\Document::getSiteName() }}</a>
+                <a class="navbar-brand" href="{{ $router->html('forum@home') }}">{{ \Phoenix\Html\HtmlHeader::getSiteName() }}</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -68,8 +69,8 @@ if (is_file(WINDWALKER_PUBLIC . '/media/css/custom.css'))
                     </li>
                     @else
                     <li>
-                        <a href="{{ $user['html_url'] }}" target="_blank">
-                            <span class="fa fa-fa fa-user"></span>
+                        <a href="{{ $router->html('profile') }}" target="_blank">
+                            <img height="18px" style="border-radius: 50%;" src="{{ $user->avatar }}" alt="Avatar">
                             {{ $user['name'] }}
                         </a>
                     </li>
@@ -93,7 +94,11 @@ if (is_file(WINDWALKER_PUBLIC . '/media/css/custom.css'))
         <div class="container">
             @section('banner_inner')
             <h1 class="text-center text-uppercase">
-                {{ $app->get('banner.default', 'Welcome to ' . \Phoenix\Html\Document::getSiteName()) }}
+                @if (\Phoenix\Html\HtmlHeader::getTitle())
+                    {{ \Phoenix\Html\HtmlHeader::getTitle() }}
+                @else
+                    {{ $app->get('banner.default', 'Welcome to ' . \Phoenix\Html\HtmlHeader::getSiteName()) }}
+                @endif
             </h1>
             @show
         </div>
@@ -117,7 +122,7 @@ if (is_file(WINDWALKER_PUBLIC . '/media/css/custom.css'))
                     <hr />
 
                     <footer>
-                        &copy; {{ \Phoenix\Html\Document::getSiteName() }} {{ $datetime->format('Y') }}
+                        &copy; {{ \Phoenix\Html\HtmlHeader::getSiteName() }} {{ $datetime->format('Y') }}
                     </footer>
                 </div>
             </div>

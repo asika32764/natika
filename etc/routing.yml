@@ -3,10 +3,6 @@ forum:
     pattern: /
     package: forum
 
-user:
-    pattern: '/'
-    package: user
-
-#admin:
-#    pattern: /admin
-#    package: admin
+admin:
+    pattern: /admin
+    package: admin

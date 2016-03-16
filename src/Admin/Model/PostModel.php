@@ -1,20 +1,21 @@
 <?php
 /**
- * Part of phoenix project. 
+ * Part of Admin project.
  *
- * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
+ * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
  */
 
 namespace Admin\Model;
 
 use Phoenix\Model\AdminModel;
+use Windwalker\Data\Data;
 use Windwalker\Record\Record;
 
 /**
  * The PostModel class.
  * 
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class PostModel extends AdminModel
 {
@@ -35,13 +36,13 @@ class PostModel extends AdminModel
 	/**
 	 * postGetItem
 	 *
-	 * @param Record $item
+	 * @param Data $item
 	 *
 	 * @return  void
 	 */
-	protected function postGetItem(Record $item)
+	protected function postGetItem(Data $item)
 	{
-		parent::postGetItem($item);
+		// Do some stuff
 	}
 
 	/**

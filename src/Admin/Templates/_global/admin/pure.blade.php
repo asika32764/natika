@@ -1,4 +1,4 @@
-{{-- Part of Windwalker project. --}}
+{{-- Part of Admin project. --}}
 
 @extends('_global.admin.html')
 

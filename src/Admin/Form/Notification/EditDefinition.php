@@ -1,8 +1,8 @@
 <?php
 /**
- * Part of phoenix project.
+ * Part of Admin project.
  *
- * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
+ * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
  */
 
@@ -10,21 +10,19 @@ namespace Admin\Form\Notification;
 
 use Admin\Field\Notification\NotificationListField;
 use Admin\Field\Notification\NotificationModalField;
-use Phoenix\Field\CalendarField;
+use Phoenix;
 use Windwalker\Core\Language\Translator;
-use Windwalker\Form\Field\HiddenField;
-use Windwalker\Form\Field\RadioField;
-use Windwalker\Form\Field\TextareaField;
-use Windwalker\Form\Field\TextField;
+use Windwalker\Filter\InputFilter;
+use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
 use Windwalker\Html\Option;
-use Windwalker\Validator\Rule\UrlValidator;
+use Windwalker\Validator\Rule;
 
 /**
  * The NotificationEditDefinition class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class EditDefinition implements FieldDefinitionInterface
 {
@@ -41,25 +39,26 @@ class EditDefinition implements FieldDefinitionInterface
 		$form->wrap('basic', null, function(Form $form)
 		{
 			// ID
-			$form->add('id', new HiddenField);
+			$form->add('id', new Field\HiddenField);
 
 			// Title
-			$form->add('title', new TextField)
+			$form->add('title', new Field\TextField)
 				->label(Translator::translate('admin.notification.field.title'))
+				->setFilter('trim')
 				->required(true);
 
 			// Alias
-			$form->add('alias', new TextField)
+			$form->add('alias', new Field\TextField)
 				->label(Translator::translate('admin.notification.field.alias'));
 
 			// Images
-			$form->add('images', new TextField)
+			$form->add('images', new Field\TextField)
 				->label(Translator::translate('admin.notification.field.images'));
 
 			// URL
-			$form->add('url', new TextField)
+			$form->add('url', new Field\TextField)
 				->label(Translator::translate('admin.notification.field.url'))
-				->setValidator(new UrlValidator)
+				->setValidator(new Rule\UrlValidator)
 				->set('class', 'validate-url');
 
 			// Example: Notification List
@@ -75,12 +74,12 @@ class EditDefinition implements FieldDefinitionInterface
 		$form->wrap('text', null, function(Form $form)
 		{
 			// Introtext
-			$form->add('introtext', new TextareaField)
+			$form->add('introtext', new Field\TextareaField)
 				->label(Translator::translate('admin.notification.field.introtext'))
 				->set('rows', 10);
 
 			// Fulltext
-			$form->add('fulltext', new TextareaField)
+			$form->add('fulltext', new Field\TextareaField)
 				->label(Translator::translate('admin.notification.field.fulltext'))
 				->set('rows', 10);
 		});
@@ -89,7 +88,7 @@ class EditDefinition implements FieldDefinitionInterface
 		$form->wrap('created', null, function(Form $form)
 		{
 			// State
-			$form->add('state', new RadioField)
+			$form->add('state', new Field\RadioField)
 				->label(Translator::translate('admin.notification.field.state'))
 				->set('class', 'btn-group')
 				->set('default', 1)
@@ -97,23 +96,23 @@ class EditDefinition implements FieldDefinitionInterface
 				->addOption(new Option(Translator::translate('phoenix.grid.state.unpublished'), '0'));
 
 			// Version
-			$form->add('version', new TextField)
+			$form->add('version', new Field\TextField)
 				->label(Translator::translate('admin.notification.field.version'));
 
 			// Created
-			$form->add('created', new CalendarField)
+			$form->add('created', new Phoenix\Field\CalendarField)
 				->label(Translator::translate('admin.notification.field.created'));
 
 			// Modified
-			$form->add('modified', new CalendarField)
+			$form->add('modified', new Phoenix\Field\CalendarField)
 				->label(Translator::translate('admin.notification.field.modified'));
 
 			// Author
-			$form->add('created_by', new TextField)
+			$form->add('created_by', new Field\TextField)
 				->label(Translator::translate('admin.notification.field.author'));
 
 			// Modified User
-			$form->add('modified_by', new TextField)
+			$form->add('modified_by', new Field\TextField)
 				->label(Translator::translate('admin.notification.field.modifiedby'));
 		});
 	}

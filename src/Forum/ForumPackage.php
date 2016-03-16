@@ -12,6 +12,7 @@ use Forum\Listener\ForumListener;
 use Forum\User\UserHandler;
 use Phoenix\Asset\Asset;
 use Phoenix\Html\Document;
+use Phoenix\Html\HtmlHeader;
 use Phoenix\Script\BootstrapScript;
 use Phoenix\Script\JQueryScript;
 use Windwalker\Core\Authentication\User;
@@ -19,6 +20,7 @@ use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Core\Renderer\RendererHelper;
 use Windwalker\Event\Dispatcher;
 use Windwalker\Utilities\Queue\Priority;
+use Windwalker\Warder\Helper\WarderHelper;
 
 /**
  * The ForumPackage class.
@@ -35,14 +37,6 @@ class ForumPackage extends AbstractPackage
 	public function initialise()
 	{
 		parent::initialise();
-
-		User::setHandler(new UserHandler);
-
-		$config = $this->container->get('config');
-
-		Document::setSiteName($config->get('site_name'));
-
-		RendererHelper::addGlobalPath(WINDWALKER_TEMPLATES . '/theme/' . $config->get('theme'), Priority::HIGH);
 	}
 
 	/**
@@ -66,6 +60,24 @@ class ForumPackage extends AbstractPackage
 	 */
 	protected function prepareExecute()
 	{
+		$config = $this->container->get('config');
 
+		HtmlHeader::setSiteName($config->get('site_name'));
+
+		RendererHelper::addGlobalPath(WINDWALKER_TEMPLATES . '/theme/' . $config->get('theme'), Priority::HIGH);
+	}
+
+	/**
+	 * loadRouting
+	 *
+	 * @return  array|mixed
+	 */
+	public function loadRouting()
+	{
+		$routes = parent::loadRouting();
+
+		$routes = array_merge($routes, WarderHelper::getFrontendRouting());
+
+		return $routes;
 	}
 }

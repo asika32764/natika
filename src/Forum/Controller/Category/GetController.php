@@ -11,6 +11,7 @@ namespace Forum\Controller\Category;
 use Forum\Model\TopicsModel;
 use Forum\View\Category\CategoryHtmlView;
 use Phoenix\Controller\Display\ListDisplayController;
+use Windwalker\Core\Model\Model;
 use Windwalker\Registry\Registry;
 
 /**
@@ -40,17 +41,6 @@ class GetController extends ListDisplayController
 	 * @var  string
 	 */
 	protected $path;
-
-	/**
-	 * prepareExecute
-	 *
-	 * @return  void
-	 */
-	protected function prepareExecute()
-	{
-		$this->model = $this->getModel('Topics');
-		$this->view = $this->getView();
-	}
 
 	/**
 	 * doExecute
@@ -133,5 +123,18 @@ class GetController extends ListDisplayController
 		$task = str_replace('/', '.', $this->path) . '.' . $task;
 
 		return parent::getContext($task);
+	}
+
+	/**
+	 * getModel
+	 *
+	 * @param string $name
+	 * @param bool   $forceNew
+	 *
+	 * @return  Model
+	 */
+	public function getModel($name = 'Topics', $forceNew = false)
+	{
+		return parent::getModel($name, $forceNew);
 	}
 }

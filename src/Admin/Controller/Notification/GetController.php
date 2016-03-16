@@ -1,21 +1,24 @@
 <?php
 /**
- * Part of phoenix project. 
+ * Part of Admin project.
  *
- * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
+ * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
  */
 
 namespace Admin\Controller\Notification;
 
-use Phoenix\Controller\Display\EditGetController;
+use Admin\Model\NotificationModel;
+use Admin\View\Notification\NotificationHtmlView;
+use Phoenix\Controller\Display\EditDisplayController;
+use Windwalker\Core\Model\Model;
 
 /**
  * The GetController class.
  * 
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
-class GetController extends EditGetController
+class GetController extends EditDisplayController
 {
 	/**
 	 * Property name.
@@ -37,4 +40,52 @@ class GetController extends EditGetController
 	 * @var  string
 	 */
 	protected $listName = 'notifications';
+
+	/**
+	 * Property model.
+	 *
+	 * @var  NotificationModel
+	 */
+	protected $model;
+
+	/**
+	 * Property view.
+	 *
+	 * @var  NotificationHtmlView
+	 */
+	protected $view;
+
+	/**
+	 * prepareExecute
+	 *
+	 * @return  void
+	 */
+	protected function prepareExecute()
+	{
+		parent::prepareExecute();
+	}
+
+	/**
+	 * prepareExecute
+	 *
+	 * @param Model $model
+	 *
+	 * @return void
+	 */
+	protected function prepareUserState(Model $model)
+	{
+		parent::prepareUserState($model);
+	}
+
+	/**
+	 * postExecute
+	 *
+	 * @param mixed $result
+	 *
+	 * @return  mixed
+	 */
+	protected function postExecute($result = null)
+	{
+		return parent::postExecute($result);
+	}
 }

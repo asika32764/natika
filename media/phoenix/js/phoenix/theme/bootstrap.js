@@ -1,7 +1,7 @@
 /**
  * Part of Phoenix project.
  *
- * @copyright  Copyright (C) 2015 LYRASOFT. All rights reserved.
+ * @copyright  Copyright (C) 2016 LYRASOFT. All rights reserved.
  * @license    GNU General Public License version 2 or later.
  */
 
@@ -50,25 +50,39 @@ var Phoenix;
                         break;
                 }
 
-                $control.addClass('has-' + color + ' has-feedback');
+                this.addValidateResponse($control, $input, icon, color, help)
+            }
+        },
 
-                var feedback = $('<span class="glyphicon glyphicon-' + icon + ' form-control-feedback" aria-hidden="true"></span>');
-                $control.prepend(feedback);
+        /**
+         * Add validate effect to input, just override this method to fit other templates.
+         *
+         * @param {jQuery} $control
+         * @param {jQuery} $input
+         * @param {string} icon
+         * @param {string} color
+         * @param {string} help
+         */
+        addValidateResponse: function($control, $input, icon, color, help)
+        {
+            $control.addClass('has-' + color + ' has-feedback');
 
-                if (help)
+            var feedback = $('<span class="glyphicon glyphicon-' + icon + ' form-control-feedback" aria-hidden="true"></span>');
+            $control.prepend(feedback);
+
+            if (help)
+            {
+                var helpElement = $('<small class="help-block">' + help + '</small>');
+
+                var tagName = $input.prop('tagName').toLowerCase();
+
+                if (tagName == 'div')
                 {
-                    var helpElement = $('<small class="help-block">' + help + '</small>');
-
-                    var tagName = $input.prop('tagName').toLowerCase();
-
-                    if (tagName == 'div')
-                    {
-                        $input.append(helpElement);
-                    }
-                    else
-                    {
-                        $input.parent().append(helpElement);
-                    }
+                    $input.append(helpElement);
+                }
+                else
+                {
+                    $input.parent().append(helpElement);
                 }
             }
         },
@@ -141,21 +155,28 @@ var Phoenix;
          */
         toggleFilter: function(container, button)
         {
+            var showClass = button.attr('data-class-show') || 'btn-primary';
+            var hideClass = button.attr('data-class-hide') || 'btn-default';
+
+            var icon = button.find('span.filter-button-icon');
+            var iconShowClass = icon.attr('data-class-show') || 'glyphicon-menu-up fa fa-angle-up';
+            var iconHideClass = icon.attr('data-class-hide') || 'glyphicon-menu-down fa fa-angle-down';
+
             if (container.hasClass('shown'))
             {
-                button.removeClass('btn-primary').addClass('btn-default');
+                button.removeClass(showClass).addClass(hideClass);
                 container.hide('fast');
                 container.removeClass('shown');
 
-                button.find('span.glyphicon').removeClass('glyphicon-menu-up fa fa-angle-up').addClass('glyphicon-menu-down fa fa-angle-down');
+                icon.removeClass(iconShowClass).addClass(iconHideClass);
             }
             else
             {
-                button.removeClass('btn-default').addClass('btn-primary');
+                button.removeClass(hideClass).addClass(showClass);
                 container.show('fast');
                 container.addClass('shown');
 
-                button.find('span.glyphicon').removeClass('glyphicon-menu-down fa fa-angle-down').addClass('glyphicon-menu-up fa fa-angle-up');
+                icon.removeClass(iconHideClass).addClass(iconShowClass);
             }
         }
     };

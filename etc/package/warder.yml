@@ -1,0 +1,45 @@
+
+user:
+    login_name: username
+    default_group: registered
+    session_name: user
+
+table:
+    users: users
+    user_socials: user_socials
+    groups: groups
+    user_group_maps: user_group_maps
+    actions: actions
+
+methods:
+    warder: \Windwalker\Warder\Authentication\Method\WarderMethod
+    social: \Natika\Authentication\Method\SocialMethod
+
+frontend:
+    package: forum
+    view:
+        extends: _global.html
+    redirect:
+        login: home
+        logout: login
+        forget: login
+    login:
+        return_key: return
+    language:
+        prefix: warder.
+
+admin:
+    package: admin
+    view:
+        extends: _global.admin.admin
+    redirect:
+        login: home
+        logout: login
+    login:
+        return_key: return
+    language:
+        prefix: warder.
+
+class:
+    handler: Windwalker\Warder\Handler\UserHandler
+    data: Windwalker\Warder\Data\UserData

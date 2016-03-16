@@ -156,7 +156,7 @@ class UserHelper
 
 		foreach ($roots as $root)
 		{
-			if ($root == $user->username)
+			if ($root == $user->username || $root == $user->email)
 			{
 				return true;
 			}

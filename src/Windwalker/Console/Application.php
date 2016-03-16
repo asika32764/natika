@@ -116,7 +116,6 @@ class Application extends WindwalkerConsole
 		 */
 
 		// Your packages here...
-		$packages['wwuser'] = new UserPackage;
 
 		return $packages;
 	}

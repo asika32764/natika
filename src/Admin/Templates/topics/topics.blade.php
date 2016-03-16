@@ -1,4 +1,30 @@
-{{-- Part of phoenix project. --}}
+{{-- Part of Admin project. --}}
+<?php
+/**
+ * Global variables
+ * --------------------------------------------------------------
+ * @var $app      \Windwalker\Web\Application                 Global Application
+ * @var $package  \Admin\AdminPackage                 Package object.
+ * @var $view     \Windwalker\Data\Data                       Some information of this view.
+ * @var $uri      \Windwalker\Registry\Registry               Uri information, example: $uri['media.path']
+ * @var $datetime \DateTime                                   PHP DateTime object of current time.
+ * @var $helper   \Windwalker\Core\View\Helper\Set\HelperSet  The Windwalker HelperSet object.
+ * @var $router   \Windwalker\Core\Router\PackageRouter       Router object.
+ *
+ * View variables
+ * --------------------------------------------------------------
+ * @var $filterBar     \Windwalker\Core\Widget\BladeWidget
+ * @var $filterForm    \Windwalker\Form\Form
+ * @var $batchForm     \Windwalker\Form\Form
+ * @var $showFilterBar boolean
+ * @var $grid          \Phoenix\View\Helper\GridHelper
+ * @var $state         \Windwalker\Registry\Registry
+ * @var $items         \Windwalker\Data\DataSet
+ * @var $item          \Windwalker\Data\Data
+ * @var $i             integer
+ * @var $pagination    \Windwalker\Core\Pagination\Pagination
+ */
+?>
 
 @extends('_global.admin.admin')
 
@@ -41,12 +67,12 @@
 
                     {{-- ORDERING --}}
                     <th width="5%" class="nowrap">
-                        {!! $grid->sortTitle('admin.topic.field,.ordering', 'topic.ordering') !!} {!! $grid->saveorderButton() !!}
+                        {!! $grid->sortTitle('admin.topic.field.ordering', 'topic.ordering') !!} {!! $grid->saveorderButton() !!}
                     </th>
 
                     {{-- AUTHOR --}}
                     <th>
-                        {!! $grid->sortTitle('admin.topic.field,.author', 'topic.created_by') !!}
+                        {!! $grid->sortTitle('admin.topic.field.author', 'topic.created_by') !!}
                     </th>
 
                     {{-- CREATED --}}
@@ -80,7 +106,7 @@
                         {{-- STATE --}}
                         <td>
                             <span class="btn-group">
-                                {!! $grid->state($item->state) !!}
+                                {!! $grid->published($item->state) !!}
                                 <button type="button" class="btn btn-default btn-xs hasTooltip" onclick="Phoenix.Grid.copyRow({{ $i }});"
                                     title="@translate('phoenix.toolbar.duplicate')">
                                     <span class="glyphicon glyphicon-duplicate fa fa-copy text-info"></span>
@@ -94,7 +120,7 @@
 
                         {{-- TITLE --}}
                         <td>
-                            <a href="{{{ $router->html('topic', array('id' => $item->id)) }}}">
+                            <a href="{{ $router->html('topic', array('id' => $item->id)) }}">
                                 {{ $item->title }}
                             </a>
                         </td>
@@ -131,7 +157,7 @@
                 <tr>
                     {{-- PAGINATION --}}
                     <td colspan="25">
-                        {!! $pagination->render($package->getName() . ':topics', 'windwalker.pagination.phoenix') !!}
+                        {!! $pagination->render($package->getName() . '@topics', 'windwalker.pagination.phoenix') !!}
                     </td>
                 </tr>
                 </tfoot>

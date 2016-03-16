@@ -33,7 +33,7 @@ class TopicHtmlView extends ItemView
 			$paths = $this['topic']->category->path;
 
 			$data->breadcrumbs = BreadcrumbHelper::getBreadcrumbs($paths);
-
+			
 			foreach ($data->posts as $post)
 			{
 				$post->raw_body = $post->body;

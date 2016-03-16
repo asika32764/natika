@@ -9,6 +9,7 @@
 namespace Forum\Model;
 
 use Admin\Table\Table;
+use Lyrasoft\Luna\Table\LunaTable;
 use Phoenix\Model\AdminModel;
 use Phoenix\Model\CrudModel;
 use Windwalker\Core\Authentication\User;
@@ -18,6 +19,7 @@ use Windwalker\DataMapper\RelationDataMapper;
 use Windwalker\Filter\OutputFilter;
 use Windwalker\Record\NestedRecord;
 use Windwalker\Record\Record;
+use Windwalker\Warder\Table\WarderTable;
 
 /**
  * The CategoryModel class.
@@ -112,8 +114,8 @@ class CategoryModel extends AdminModel
 	{
 		$mapper = new RelationDataMapper('post', Table::POSTS);
 		$mapper->addTable('topic', Table::TOPICS,     'topic.id = post.topic_id')
-			->addTable('category', Table::CATEGORIES, 'category.id = topic.category_id')
-			->addTable('user',     Table::USERS,      'user.id = post.user_id');
+			->addTable('category', LunaTable::CATEGORIES, 'category.id = topic.category_id')
+			->addTable('user', WarderTable::USERS,      'user.id = post.user_id');
 
 		$post = $mapper->findOne(array('category.id' => $pk), 'post.created DESC');
 

@@ -1,6 +1,6 @@
 {
-    "name": "windwalker/starter",
-    "description": "Windwalker Starter.",
+    "name": "asika/natika",
+    "description": "Natika Forum",
     "homepage": "https://github.com/ventoviro/windwalker",
     "license": "GNU Lesser General Public License",
     "minimum-stability": "beta",
@@ -12,25 +12,16 @@
     ],
     "require": {
         "windwalker/core" : "~2.0",
+        "windwalker/phoenix": "1.*",
         "symfony/yaml" : "~2.0",
         "filp/whoops": "~1.0",
         "fzaninotto/faker": "~1.0",
         "monolog/monolog": "~1.0",
-        "windwalker/phoenix": "1.*",
         "joomla/datetime": "~2.0",
         "erusev/parsedown": "~1.0",
-
-        "twig/twig" : "~1.0"
+        "lyrasoft/luna": "1.*",
+        "hybridauth/hybridauth": "^2.6"
     },
-    "require-dev": {
-        "phpunit/phpunit-skeleton-generator": "dev-windwalker-tmpl"
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/ventoviro/phpunit-skeleton-generator"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "": "src/"

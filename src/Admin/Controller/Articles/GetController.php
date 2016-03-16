@@ -1,40 +1,24 @@
 <?php
 /**
- * Part of phoenix project. 
+ * Part of Admin project.
  *
- * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
+ * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
  */
 
 namespace Admin\Controller\Articles;
 
+use Admin\Model\ArticlesModel;
+use Admin\View\Articles\ArticlesHtmlView;
 use Phoenix\Controller\Display\ListDisplayController;
+use Windwalker\Core\Model\Model;
 
 /**
  * The GetController class.
  * 
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class GetController extends ListDisplayController
 {
-	/**
-	 * Property name.
-	 *
-	 * @var  string
-	 */
-	protected $name = 'articles';
 
-	/**
-	 * Property itemName.
-	 *
-	 * @var  string
-	 */
-	protected $itemName = 'article';
-
-	/**
-	 * Property listName.
-	 *
-	 * @var  string
-	 */
-	protected $listName = 'articles';
 }

@@ -1,21 +1,22 @@
 <?php
 /**
- * Part of phoenix project. 
+ * Part of Admin project.
  *
- * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
+ * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
  */
 
 namespace Admin\Record;
 
 use Admin\Table\Table;
+use Lyrasoft\Luna\Table\LunaTable;
 use Windwalker\Event\Event;
 use Windwalker\Record\Record;
 
 /**
  * The ArticleRecord class.
  * 
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class ArticleRecord extends Record
 {
@@ -24,7 +25,7 @@ class ArticleRecord extends Record
 	 *
 	 * @var  string
 	 */
-	protected $table = Table::ARTICLES;
+	protected $table = LunaTable::ARTICLES;
 
 	/**
 	 * onAfterLoad

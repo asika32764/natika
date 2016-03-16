@@ -1,19 +1,21 @@
 <?php
 /**
- * Part of phoenix project.
+ * Part of Admin project.
  *
- * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
+ * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later;
  */
 
 namespace Admin\Controller\Notifications\Batch;
 
+use Phoenix\Controller\Batch\AbstractTrashController;
+
 /**
  * The TrashController class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
-class TrashController extends \Phoenix\Controller\Batch\TrashController
+class TrashController extends AbstractTrashController
 {
 
 }

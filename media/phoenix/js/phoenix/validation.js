@@ -1,7 +1,7 @@
 /**
  * Part of Phoenix project.
  *
- * @copyright  Copyright (C) 2015 LYRASOFT. All rights reserved.
+ * @copyright  Copyright (C) 2016 LYRASOFT. All rights reserved.
  * @license    GNU General Public License version 2 or later;
  */
 
@@ -27,7 +27,12 @@
     var handlers = {};
 
     var defaultOptions = {
-        events: ['change']
+        events: ['change'],
+        scroll: {
+            enabled: true,
+            offset: -100,
+            duration: 1000
+        }
     };
 
     /**
@@ -102,12 +107,23 @@
         validateAll: function()
         {
             var self = this, inValid = [];
+            var scroll = self.options.scroll.enabled;
 
-            this.inputs.each(function()
+            this.inputs.each(function(i)
             {
                 if (!self.validate(this))
                 {
                     inValid.push(this);
+
+                    // Scroll
+                    if (scroll)
+                    {
+                        $('html, body').animate({
+                            scrollTop: $(this).offset().top + self.options.scroll.offset
+                        }, self.options.scroll.duration);
+
+                        scroll = false;
+                    }
                 }
             });
 
@@ -302,6 +318,13 @@
         }
     };
 
+    /**
+     * Push to plugins.
+     *
+     * @param   {Object} options
+     *
+     * @returns {PhoenixValidation}
+     */
     $.fn[plugin] = function (options)
     {
         if (!this.data('phoenix.' + plugin))
@@ -340,7 +363,7 @@
     handlers.url = function(value, element)
     {
         value = punycode.toASCII(value);
-        var regex = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/;
+        var regex = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/i;
         return regex.test(value);
     };
 

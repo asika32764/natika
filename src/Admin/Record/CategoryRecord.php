@@ -1,41 +1,22 @@
 <?php
 /**
- * Part of phoenix project. 
+ * Part of natika project.
  *
- * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
+ * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
  */
 
 namespace Admin\Record;
 
-use Admin\DataMapper\CategoryMapper;
-use Admin\DataMapper\TopicMapper;
-use Admin\Table\Table;
-use Monolog\Registry;
 use Windwalker\Event\Event;
-use Windwalker\Record\NestedRecord;
 
 /**
  * The CategoryRecord class.
- * 
+ *
  * @since  {DEPLOY_VERSION}
  */
-class CategoryRecord extends NestedRecord
+class CategoryRecord extends \Lyrasoft\Luna\Admin\Record\CategoryRecord
 {
-	/**
-	 * Property children.
-	 *
-	 * @var  array
-	 */
-	protected $children = array();
-
-	/**
-	 * Property table.
-	 *
-	 * @var  string
-	 */
-	protected $table = Table::CATEGORIES;
-
 	/**
 	 * onAfterLoad
 	 *
@@ -45,7 +26,10 @@ class CategoryRecord extends NestedRecord
 	 */
 	public function onAfterLoad(Event $event)
 	{
-		$event['record']->params = json_decode($event['record']->params);
+		if ($this->params && is_string($this->params))
+		{
+			$this->params = json_decode($this->params);
+		}
 	}
 
 	/**
@@ -57,75 +41,9 @@ class CategoryRecord extends NestedRecord
 	 */
 	public function onBeforeStore(Event $event)
 	{
-		if ($event['record']->params instanceof Registry)
+		if ($this->params && !is_string($this->params))
 		{
-			$event['record']->params = $event['record']->params->toString();
-		}
-		elseif (!is_string($event['record']->params))
-		{
-			$event['record']->params = json_encode($event['record']->params);
-		}
-	}
-
-	/**
-	 * onAfterStore
-	 *
-	 * @param Event $event
-	 *
-	 * @return  void
-	 */
-	public function onAfterStore(Event $event)
-	{
-		// Add your logic
-	}
-
-	/**
-	 * onBeforeDelete
-	 *
-	 * @param Event $event
-	 *
-	 * @return  void
-	 */
-	public function onBeforeDelete(Event $event)
-	{
-		$record = $event['record'];
-
-		$catMapper = new CategoryMapper;
-
-		$this->children = $catMapper->findColumn('id', array('lft > ' . $record->lft, 'rgt < ' . $record->rgt));
-	}
-
-	/**
-	 * onAfterDelete
-	 *
-	 * @param Event $event
-	 *
-	 * @return  void
-	 */
-	public function onAfterDelete(Event $event)
-	{
-		$record = $event['record'];
-
-		$topicMapper = new TopicMapper;
-
-		$topics = $topicMapper->findColumn('id', array('category_id' => $record->id));
-
-		$topicRecord = new TopicRecord;
-
-		foreach ($topics as $topicId)
-		{
-			$topicRecord->load($topicId)->delete();
-		}
-
-		// Delete children
-		foreach ($this->children as $child)
-		{
-			$topics = $topicMapper->findColumn('id', array('category_id' => $child));
-
-			foreach ($topics as $topicId)
-			{
-				$topicRecord->load($topicId)->delete();
-			}
+			$this->params = json_encode($this->params);
 		}
 	}
 }

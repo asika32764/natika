@@ -22,14 +22,17 @@ class DatabaseSeeder extends AbstractSeeder
 	 */
 	public function doExecute()
 	{
-		// This is example seeder, you can delete it.
-		with(new \Windwalker\DataMapper\DataMapper('acme_cover'))->createOne(array(
-			'text' => 'Hello World',
-			'state' => 1
-		));
-		// Example seeder end.
+		$this->execute(new UserSeeder);
 
-		$this->command->out('Seeder executed.')->out();
+		$this->execute(new CategorySeeder);
+
+		$this->execute(new TopicSeeder);
+
+		$this->execute(new PostSeeder);
+
+		$this->execute(new ArticleSeeder);
+
+		// @muse-placeholder  seeder-execute  Do not remove this.
 	}
 
 	/**
@@ -39,7 +42,16 @@ class DatabaseSeeder extends AbstractSeeder
 	 */
 	public function doClean()
 	{
-		$this->command->out('Database clean.')->out();
+		$this->clean(new CategorySeeder);
+
+		$this->clean(new TopicSeeder);
+
+		$this->clean(new PostSeeder);
+
+		$this->clean(new ArticleSeeder);
+
+		$this->clean(new UserSeeder);
+
+		// @muse-placeholder  seeder-clean  Do not remove this.
 	}
 }
- 

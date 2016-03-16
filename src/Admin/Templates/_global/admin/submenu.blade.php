@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var $helper \Admin\Helper\MenuHelper
+ * @var $router \Windwalker\Core\Router\PackageRouter
+ */
+?>
 
 <h3 class="visible-xs-block">
     @translate('phoenix.title.submenu')
@@ -6,8 +12,8 @@
 <ul class="nav nav-stacked nav-pills">
 
     <li class="{{ $helper->menu->active('categories') }}">
-        <a href="{{ $router->html('categories') }}">
-            @translate('admin.categories.title')
+        <a href="{{ $router->html('categories', ['type' => 'topic']) }}">
+            @translate('luna.categories.title')
         </a>
     </li>
 
@@ -17,15 +23,9 @@
 		</a>
 	</li>
 
-	<li class="{{ $helper->menu->active('posts') }}">
-		<a href="{{ $router->html('posts') }}">
-			@translate('admin.posts.title')
-		</a>
-	</li>
-
 	<li class="{{ $helper->menu->active('articles') }}">
 		<a href="{{ $router->html('articles') }}">
-			@translate('admin.articles.title')
+			@translate('luna.articles.title')
 		</a>
 	</li>
 
@@ -35,11 +35,17 @@
 		</a>
 	</li>
 
-	<li class="{{ $helper->menu->active('users') }}">
-		<a href="{{ $router->html('users') }}">
-			@translate('admin.users.title')
+	<li class="{{ $helper->menu->active('posts') }}">
+		<a href="{{ $router->html('posts') }}">
+			@translate('admin.posts.title')
 		</a>
 	</li>
+
+    <li class="{{ $helper->menu->active('users') }}">
+        <a href="{{ $router->html('users') }}">
+            @translate('warder.users.title')
+        </a>
+    </li>
 
     {{-- @muse-placeholder  submenu  Do not remove this line --}}
 </ul>

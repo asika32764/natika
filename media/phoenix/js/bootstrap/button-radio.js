@@ -1,7 +1,7 @@
 /**
  * Part of Phoenix project.
  *
- * @copyright  Copyright (C) 2015 LYRASOFT. All rights reserved.
+ * @copyright  Copyright (C) 2016 LYRASOFT. All rights reserved.
  * @license    GNU General Public License version 2 or later.
  */
 
@@ -17,11 +17,17 @@
         $radios.click(function()
         {
             var btn = $(this);
+            var group = btn.parent().find('.btn');
             var input = btn.find('input[type=radio]');
+
+            if (input.prop('disabled') || input.prop('readonly'))
+            {
+                return;
+            }
 
             if (!input.prop('checked'))
             {
-                $radios.removeClass('active btn-success btn-danger btn-primary');
+                group.removeClass('active btn-success btn-danger btn-primary');
 
                 if (input.val() == '')
                 {
@@ -67,6 +73,16 @@
                 {
                     $radio.addClass('active btn-success');
                 }
+            }
+
+            if ($input.prop('disabled'))
+            {
+                $radio.addClass('disabled');
+            }
+
+            if ($input.prop('readonly'))
+            {
+                $radio.addClass('readonly');
             }
         });
 

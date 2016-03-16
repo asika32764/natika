@@ -12,6 +12,7 @@ use Admin\Table\Table;
 use Phoenix\Model\Filter\FilterHelperInterface;
 use Phoenix\Model\ListModel;
 use Windwalker\Query\Query;
+use Windwalker\Warder\Table\WarderTable;
 
 /**
  * The PostsModel class.
@@ -49,7 +50,7 @@ class PostsModel extends ListModel
 	protected function configureTables()
 	{
 		$this->addTable('post', Table::POSTS)
-			->addTable('user',  Table::USERS, 'user.id = post.user_id');
+			->addTable('user', WarderTable::USERS, 'user.id = post.user_id');
 	}
 
 	/**

@@ -9,9 +9,11 @@
 namespace Forum\Model;
 
 use Admin\Table\Table;
+use Lyrasoft\Luna\Table\LunaTable;
 use Phoenix\Model\Filter\FilterHelperInterface;
 use Phoenix\Model\ListModel;
 use Windwalker\Query\Query;
+use Windwalker\Warder\Table\WarderTable;
 
 /**
  * The TopicsModel class.
@@ -49,10 +51,10 @@ class TopicsModel extends ListModel
 	protected function configureTables()
 	{
 		$this->addTable('topic',     Table::TOPICS)
-			->addTable('category',   Table::CATEGORIES, 'category.id = topic.category_id')
+			->addTable('category', LunaTable::CATEGORIES, 'category.id = topic.category_id')
 			->addTable('last_post',  Table::POSTS,      'last_post.id = topic.last_reply_post')
-			->addTable('last_user',  Table::USERS,      'last_user.id = topic.last_reply_user')
-			->addTable('user',       Table::USERS,      'user.id = topic.user_id');
+			->addTable('last_user', WarderTable::USERS,      'last_user.id = topic.last_reply_user')
+			->addTable('user', WarderTable::USERS,      'user.id = topic.user_id');
 	}
 
 	/**

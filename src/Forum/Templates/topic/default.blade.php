@@ -52,14 +52,22 @@ Topic
             <article class="topic-post row clearfix">
 
                 <div class="col-md-1">
-                    <img class="post-img circle-icon icon-large" src="{{ $post->user_avatar }}">
+                    @if ($post->user_avatar)
+                        <img class="post-img circle-icon icon-large" src="{{ $post->user_avatar }}" style="border: 1px solid rgba(0,0,0,.1)">
+                    @else
+                        <img class="post-img circle-icon icon-large" src="{{ $uri['media.path'] }}images/user-default.png" style="border: 1px solid rgba(0,0,0,.1)">
+                    @endif
                 </div>
 
                 <div class="col-md-11">
                     <div class="panel {{ $post->primary ? 'panel-primary' : 'panel-default' }}">
                         <div class="panel-heading clearfix">
                             <div class="pull-left">
-                                {{ $post->user_name }} &nbsp;<small class="{{ $post->primary ? '' : 'text-muted' }}">{{ '@' . $post->user_username }}</small>
+                                @if ($post->user_name)
+                                    {{ $post->user_name }} &nbsp;<small class="{{ $post->primary ? '' : 'text-muted' }}">{{ '@' . $post->user_username }}</small>
+                                @else
+                                    <span class="text-muted">Unknown User</span>
+                                @endif
                             </div>
                             <div class="pull-right">
                                 <span id="reply-{{ $post->id }}" class="fixed-anchor"></span>

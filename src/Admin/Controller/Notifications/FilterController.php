@@ -1,21 +1,21 @@
 <?php
 /**
- * Part of phoenix project. 
+ * Part of Admin project.
  *
- * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
+ * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
  */
 
 namespace Admin\Controller\Notifications;
 
-use Phoenix\Controller\Grid\FilterController as PhoenixFilterController;
+use Phoenix\Controller\Grid\AbstractFilterController;
 
 /**
  * The FilterController class.
  * 
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
-class FilterController extends PhoenixFilterController
+class FilterController extends AbstractFilterController
 {
 	/**
 	 * Property name.

@@ -1,8 +1,8 @@
 <?php
 /**
- * Part of phoenix project. 
+ * Part of Admin project.
  *
- * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
+ * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
  */
 
@@ -15,7 +15,7 @@ use Windwalker\Record\Record;
 /**
  * The NotificationRecord class.
  * 
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class NotificationRecord extends Record
 {

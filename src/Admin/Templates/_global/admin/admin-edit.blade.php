@@ -1,4 +1,4 @@
-{{-- Part of phoenix project. --}}
+{{-- Part of Admin project. --}}
 
 @extends('_global.admin.admin')
 

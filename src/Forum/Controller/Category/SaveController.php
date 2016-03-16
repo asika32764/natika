@@ -8,9 +8,7 @@
 
 namespace Forum\Controller\Category;
 
-use Forum\Record\CategoryRecord;
 use Natika\User\UserHelper;
-use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Data\Data;
 

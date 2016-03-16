@@ -1,15 +1,17 @@
 <?php
 /**
- * Part of Windwalker project.
+ * Part of Admin project.
  *
- * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
+ * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later;
  */
 
 namespace Admin;
 
+use Lyrasoft\Luna\Helper\LunaHelper;
 use Phoenix\Asset\Asset;
 use Phoenix\DataMapper\DataMapperResolver;
+use Phoenix\Form\FieldDefinitionResolver;
 use Phoenix\Language\TranslatorHelper;
 use Phoenix\Record\RecordResolver;
 use Phoenix\Script\BootstrapScript;
@@ -21,6 +23,7 @@ use Windwalker\Filesystem\File;
 use Windwalker\Filesystem\Folder;
 use Windwalker\Form\FieldHelper;
 use Windwalker\Form\ValidatorHelper;
+use Windwalker\Warder\Helper\WarderHelper;
 
 if (!defined('ADMIN_ROOT'))
 {
@@ -30,7 +33,7 @@ if (!defined('ADMIN_ROOT'))
 /**
  * The AdminPackage class.
  *
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class AdminPackage extends AbstractPackage
 {
@@ -42,13 +45,15 @@ class AdminPackage extends AbstractPackage
 	 */
 	public function initialise()
 	{
-		parent::initialise();
-
 		// Prepare Resolvers
 		RecordResolver::addNamespace(__NAMESPACE__ . '\Record');
 		DataMapperResolver::addNamespace(__NAMESPACE__ . '\DataMapper');
 		FieldHelper::addNamespace(__NAMESPACE__ . '\Field');
 		ValidatorHelper::addNamespace(__NAMESPACE__ . 'Validator');
+
+		FieldDefinitionResolver::addNamespace(__NAMESPACE__ . '\Form');
+
+		parent::initialise();
 	}
 
 	/**
@@ -58,6 +63,8 @@ class AdminPackage extends AbstractPackage
 	 */
 	protected function prepareExecute()
 	{
+		$this->checkAccess();
+
 		// Assets
 		BootstrapScript::css();
 		BootstrapScript::script();
@@ -65,6 +72,16 @@ class AdminPackage extends AbstractPackage
 
 		// Language
 		TranslatorHelper::loadAll($this, 'ini');
+	}
+
+	/**
+	 * checkAccess
+	 *
+	 * @return  void
+	 */
+	protected function checkAccess()
+	{
+
 	}
 
 	/**
@@ -84,7 +101,10 @@ class AdminPackage extends AbstractPackage
 			}
 
 			// Un comment this line, Translator will export all orphans to /cache/language
-			// TranslatorHelper::dumpOrphans('ini');
+			if ($this->app->get('language.debug'))
+			{
+				TranslatorHelper::dumpOrphans('ini');
+			}
 		}
 
 		return $result;
@@ -109,20 +129,19 @@ class AdminPackage extends AbstractPackage
 	 */
 	public function loadRouting()
 	{
-		$files = Folder::files(__DIR__ . '/Resources/routing');
-		$routes = array();
+		$routes = parent::loadRouting();
 
-		foreach ($files as $file)
+		foreach (Folder::files(__DIR__ . '/Resources/routing') as $file)
 		{
-			$ext = File::getExtension($file);
-
-			if ($ext != 'yml')
+			if (File::getExtension($file) == 'yml')
 			{
-				continue;
+				$routes = array_merge($routes, Yaml::parse(file_get_contents($file)));
 			}
-
-			$routes = array_merge($routes, Yaml::parse(file_get_contents($file)));
 		}
+
+		// Merge other routes here...
+		$routes = array_merge($routes, WarderHelper::getAdminRouting());
+		$routes = array_merge($routes, LunaHelper::getAdminRouting());
 
 		return $routes;
 	}

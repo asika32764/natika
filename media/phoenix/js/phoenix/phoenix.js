@@ -1,7 +1,7 @@
 /**
  * Part of Phoenix project.
  *
- * @copyright  Copyright (C) 2015 LYRASOFT. All rights reserved.
+ * @copyright  Copyright (C) 2016 LYRASOFT. All rights reserved.
  * @license    GNU General Public License version 2 or later;
  */
 
@@ -57,16 +57,19 @@
         {
             var form = this.form;
 
-            var methodInput = form.find('input[name="_method"]');
-
-            if (!methodInput.length)
+            if (customMethod)
             {
-                methodInput = $('<input name="_method" type="hidden">');
+                var methodInput = form.find('input[name="_method"]');
 
-                form.append(methodInput);
+                if (!methodInput.length)
+                {
+                    methodInput = $('<input name="_method" type="hidden">');
+
+                    form.append(methodInput);
+                }
+
+                methodInput.val(customMethod);
             }
-
-            methodInput.val(customMethod);
 
             // Set queries into form.
             if (queries)
@@ -128,6 +131,8 @@
          */
         post: function(url, queries, customMethod)
         {
+            customMethod = customMethod || 'POST';
+
             return this.submit(url, queries, 'POST', customMethod);
         },
 
@@ -170,6 +175,31 @@
             return this.post(url, queries, 'DELETE');
         },
 
+        /**
+         * Confirm popup.
+         *
+         * @param {string}   message
+         * @param {Function} callback
+         */
+        confirm: function(message, callback)
+        {
+            message = message || 'Are you sure?';
+
+            var confirmed = confirm(message);
+
+            callback(confirmed);
+
+            return confirmed;
+        },
+
+        /**
+         * Add message.
+         *
+         * @param {string} msg
+         * @param {string} type
+         *
+         * @returns {PhoenixCore}
+         */
         addMessage: function(msg, type)
         {
             var messageContainer = $(this.options.selector.message);
@@ -179,6 +209,11 @@
             return this;
         },
 
+        /**
+         * Remove all messages.
+         *
+         * @returns {PhoenixCore}
+         */
         removeMessages: function()
         {
             var messageContainer = $(this.options.selector.message);
@@ -188,6 +223,12 @@
             return this;
         },
 
+        /**
+         * Keep alive.
+         *
+         * @param {string} url
+         * @param {Number} time
+         */
         keepAlive: function(url, time)
         {
             window.setInterval(function()
@@ -209,6 +250,12 @@
         }
     };
 
+    /**
+     * Push to plugin.
+     *
+     * @param {Object} options
+     * @returns {PhoenixCore}
+     */
     $.fn[plugin] = function(options)
     {
         if (!this.data('phoenix.' + plugin))

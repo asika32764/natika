@@ -1,8 +1,8 @@
 <?php
 /**
- * Part of phoenix project. 
+ * Part of Admin project.
  *
- * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
+ * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
  */
 
@@ -15,7 +15,7 @@ use Phoenix\View\EditView;
 /**
  * The TopicHtmlView class.
  * 
- * @since  {DEPLOY_VERSION}
+ * @since  1.0
  */
 class TopicHtmlView extends EditView
 {
@@ -25,6 +25,27 @@ class TopicHtmlView extends EditView
 	 * @var  string
 	 */
 	protected $name = 'topic';
+
+	/**
+	 * Property formDefinition.
+	 *
+	 * @var  string
+	 */
+	protected $formDefinition = 'edit';
+
+	/**
+	 * Property formControl.
+	 *
+	 * @var  string
+	 */
+	protected $formControl = 'item';
+
+	/**
+	 * Property formLoadData.
+	 *
+	 * @var  boolean
+	 */
+	protected $formLoadData = true;
 
 	/**
 	 * prepareData

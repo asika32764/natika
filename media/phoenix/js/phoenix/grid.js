@@ -1,7 +1,7 @@
 /**
  * Part of Phoenix project.
  *
- * @copyright  Copyright (C) 2015 LYRASOFT. All rights reserved.
+ * @copyright  Copyright (C) 2016 LYRASOFT. All rights reserved.
  * @license    GNU General Public License version 2 or later.
  */
 
@@ -44,9 +44,9 @@
     /**
      * PhoenixGrid constructor.
      *
-     * @param element
-     * @param core
-     * @param options
+     * @param {Element}     element
+     * @param {PhoenixCore} core
+     * @param {Object}      options
      *
      * @constructor
      */
@@ -70,6 +70,9 @@
 
     PhoenixGrid.prototype = {
 
+	    /**
+         * Start this object and events.
+         */
         registerEvents: function()
         {
             var self = this;
@@ -95,6 +98,11 @@
             });
         },
 
+	    /**
+         * Toggle filter bar.
+         *
+         * @returns {PhoenixGrid}
+         */
         toggleFilter: function()
         {
             Phoenix.Theme.toggleFilter(this.filterContainer, this.filterButton);
@@ -102,6 +110,14 @@
             return this;
         },
 
+	    /**
+         * Sort two items.
+         *
+         * @param {string} ordering
+         * @param {string} direction
+         *
+         * @returns {boolean}
+	     */
         sort: function(ordering, direction)
         {
             var orderingInput = this.form.find('input[name=list_ordering]');
@@ -129,15 +145,14 @@
         },
 
         /**
-         * Update a row.
+         * Check a row's checkbox.
          *
-         * @param  {number} row
-         * @param  {string} url
-         * @param  {Object} queries
+         * @param {number}  row
+         * @param {boolean} value
          */
-        updateRow: function(row, url, queries)
+        checkRow: function(row, value)
         {
-            this.toggleAll(false);
+            value = value || true;
 
             var ch = this.form.find('input.grid-checkbox[data-row-number=' + row + ']');
 
@@ -146,7 +161,60 @@
                 throw new Error('Checkbox of row: ' + row + ' not found.');
             }
 
-            ch[0].checked = true;
+            ch[0].checked = value;
+        },
+
+        /**
+         * Update a row.
+         *
+         * @param  {number} row
+         * @param  {string} url
+         * @param  {Object} queries
+         *
+         * @returns {boolean}
+         */
+        updateRow: function(row, url, queries)
+        {
+            this.toggleAll(false);
+
+            this.checkRow(row);
+
+            return this.core.patch(url, queries);
+        },
+
+	    /**
+         * Update a row with batch task.
+         *
+         * @param  {string} task
+         * @param  {number} row
+         * @param  {string} url
+         * @param  {Object} queries
+         *
+         * @returns {boolean}
+	     */
+        doTask: function(task, row, url, queries)
+        {
+            queries = queries || {};
+
+            queries.task = task;
+
+            return this.updateRow(row, url, queries);
+        },
+
+	    /**
+         * Batch update items.
+         *
+         * @param  {string} task
+         * @param  {string} url
+         * @param  {Object} queries
+         *
+         * @returns {boolean}
+	     */
+        batch: function(task, url, queries)
+        {
+            queries = queries || {};
+
+            queries.task = task;
 
             return this.core.patch(url, queries);
         },
@@ -157,47 +225,59 @@
          * @param  {number} row
          * @param  {string} url
          * @param  {Object} queries
+         *
+         * @returns {boolean}
          */
         copyRow: function(row, url, queries)
         {
             this.toggleAll(false);
 
-            var ch = this.form.find('input.grid-checkbox[data-row-number=' + row + ']');
-
-            if (!ch.length)
-            {
-                throw new Error('Checkbox of row: ' + row + ' not found.');
-            }
-
-            ch[0].checked = true;
+            this.checkRow(row);
 
             return this.core.post(url, queries);
         },
 
-        deleteList: function(msg, url, queries)
+	    /**
+         * Delete checked items.
+         *
+         * @param  {string} message
+         * @param  {string} url
+         * @param  {Object} queries
+         *
+         * @returns {boolean}
+	     */
+        deleteList: function(message, url, queries)
         {
-            msg = msg || Phoenix.Translator.translate('phoenix.delete.confirm');
+            var self = this;
 
-            if (!confirm(msg))
+            message = message || Phoenix.Translator.translate('phoenix.message.delete.confirm');
+
+            this.core.confirm(message, function(isConfirm)
             {
-                return false;
-            }
+                if (isConfirm)
+                {
+                    self.core.sendDelete(url, queries);
+                }
+            });
 
-            return this.core.sendDelete(url, queries);
+            return true;
         },
 
+	    /**
+         * Delete an itme.
+         *
+         * @param  {number} row
+         * @param  {string} msg
+         * @param  {string} url
+         * @param  {Object} queries
+         *
+         * @returns {boolean}
+	     */
         deleteRow: function(row, msg, url, queries)
         {
             this.toggleAll(false);
 
-            var ch = this.form.find('input.grid-checkbox[data-row-number=' + row + ']');
-
-            if (!ch.length)
-            {
-                throw new Error('Checkbox of row: ' + row + ' not found.');
-            }
-
-            ch[0].checked = true;
+            this.checkRow(row);
 
             return this.deleteList(msg, url, queries);
         },
@@ -355,6 +435,14 @@
         }
     };
 
+	/**
+     * Push plugins.
+     *
+     * @param core
+     * @param options
+     *
+     * @returns {*}
+     */
     $.fn[plugin] = function(core, options)
     {
         if (!$.data(this, "phoenix." + plugin))

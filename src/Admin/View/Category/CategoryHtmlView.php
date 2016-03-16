@@ -1,67 +1,31 @@
 <?php
 /**
- * Part of phoenix project. 
+ * Part of natika project.
  *
- * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
+ * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
  */
 
 namespace Admin\View\Category;
 
-use Phoenix\Script\BootstrapScript;
-use Phoenix\Script\PhoenixScript;
-use Phoenix\View\EditView;
+use Phoenix\Script\JQueryScript;
 
 /**
  * The CategoryHtmlView class.
- * 
+ *
  * @since  {DEPLOY_VERSION}
  */
-class CategoryHtmlView extends EditView
+class CategoryHtmlView extends \Lyrasoft\Luna\Admin\View\Category\CategoryHtmlView
 {
 	/**
-	 * Property name.
-	 *
-	 * @var  string
-	 */
-	protected $name = 'category';
-
-	/**
-	 * prepareData
-	 *
-	 * @param \Windwalker\Data\Data $data
-	 *
-	 * @return  void
-	 */
-	protected function prepareData($data)
-	{
-		$this->prepareScripts();
-	}
-
-	/**
-	 * prepareDocument
+	 * prepareScripts
 	 *
 	 * @return  void
 	 */
 	protected function prepareScripts()
 	{
-		PhoenixScript::core();
-		PhoenixScript::chosen();
-		PhoenixScript::formValidation();
-		BootstrapScript::checkbox(BootstrapScript::GLYPHICONS);
-		BootstrapScript::buttonRadio();
-		BootstrapScript::tooltip();
-	}
+		parent::prepareScripts();
 
-	/**
-	 * setTitle
-	 *
-	 * @param string $title
-	 *
-	 * @return  static
-	 */
-	public function setTitle($title = null)
-	{
-		return parent::setTitle($title);
+		JQueryScript::colorPicker('#input-item-params-bg_color');
 	}
 }

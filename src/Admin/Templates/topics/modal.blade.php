@@ -1,4 +1,30 @@
-{{-- Part of phoenix project. --}}
+{{-- Part of Admin project. --}}
+<?php
+/**
+ * Global variables
+ * --------------------------------------------------------------
+ * @var $app      \Windwalker\Web\Application            Global Application
+ * @var $package  \Admin\AdminPackage            Package object.
+ * @var $view     \Windwalker\Data\Data                  Some information of this view.
+ * @var $uri      \Windwalker\Registry\Registry          Uri information, example: $uri['media.path']
+ * @var $datetime \DateTime                              PHP DateTime object of current time.
+ * @var $helper   \Admin\Helper\MenuHelper        The Windwalker HelperSet object.
+ * @var $router   \Windwalker\Core\Router\PackageRouter  Router object.
+ *
+ * View variables
+ * --------------------------------------------------------------
+ * @var $filterBar     \Windwalker\Core\Widget\BladeWidget
+ * @var $filterForm    \Windwalker\Form\Form
+ * @var $batchForm     \Windwalker\Form\Form
+ * @var $showFilterBar boolean
+ * @var $grid          \Phoenix\View\Helper\GridHelper
+ * @var $state         \Windwalker\Registry\Registry
+ * @var $items         \Windwalker\Data\DataSet
+ * @var $item          \Windwalker\Data\Data
+ * @var $i             integer
+ * @var $pagination    \Windwalker\Core\Pagination\Pagination
+ */
+?>
 
 @extends('_global.admin.pure')
 
@@ -12,6 +38,10 @@
 
         {{-- FILTER BAR --}}
         <div class="filter-bar">
+            <button class="btn btn-default pull-right" onclick="parent.{{ $function }}('{{ $selector }}', '', '');">
+                <span class="glyphicon glyphicon-remove fa fa-remove text-danger"></span>
+                @translate('phoenix.grid.modal.button.cancel')
+            </button>
             {!! $filterBar->render(array('form' => $filterForm, 'show' => $showFilterBar)) !!}
         </div>
 
@@ -36,17 +66,12 @@
 
                     {{-- AUTHOR --}}
                     <th>
-                        {!! $grid->sortTitle('admin.topic.field,.author', 'topic.created_by') !!}
+                        {!! $grid->sortTitle('admin.topic.field.author', 'topic.created_by') !!}
                     </th>
 
                     {{-- CREATED --}}
                     <th>
                         {!! $grid->sortTitle('admin.topic.field.created', 'topic.created') !!}
-                    </th>
-
-                    {{-- LANGUAGE --}}
-                    <th>
-                        {!! $grid->sortTitle('admin.topic.field.language', 'topic.language') !!}
                     </th>
 
                     {{-- ID --}}
@@ -65,7 +90,7 @@
                         {{-- CHECKBOX --}}
                         <td>
                             <a href="#" onclick="parent.{{ $function }}('{{ $selector }}', '{{ $item->id }}', '{{ $item->title }}');">
-                                <span class="glyphicon glyphicon-menu-left fa fa-angle-right text-muted"></span> {{{ $item->title }}}
+                                <span class="glyphicon glyphicon-menu-left fa fa-angle-right text-muted"></span> {{ $item->title }}
                             </a>
                         </td>
 
@@ -74,19 +99,14 @@
                             {!! $grid->state($item->state, array('only_icon' => true)) !!}
                         </td>
 
-                        {{-- AUTHIR --}}
+                        {{-- AUTHOR --}}
                         <td>
-                            {{ $item->created_by }}
+                            {{ $item->user_name ? : $item->created_by }}
                         </td>
 
                         {{-- CREATED --}}
                         <td>
                             {{ \Windwalker\Core\DateTime\DateTime::toLocalTime($item->created) }}
-                        </td>
-
-                        {{-- LANGUAGE --}}
-                        <td>
-                            {{ $item->language }}
                         </td>
 
                         {{-- ID --}}

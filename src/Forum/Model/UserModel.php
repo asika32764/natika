@@ -8,14 +8,12 @@
 
 namespace Forum\Model;
 
-use Phoenix\Model\CrudModel;
-
 /**
  * The UserModel class.
  *
  * @since  {DEPLOY_VERSION}
  */
-class UserModel extends CrudModel
+class UserModel extends \Windwalker\Warder\Model\UserModel
 {
 
 }

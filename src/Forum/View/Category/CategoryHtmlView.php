@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of phoenix project. 
+ * Part of phoenix project.
  *
  * @copyright  Copyright (C) 2015 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
@@ -9,15 +9,15 @@
 namespace Forum\View\Category;
 
 use Forum\Helper\BreadcrumbHelper;
-use Phoenix\View\AbstractRadHtmView;
+use Phoenix\View\AbstractPhoenixHtmView;
 use Windwalker\Registry\Registry;
 
 /**
  * The CategoryHtmlView class.
- * 
+ *
  * @since  {DEPLOY_VERSION}
  */
-class CategoryHtmlView extends AbstractRadHtmView
+class CategoryHtmlView extends AbstractPhoenixHtmView
 {
 	/**
 	 * prepareData

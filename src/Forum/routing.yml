@@ -45,15 +45,3 @@ category_root:
 category:
     pattern: /category/(*path)
     controller: Category
-
-login:
-    pattern: /github/login
-    controller: User
-    action:
-        '*': LoginController
-
-logout:
-    pattern: /github/logout
-    controller: User
-    action:
-        '*': LogoutController

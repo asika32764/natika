@@ -14,7 +14,7 @@ Asset::addScript('js/category.js');
     @section('banner_inner')
         <h1 class="category-title">
             <span class="{{ isset($currentCategory->params->image_icon) ? $currentCategory->params->image_icon : 'fa fa-folder-open' }}"></span>
-            {{ \Phoenix\Html\Document::getTitle() }}
+            {{ \Phoenix\Html\HtmlHeader::getTitle() }}
         </h1>
 
         <ol class="breadcrumb">
@@ -117,9 +117,15 @@ Asset::addScript('js/category.js');
                             </span>
                         </div>
                         <div class="col-md-3">
-                            <a href="{{ $category->last_post->user_params->get('raw_data.html_url', 'javascript:void(0)') }}" target="_blank">
-                                <strong>{{ $category->last_post->user_name }}</strong>
-                            </a>
+                            @if ($category->last_post->user_name)
+                                <a href="{{ $category->last_post->user_params->get('raw_data.html_url', 'javascript:void(0)') }}" target="_blank">
+                                    <strong>{{ $category->last_post->user_name }}</strong>
+                                </a>
+                            @else
+                                <span class="text-muted">
+                                    Unknown User
+                                </span>
+                            @endif
                             <span>{{ $helper->date->since($category->last_post->created) }}</span>
                             <br />
                             {{ $category->last_post->topic_title }}
@@ -174,9 +180,15 @@ Asset::addScript('js/category.js');
                         </div>
                         <div class="col-md-3">
                             <span">Updated by:</span>
-                            <a href="{{ $topic->last_user_params->get('raw_data.html_url', 'javascript:void(0)') }}" target="_blank">
-                                <strong>{{ $topic->last_user_name }}</strong>
-                            </a>
+                            @if ($topic->last_user_name)
+                                <a href="{{ $topic->last_user_params->get('raw_data.html_url', 'javascript:void(0)') }}" target="_blank">
+                                    <strong>{{ $topic->last_user_name }}</strong>
+                                </a>
+                            @else
+                                <span class="text-muted">
+                                    Unknown User
+                                </span>
+                            @endif
                             <br />
                             <span class="text-muted">{{ $helper->date->since($topic->last_reply_date) }}</span>
                             {{--<br />--}}

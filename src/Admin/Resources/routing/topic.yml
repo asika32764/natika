@@ -2,8 +2,10 @@
 topic:
     pattern: /topic(/id)
     controller: Topic
-    variables:
+    extra:
         layout: topic
+        active:
+            mainmenu: topics
 
 # Topics
 topics:
@@ -13,5 +15,7 @@ topics:
         post: CopyController
         patch: BatchController
         put: FilterController
-    variables:
+    extra:
         layout: topics
+        active:
+            mainmenu: topics

@@ -41,6 +41,13 @@ class GetController extends ListDisplayController
 	protected $id;
 
 	/**
+	 * Property layout.
+	 *
+	 * @var  string
+	 */
+	protected $format = 'html';
+
+	/**
 	 * prepareExecute
 	 *
 	 * @return  void
@@ -82,6 +89,7 @@ class GetController extends ListDisplayController
 		);
 
 		$posts = $postsModel->getItems();
+
 		$pagination = $postsModel->getPagination();
 
 		$this->view['topic'] = $topic;

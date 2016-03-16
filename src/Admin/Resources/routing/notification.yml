@@ -2,8 +2,10 @@
 notification:
     pattern: /notification(/id)
     controller: Notification
-    variables:
+    extra:
         layout: notification
+        active:
+            mainmenu: notifications
 
 # Notifications
 notifications:
@@ -13,5 +15,7 @@ notifications:
         post: CopyController
         patch: BatchController
         put: FilterController
-    variables:
+    extra:
         layout: notifications
+        active:
+            mainmenu: notifications

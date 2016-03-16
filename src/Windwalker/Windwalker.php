@@ -10,6 +10,7 @@ namespace Windwalker;
 
 use Admin\AdminPackage;
 use Forum\ForumPackage;
+use Lyrasoft\Luna\LunaPackage;
 use Phoenix\PhoenixPackage;
 use Symfony\Component\Yaml\Yaml;
 use Windwalker\Core\Package\AbstractPackage;
@@ -17,6 +18,7 @@ use Windwalker\DI\ServiceProviderInterface;
 use Windwalker\Registry\Registry;
 use Windwalker\SystemPackage\SystemPackage;
 use Windwalker\User\UserPackage;
+use Windwalker\Warder\WarderPackage;
 
 /**
  * The main Windwalker instantiate class.
@@ -37,11 +39,12 @@ class Windwalker extends \Windwalker\Core\Windwalker
 	public static function loadPackages()
 	{
 		return array(
-			'system' => new SystemPackage,
+			'system'  => new SystemPackage,
 			'phoenix' => new PhoenixPackage,
-			'admin' => new AdminPackage,
-			'forum' => new ForumPackage,
-			// 'user' => new UserPackage
+			'warder'  => new WarderPackage,
+			'luna'    => new LunaPackage,
+			'admin'   => new AdminPackage,
+			'forum'   => new ForumPackage
 		);
 	}
 

@@ -8,8 +8,8 @@
 
 namespace Forum\Controller\Topic;
 
-use Admin\DataMapper\CategoryMapper;
-use Phoenix\Controller\Display\EditGetController;
+use Lyrasoft\Luna\Admin\DataMapper\CategoryMapper;
+use Phoenix\Controller\Display\EditDisplayController;
 use Windwalker\Data\Data;
 
 /**
@@ -17,8 +17,15 @@ use Windwalker\Data\Data;
  *
  * @since  {DEPLOY_VERSION}
  */
-class NewController extends EditGetController
+class NewController extends EditDisplayController
 {
+	/**
+	 * Property layout.
+	 *
+	 * @var  string
+	 */
+	protected $layout = 'edit';
+
 	/**
 	 * prepareExecute
 	 *

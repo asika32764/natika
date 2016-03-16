@@ -9,6 +9,7 @@
 namespace Forum\Model;
 
 use Admin\Table\Table;
+use Lyrasoft\Luna\Table\LunaTable;
 use Phoenix\Model\Filter\FilterHelperInterface;
 use Phoenix\Model\ListModel;
 use Windwalker\Query\Query;
@@ -48,7 +49,7 @@ class CategoriesModel extends ListModel
 	 */
 	protected function configureTables()
 	{
-		$this->addTable('category', Table::CATEGORIES);
+		$this->addTable('category', LunaTable::CATEGORIES);
 	}
 
 	/**

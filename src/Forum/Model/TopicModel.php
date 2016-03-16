@@ -8,8 +8,8 @@
 
 namespace Forum\Model;
 
-use Admin\DataMapper\CategoryMapper;
 use Admin\Table\Table;
+use Lyrasoft\Luna\Admin\DataMapper\CategoryMapper;
 use Phoenix\Model\CrudModel;
 use Windwalker\Core\Authentication\User;
 use Windwalker\Core\DateTime\DateTime;

@@ -1,0 +1,38 @@
+
+table:
+    categories: categories
+    articles: articles
+    tags: tags
+    tag_maps: tag_maps
+    languages: languages
+
+type_table_map:
+    article: articles
+
+frontend:
+    package: forum
+    view:
+        extends: _global.html
+    redirect:
+        language: home
+    language:
+        prefix: luna.
+        enabled: false
+        locale: null
+        default: en-GB
+
+admin:
+    package: admin
+    view:
+        extends: _global.admin.admin
+    redirect:
+        language: home
+    language:
+        prefix: luna.
+        enabled: false
+        locale: en-GB
+        default: en-GB
+
+module:
+    includes: []
+    excludes: []
