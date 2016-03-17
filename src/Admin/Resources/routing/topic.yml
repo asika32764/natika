@@ -1,21 +1,21 @@
-# Topic
-topic:
-    pattern: /topic(/id)
-    controller: Topic
-    extra:
-        layout: topic
-        active:
-            mainmenu: topics
-
-# Topics
-topics:
-    pattern: /topics(/page)
-    controller: Topics
-    action:
-        post: CopyController
-        patch: BatchController
-        put: FilterController
-    extra:
-        layout: topics
-        active:
-            mainmenu: topics
+## Topic
+#topic:
+#    pattern: /topic(/id)
+#    controller: Topic
+#    extra:
+#        layout: topic
+#        active:
+#            mainmenu: topics
+#
+## Topics
+#topics:
+#    pattern: /topics(/page)
+#    controller: Topics
+#    action:
+#        post: CopyController
+#        patch: BatchController
+#        put: FilterController
+#    extra:
+#        layout: topics
+#        active:
+#            mainmenu: topics

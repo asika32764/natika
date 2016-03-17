@@ -81,6 +81,10 @@ article.topic-post {
 .topic-post .panel-body {
   padding: 25px 35px;
 }
+#input-user-remember {
+  box-shadow: none;
+  width: 18px;
+}
 footer {
   padding-bottom: 15px;
 }

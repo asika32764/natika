@@ -1,21 +1,21 @@
-# Post
-post:
-    pattern: /post(/id)
-    controller: Post
-    extra:
-        layout: post
-        active:
-            mainmenu: posts
-
-# Posts
-posts:
-    pattern: /posts(/page)
-    controller: Posts
-    action:
-        post: CopyController
-        patch: BatchController
-        put: FilterController
-    extra:
-        layout: posts
-        active:
-            mainmenu: posts
+## Post
+#post:
+#    pattern: /post(/id)
+#    controller: Post
+#    extra:
+#        layout: post
+#        active:
+#            mainmenu: posts
+#
+## Posts
+#posts:
+#    pattern: /posts(/page)
+#    controller: Posts
+#    action:
+#        post: CopyController
+#        patch: BatchController
+#        put: FilterController
+#    extra:
+#        layout: posts
+#        active:
+#            mainmenu: posts

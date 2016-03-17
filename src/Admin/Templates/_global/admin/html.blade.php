@@ -30,16 +30,21 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ $router->html('home') }}">Windwalker Phoenix</a>
+                    <a class="navbar-brand" href="{{ $router->html('home') }}">Natika Forum</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         @section('nav')
-                            @include('_global.admin.mainmenu')
+                            {{--@include('_global.admin.mainmenu')--}}
                         @show
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        {{-- Add right menu here --}}
+                        <li>
+                            <a target="_blank" href="{{ $router->html('forum@home') }}">
+                                <span class="fa fa-globe"></span>
+                                Preview
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!--/.nav-collapse -->

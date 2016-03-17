@@ -136,7 +136,7 @@ class AdminPackage extends AbstractPackage
 		{
 			if (File::getExtension($file) == 'yml')
 			{
-				$routes = array_merge($routes, Yaml::parse(file_get_contents($file)));
+				$routes = array_merge($routes, (array) Yaml::parse(file_get_contents($file)));
 			}
 		}
 
