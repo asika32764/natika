@@ -13,6 +13,7 @@ use Windwalker\Core\Authentication\User;
 use Windwalker\Data\Data;
 use Windwalker\Warder\Admin\DataMapper\UserMapper;
 use Windwalker\Warder\Data\UserData;
+use Windwalker\Warder\WarderPackage;
 
 /**
  * The SocialMethod class.
@@ -21,6 +22,21 @@ use Windwalker\Warder\Data\UserData;
  */
 class SocialMethod extends \Windwalker\Warder\Authentication\Method\SocialMethod
 {
+	/**
+	 * getHAConfig
+	 *
+	 * @return  array
+	 */
+	protected function getHAConfig()
+	{
+		$config = parent::getHAConfig();
+
+		$config['providers']['GitHub']['wrapper']['path'] = WINDWALKER_VENDOR . '/hybridauth/hybridauth/additional-providers/hybridauth-github/Providers/GitHub.php';
+		$config['providers']['GitHub']['wrapper']['class'] = 'Hybrid_Providers_GitHub';
+
+		return $config;
+	}
+
 	/**
 	 * postAuthenticate
 	 *

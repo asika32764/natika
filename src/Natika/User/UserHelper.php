@@ -21,6 +21,9 @@ use Windwalker\Record\Record;
  */
 class UserHelper
 {
+	const GROUP_MEMBER = 1;
+	const GROUP_ADMIN = 2;
+
 	/**
 	 * isLogin
 	 *
@@ -145,7 +148,7 @@ class UserHelper
 	 */
 	public static function isAdmin($user = null)
 	{
-		if (!$user instanceof UserDataInterface)
+		if (!$user instanceof Data)
 		{
 			$user = User::get($user);
 		}
@@ -162,6 +165,16 @@ class UserHelper
 			}
 		}
 
-		return $user->group >= 2;
+		return $user->group >= static::getAdminGroup();
+	}
+
+	/**
+	 * getAdminGroup
+	 *
+	 * @return  integer
+	 */
+	public static function getAdminGroup()
+	{
+		return static::GROUP_ADMIN;
 	}
 }

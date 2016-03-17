@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4a85fe68896647055c96b3aba4e3c9b3",
+    "hash": "537cc8414eb73726c09c225a10624656",
     "content-hash": "63e19e9ac083267f6f1386d35b3df105",
     "packages": [
         {
@@ -1444,12 +1444,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ventoviro/phoenix.git",
-                "reference": "e5f74c68d10f9d54475b8f75ce93c9758539cfc1"
+                "reference": "517f865a36a5aa0c23e4cd965b5195c19060cdeb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ventoviro/phoenix/zipball/e5f74c68d10f9d54475b8f75ce93c9758539cfc1",
-                "reference": "e5f74c68d10f9d54475b8f75ce93c9758539cfc1",
+                "url": "https://api.github.com/repos/ventoviro/phoenix/zipball/517f865a36a5aa0c23e4cd965b5195c19060cdeb",
+                "reference": "517f865a36a5aa0c23e4cd965b5195c19060cdeb",
                 "shasum": ""
             },
             "require": {
@@ -1475,7 +1475,7 @@
             ],
             "description": "A powerful RAD framework to support Rapid Application Development.",
             "homepage": "https://github.com/ventoviro/phoenix",
-            "time": "2016-03-15 10:03:04"
+            "time": "2016-03-16 15:22:29"
         },
         {
             "name": "windwalker/warder",

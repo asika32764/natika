@@ -65,6 +65,7 @@ class Application extends WebApplication
 		 * registered in your own providers.
 		 */
 		$providers['debug']    = new Provider\WhoopsProvider;
+		$providers['datetime'] = new Provider\DateTimeProvider;
 		// $providers['logger']   = new Provider\LoggerProvider;
 		// $providers['event']    = new Provider\EventProvider;
 		// $providers['database'] = new Provider\DatabaseProvider;
