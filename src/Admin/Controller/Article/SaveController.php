@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of Admin project.
+ * Part of natika project.
  *
  * @copyright  Copyright (C) 2016 {ORGANIZATION}. All rights reserved.
  * @license    GNU General Public License version 2 or later.
@@ -8,70 +8,16 @@
 
 namespace Admin\Controller\Article;
 
-use Admin\Model\ArticleModel;
-use Admin\View\Article\ArticleHtmlView;
-use Phoenix\Controller\AbstractSaveController;
 use Windwalker\Data\Data;
+use Windwalker\Filter\InputFilter;
 
 /**
  * The SaveController class.
- * 
- * @since  1.0
+ *
+ * @since  {DEPLOY_VERSION}
  */
-class SaveController extends AbstractSaveController
+class SaveController extends \Lyrasoft\Luna\Admin\Controller\Article\SaveController
 {
-	/**
-	 * Property name.
-	 *
-	 * @var  string
-	 */
-	protected $name = 'article';
-
-	/**
-	 * Property itemName.
-	 *
-	 * @var  string
-	 */
-	protected $itemName = 'article';
-
-	/**
-	 * Property listName.
-	 *
-	 * @var  string
-	 */
-	protected $listName = 'articles';
-
-	/**
-	 * Property formControl.
-	 *
-	 * @var  string
-	 */
-	protected $formControl = 'item';
-
-	/**
-	 * Property model.
-	 *
-	 * @var  ArticleModel
-	 */
-	protected $model;
-
-	/**
-	 * Property view.
-	 *
-	 * @var  ArticleHtmlView
-	 */
-	protected $view;
-
-	/**
-	 * prepareExecute
-	 *
-	 * @return  void
-	 */
-	protected function prepareExecute()
-	{
-		parent::prepareExecute();
-	}
-
 	/**
 	 * preSave
 	 *
@@ -82,6 +28,8 @@ class SaveController extends AbstractSaveController
 	protected function preSave(Data $data)
 	{
 		parent::preSave($data);
+
+		$data->body = $this->input->getByPath($this->formControl . '.body', null, InputFilter::RAW);
 	}
 
 	/**
@@ -93,18 +41,6 @@ class SaveController extends AbstractSaveController
 	 */
 	protected function postSave(Data $data)
 	{
-		parent::postSave($data);
-	}
 
-	/**
-	 * postExecute
-	 *
-	 * @param mixed $result
-	 *
-	 * @return  mixed
-	 */
-	protected function postExecute($result = null)
-	{
-		return parent::postExecute($result);
 	}
 }

@@ -49,8 +49,6 @@ class ForumPackage extends AbstractPackage
 	public function registerListeners(Dispatcher $dispatcher)
 	{
 		parent::registerListeners($dispatcher);
-
-		$dispatcher->addListener(new ForumListener);
 	}
 
 	/**
@@ -60,6 +58,8 @@ class ForumPackage extends AbstractPackage
 	 */
 	protected function prepareExecute()
 	{
+		$this->getDispatcher()->addListener(new ForumListener);
+
 		$config = $this->container->get('config');
 
 		HtmlHeader::setSiteName($config->get('site_name'));

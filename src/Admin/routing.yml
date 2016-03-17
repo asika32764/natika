@@ -1,1 +1,5 @@
 # Custom routing file, all default routing files please see ./Resources/routing
+
+icon_modal:
+    pattern: /icon
+    controller: Icon

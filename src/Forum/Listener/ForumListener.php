@@ -10,6 +10,7 @@ namespace Forum\Listener;
 
 use Lyrasoft\Luna\Admin\DataMapper\ArticleMapper;
 use Windwalker\Core\Authentication\User;
+use Windwalker\Core\Router\Router;
 use Windwalker\Event\Event;
 use Windwalker\Ioc;
 use Windwalker\Utilities\Queue\Priority;
@@ -36,6 +37,11 @@ class ForumListener
 
 		$articleMapper = new ArticleMapper;
 		$data->articles = $data->articles ? : $articleMapper->find(['state' => 1], 'ordering');
+
+		foreach ($data->articles as $article)
+		{
+			$article->link = $article->url ? : Router::html('forum@article', ['id' => $article->id, 'alias' => $article->alias]);
+		}
 
 		// Template
 		$config = Ioc::getConfig();

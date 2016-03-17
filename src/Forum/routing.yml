@@ -45,3 +45,11 @@ category_root:
 category:
     pattern: /category/(*path)
     controller: Category
+
+article:
+    pattern: /article/(id)-(alias)
+    controller: Article
+    requirements:
+        id: \d+
+    extra:
+        layout: article

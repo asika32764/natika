@@ -24,6 +24,21 @@ use Windwalker\Warder\Admin\DataMapper\UserMapper;
 class ArticleSeeder extends AbstractSeeder
 {
 	/**
+	 * Property icons.
+	 *
+	 * @var  array
+	 */
+	protected $icons = array(
+		'fa fa-fw fa-bullhorn',
+		'fa fa-fw fa-comment',
+		'fa fa-fw fa-github',
+		'fa fa-fw fa-wrench',
+		'fa fa-fw fa-magic',
+		'fa fa-fw fa-fire',
+		'fa fa-fw fa-warning'
+	);
+
+	/**
 	 * doExecute
 	 *
 	 * @return  void
@@ -35,12 +50,15 @@ class ArticleSeeder extends AbstractSeeder
 		$users = (new UserMapper)->findColumn('id');
 		$mapper = new ArticleMapper;
 
-		foreach (range(1, 30) as $i)
+		foreach (range(1, 5) as $i)
 		{
 			$data = new Data;
 
 			$data['title']       = $faker->sentence(rand(3, 5));
 			$data['alias']       = OutputFilter::stringURLSafe($data['title']);
+			$data['short_title'] = trim(\Windwalker\String\Utf8String::substr($data['title'], 0, rand(5, 7)));
+			$data['icon']        = $faker->randomElement($this->icons);
+			$data['url']         = rand(0, 2) ? 'http://windwalker.io' : null;
 			$data['body']        = $faker->paragraph(5);
 			$data['images']      = $faker->imageUrl();
 			$data['version']     = rand(1, 50);
@@ -49,7 +67,7 @@ class ArticleSeeder extends AbstractSeeder
 			$data['modified']    = $faker->dateTime->format(DateTime::FORMAT_SQL);
 			$data['modified_by'] = $faker->randomElement($users);
 			$data['ordering']    = $i;
-			$data['state']       = $faker->randomElement(array(1, 1, 1, 1, 0, 0));
+			$data['state']       = 1; //$faker->randomElement(array(1, 1, 1, 1, 0, 0));
 			$data['params']      = '';
 
 			$mapper->createOne($data);

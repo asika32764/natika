@@ -6,9 +6,9 @@
  * @license    GNU General Public License version 2 or later.
  */
 
+use Admin\Record\CategoryRecord;
 use Admin\Table\Table;
 use Faker\Factory;
-use Lyrasoft\Luna\Admin\Record\CategoryRecord;
 use Lyrasoft\Luna\Table\LunaTable;
 use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Seeder\AbstractSeeder;
@@ -69,6 +69,8 @@ class CategorySeeder extends AbstractSeeder
 		$faker = Factory::create();
 
 		$users = (new UserMapper)->findColumn('id');
+
+		CategoryRecord::resetFieldsCache();
 		$record = new CategoryRecord;
 
 		foreach (range(1, 30) as $i)

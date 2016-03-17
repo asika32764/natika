@@ -18,7 +18,7 @@ use Windwalker\Record\Record;
  * 
  * @since  1.0
  */
-class ArticleRecord extends Record
+class ArticleRecord extends \Lyrasoft\Luna\Admin\Record\ArticleRecord
 {
 	/**
 	 * Property table.

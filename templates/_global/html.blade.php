@@ -6,7 +6,7 @@ use Phoenix\Script\BootstrapScript;
 BootstrapScript::css();
 BootstrapScript::script();
 Asset::addStyle('css/main.css');
-Asset::addStyle('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css');
+Asset::addStyle('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css');
 Asset::addStyle('css/github-markdown-css.min.css');
 
 if (is_file(WINDWALKER_PUBLIC . '/media/css/custom.css'))
@@ -49,7 +49,7 @@ if (is_file(WINDWALKER_PUBLIC . '/media/css/custom.css'))
                              <li>
                                  <a href="{{ $article->link }}">
                                      <span class="{{ $article->icon }}"></span>
-                                     {{ $article->title }}
+                                     {{ $article->short_title ? : $article->title }}
                                  </a>
                              </li>
                          <?php endforeach; ?>

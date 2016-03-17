@@ -8,6 +8,7 @@
 
 namespace Admin\Record;
 
+use Lyrasoft\Luna\Table\LunaTable;
 use Windwalker\Event\Event;
 
 /**
@@ -45,5 +46,15 @@ class CategoryRecord extends \Lyrasoft\Luna\Admin\Record\CategoryRecord
 		{
 			$this->params = json_encode($this->params);
 		}
+	}
+
+	/**
+	 * resetFieldsCache
+	 *
+	 * @return  void
+	 */
+	public static function resetFieldsCache()
+	{
+		static::$fieldsCache[LunaTable::CATEGORIES] = null;
 	}
 }

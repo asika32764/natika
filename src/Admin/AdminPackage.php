@@ -69,7 +69,7 @@ class AdminPackage extends AbstractPackage
 		BootstrapScript::css();
 		BootstrapScript::script();
 		Asset::addStyle('admin/css/admin.css');
-		Asset::addStyle('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css');
+		Asset::addStyle('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css');
 
 		// Language
 		TranslatorHelper::loadAll($this, 'ini');
