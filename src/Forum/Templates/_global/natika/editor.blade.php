@@ -2,6 +2,12 @@
 
 <?php
 \Natika\Script\EditorScript::codeMirror('editor', '#input-body');
+
+\Phoenix\Script\JQueryScript::core();
+\Phoenix\Asset\Asset::addScript('js/inline-uploader/inline-uploader.js');
+\Phoenix\Asset\Asset::addScript('js/inline-uploader/adapter/codemirror-adapter.js');
+\Phoenix\Asset\Asset::addScript('js/markdown/js-markdown-extra.min.js');
+
 ?>
 
 <div id="editor" class="panel panel-default">
@@ -69,6 +75,18 @@
                     </button>
                 </div>
 
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#preview-modal">
+                        <span class="fa fa-eye"></span>
+                    </button>
+                </div>
+
+                <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#help-modal">
+                        <span class="fa fa-question-circle"></span>
+                    </button>
+                </div>
+
                 {{--<div class="btn-group">--}}
                     {{--<button id="button-preview" class="btn btn-success btn-sm">Preview</button>--}}
                 {{--</div>--}}
@@ -84,6 +102,9 @@
             <button class="btn btn-success btn-lg pull-right">Reply</button>
         </div>
         @endif
+
+        @include('_global.natika.preview-modal')
+        @include('_global.natika.help-modal')
     </div>
 </div>
 
@@ -240,6 +261,37 @@ jQuery(document).ready(function($)
         name:'Preview',
         call:'createPreview',
         className:"preview"
+    });
+
+    // Inline Uploader
+    var inlineOptions = {
+        url: '{{ $router->html('unidev@img_upload') }}',
+
+        onFileUploaded: function(data, name) {
+            this.onFileUploaded(data, name);
+
+            setTimeout(function()
+            {
+                Fongshen.refreshPreview();
+            }, 500);
+        },
+
+        dataProcessor: function(data) {
+
+            var response = {};
+
+            response.filename = data.data.url;
+            response.name = data.data.url.replace(/^.*[\\\/]/, '');
+
+            return response;
+        }
+    };
+
+    InlineUploader.init(new InlineUploader.CodeMirrorAdapter(window.codeMirror['editor']), inlineOptions);
+
+    // Preview
+    $('#preview-modal').on('show.bs.modal', function (event) {
+        $(this).find('.editor-preview-body').html(Markdown(window.codeMirror['editor'].getValue()));
     });
 });
 </script>

@@ -3,7 +3,7 @@
     "description": "Natika Forum",
     "homepage": "https://github.com/ventoviro/windwalker",
     "license": "GNU Lesser General Public License",
-    "minimum-stability": "beta",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Simon Asika",
@@ -20,7 +20,10 @@
         "joomla/datetime": "~2.0",
         "erusev/parsedown": "~1.0",
         "lyrasoft/luna": "1.*",
-        "hybridauth/hybridauth": "^2.6"
+        "hybridauth/hybridauth": "^2.6",
+        "tpyo/amazon-s3-php-class": "*",
+        "adyg/php-imgur-api-client": "1.0.*",
+        "gregwar/image": "2.*"
     },
     "autoload": {
         "psr-4": {

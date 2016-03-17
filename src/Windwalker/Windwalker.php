@@ -11,6 +11,7 @@ namespace Windwalker;
 use Admin\AdminPackage;
 use Forum\ForumPackage;
 use Lyrasoft\Luna\LunaPackage;
+use Lyrasoft\Unidev\UnidevPackage;
 use Phoenix\PhoenixPackage;
 use Symfony\Component\Yaml\Yaml;
 use Windwalker\Core\Package\AbstractPackage;
@@ -42,6 +43,7 @@ class Windwalker extends \Windwalker\Core\Windwalker
 			'system'  => new SystemPackage,
 			'phoenix' => new PhoenixPackage,
 			'warder'  => new WarderPackage,
+			'unidev'  => new UnidevPackage,
 			'luna'    => new LunaPackage,
 			'admin'   => new AdminPackage,
 			'forum'   => new ForumPackage

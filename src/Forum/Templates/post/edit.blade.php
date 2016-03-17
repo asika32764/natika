@@ -5,7 +5,7 @@
 @section('banner_inner')
     <h1 class="category-title">
         <span class="fa fa-edit"></span>
-        {{ \Phoenix\Html\Document::getTitle() }} in {{ $topic->title }}
+        {{ \Phoenix\Html\HtmlHeader::getTitle() }} in {{ $topic->title }}
     </h1>
     <button class="tool-button btn btn-default btn-lg pull-right" onclick="$('#admin-form').submit()">
         <span class="fa fa-save"></span>

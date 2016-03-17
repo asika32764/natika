@@ -8,14 +8,14 @@
 
 namespace Natika\Script;
 
-use Phoenix\Script\ScriptManager;
+use Phoenix\Script\AbstractScriptManager;
 
 /**
  * The EditorScript class.
  *
  * @since  {DEPLOY_VERSION}
  */
-class EditorScript extends ScriptManager
+class EditorScript extends AbstractScriptManager
 {
 	/**
 	 * codeMirror

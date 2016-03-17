@@ -50,11 +50,12 @@ class SocialMethod extends \Windwalker\Warder\Authentication\Method\SocialMethod
 	protected function postAuthenticate(UserData $user, Data $socialMapping, Credential $credential,
 		\Hybrid_Provider_Adapter $adapter)
 	{
-		unset($credential->username);
-
-		$user->bind($credential);
-
-		User::save($user);
+//		unset($credential->username);
+//
+//		$user->bind($credential);
+//		$user->id = $socialMapping->user_id;
+//
+//		User::save($user);
 	}
 
 	/**

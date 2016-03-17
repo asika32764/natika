@@ -8,11 +8,13 @@
 
 namespace Forum\Form\Profile;
 
+use Lyrasoft\Luna\Field\Image\SingleImageDragField;
 use Windwalker\Core\Language\Translator;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Form\Field;
 use Windwalker\Form\FieldDefinitionInterface;
 use Windwalker\Form\Form;
+use Windwalker\Warder\Helper\AvatarUploadHelper;
 use Windwalker\Warder\Helper\WarderHelper;
 
 /**
@@ -74,6 +76,10 @@ class EditDefinition implements FieldDefinitionInterface
 			$form->add('password2', new Field\PasswordField)
 				->label(Translator::translate('warder.user.field.password.confirm'))
 				->set('autocomplete', 'off');
+
+			$form->add('avatar', new SingleImageDragField)
+				->label('Avatar')
+				->set('default_image', AvatarUploadHelper::getDefaultImage());
 		});
 	}
 }

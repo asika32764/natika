@@ -8,24 +8,24 @@
 
 namespace Forum\Controller\Post;
 
-use Phoenix\Controller\Display\EditGetController;
-use Windwalker\Core\View\HtmlView;
+use Phoenix\Controller\Display\EditDisplayController;
+use Windwalker\Core\View\PhpHtmlView;
 
 /**
  * The EditController class.
  *
  * @since  {DEPLOY_VERSION}
  */
-class EditController extends EditGetController
+class EditController extends EditDisplayController
 {
 	/**
 	 * assignModels
 	 *
-	 * @param HtmlView $view
+	 * @param PhpHtmlView $view
 	 *
 	 * @return  void
 	 */
-	protected function assignModels(HtmlView $view)
+	protected function assignModels(PhpHtmlView $view)
 	{
 		$this->view->setModel($this->getModel('Topic'));
 		$this->view->setModel($this->getModel('Category'));

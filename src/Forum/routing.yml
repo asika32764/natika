@@ -10,7 +10,7 @@ topic_new:
     action:
         get: NewController
     variables:
-        layout: edit
+        extra: edit
 topic_update:
     pattern: /topic/update
     controller: Topic
@@ -35,7 +35,7 @@ post_edit:
     controller: Post
     action:
         get: EditController
-    variables:
+    extra:
         layout: edit
 
 category_root:
