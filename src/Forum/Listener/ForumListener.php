@@ -8,6 +8,7 @@
 
 namespace Forum\Listener;
 
+use Lyrasoft\Luna\Admin\DataMapper\ArticleMapper;
 use Windwalker\Core\Authentication\User;
 use Windwalker\Event\Event;
 use Windwalker\Ioc;
@@ -29,7 +30,12 @@ class ForumListener
 	 */
 	public function onViewBeforeRender(Event $event)
 	{
-		$event['data']->user = User::get();
+		$data = $event['data'];
+
+		$data->user = $data->user ? : User::get();
+
+		$articleMapper = new ArticleMapper;
+		$data->articles = $data->articles ? : $articleMapper->find(['state' => 1], 'ordering');
 
 		// Template
 		$config = Ioc::getConfig();

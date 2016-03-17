@@ -42,14 +42,17 @@ Asset::addScript('js/category.js');
     <script>
         var category = {!! json_encode($currentCategory->dump()) !!};
     </script>
+    {{-- TOOLBAR --}}
     <div class="container">
         <div class="panel panel-default category-toolbar">
             <div class="panel-body">
+                {{-- NEW CATEGORY --}}
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#categoryModal" onclick="NatikaCategory.create({{ $currentCategory->id }});">
                     <span class="fa fa-plus"></span>
                     New Category
                 </button>
 
+                {{-- EDIT --}}
                 @if ($currentCategory->id > 1)
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#categoryModal" onclick="NatikaCategory.edit(category);">
                     <span class="fa fa-edit"></span>
@@ -68,11 +71,13 @@ Asset::addScript('js/category.js');
     </div>
     @endif
 
+    {{-- FORM --}}
     <form action="{{ $uri['full'] }}" method="post" id="admin-form">
         {!! \Windwalker\Core\Security\CsrfProtection::input() !!}
         <input type="hidden" name="_method" value="" />
     </form>
 
+    {{-- CATEGORIES --}}
     @if ($categories->notNull())
     <div class="container category-list item-list">
         <div class="panel panel-default list-panel">
@@ -85,19 +90,31 @@ Asset::addScript('js/category.js');
             <ul class="list-group">
                 @foreach ($categories as $k => $category)
                     <li class="list-group-item row clearfix">
+                        {{-- TITLE & IMAGE --}}
                         <div class="col-md-7">
+                            {{-- IMAGE & ICON --}}
+                            @if ($category->image)
+                                <img class="circle-icon pull-left" src="{{ $category->image }}" alt="Image">
+                            @else
                             <div class="circle-icon pull-left" style="background-color: {{ $category->params['bg_color'] }}; color: #fff;">
                                 <i class="{{ $category->params['image_icon'] }}"></i>
                             </div>
+                            @endif
+
+                            {{-- TITLE --}}
                             <h2 class="category-title">
                                 <a href="{{ $router->html('category', ['path' => $category->path]) }}">
                                     {{ $category->title }}
                                 </a>
                             </h2>
+
+                            {{-- DESCRIPTION --}}
                             <span class="text-muted">
                                 {{ $category->description }}
                             </span>
                         </div>
+
+                        {{-- TOPIC --}}
                         <div class="col-md-1 hidden-sm hidden-xs text-center">
                             <span class="lead">
                                 {{ $category->topics }}
@@ -107,6 +124,8 @@ Asset::addScript('js/category.js');
                                 TOPICS
                             </span>
                         </div>
+
+                        {{-- POSTS --}}
                         <div class="col-md-1 hidden-sm hidden-xs text-center">
                             <span class="lead">
                                 {{ $category->posts }}
@@ -116,6 +135,8 @@ Asset::addScript('js/category.js');
                                 POSTS
                             </span>
                         </div>
+
+                        {{-- LAST POST --}}
                         <div class="col-md-3">
                             @if ($category->last_post->user_name)
                                 <a href="{{ $category->last_post->user_params->get('raw_data.html_url', 'javascript:void(0)') }}" target="_blank">

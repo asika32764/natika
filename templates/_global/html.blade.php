@@ -45,18 +45,28 @@ if (is_file(WINDWALKER_PUBLIC . '/media/css/custom.css'))
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                      @section('nav')
-                        <li>
-                            <a href="{{ $router->html('forum:home') }}">
-                                <span class="fa fa-home"></span>
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/asika32764/natika" target="_blank">
-                                <span class="fa fa-github"></span>
-                                Source Code
-                            </a>
-                        </li>
+                         <?php foreach ($articles as $article): ?>
+                             <li>
+                                 <a href="{{ $article->link }}">
+                                     <span class="{{ $article->icon }}"></span>
+                                     {{ $article->title }}
+                                 </a>
+                             </li>
+                         <?php endforeach; ?>
+
+
+                        {{--<li>--}}
+                            {{--<a href="{{ $router->html('forum:home') }}">--}}
+                                {{--<span class="fa fa-home"></span>--}}
+                                {{--Home--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a href="https://github.com/asika32764/natika" target="_blank">--}}
+                                {{--<span class="fa fa-github"></span>--}}
+                                {{--Source Code--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
                      @show
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
