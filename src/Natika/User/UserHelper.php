@@ -117,7 +117,7 @@ class UserHelper
 			return false;
 		}
 
-		return $post->user_id == $user->id;
+		return $post->user_id == $user->id || static::isAdmin($user);
 	}
 
 	/**
