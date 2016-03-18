@@ -82,6 +82,13 @@ class EditDefinition extends \Lyrasoft\Luna\Admin\Form\Article\EditDefinition
 				->set('placeholder', 'Short Title')
 				->setFilter('trim');
 
+			// URL
+			$form->add('url', new Field\TextField)
+				->label('URL')
+				->set('placeholder', 'URL')
+				->set('class', 'validation-url')
+				->setFilter('trim');
+
 			// State
 			$form->add('state', new Field\RadioField)
 				->label(Translator::translate($langPrefix . 'article.field.state'))

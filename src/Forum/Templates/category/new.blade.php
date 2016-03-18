@@ -2,6 +2,11 @@
 
 <?php
 \Phoenix\Script\JQueryScript::colorPicker('#input-color');
+
+//$image = new \Lyrasoft\Luna\Field\Image\SingleImageDragField;
+//$image->setName('image')
+//    ->set('height', 200)
+//    ->set('width', 300);
 ?>
 
     <!-- Modal -->

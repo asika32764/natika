@@ -1,5 +1,13 @@
 # Custom routing file, all default routing files please see ./Resources/routing
 
+home:
+    pattern: /
+    controller: Dashboard
+    extra:
+        layout: dashboard
+        active:
+            mainmenu: dashboard
+
 icon_modal:
     pattern: /icon
     controller: Icon

@@ -139,7 +139,7 @@ Asset::addScript('js/category.js');
                         {{-- LAST POST --}}
                         <div class="col-md-3">
                             @if ($category->last_post->user_name)
-                                <a href="{{ $category->last_post->user_params->get('raw_data.html_url', 'javascript:void(0)') }}" target="_blank">
+                                <a href="{{ $router->html('profile', ['id' => $category->last_post->user_id]) }}">
                                     <strong>{{ $category->last_post->user_name }}</strong>
                                 </a>
                             @else
@@ -200,9 +200,9 @@ Asset::addScript('js/category.js');
                             </span>
                         </div>
                         <div class="col-md-3">
-                            <span">Updated by:</span>
+                            <span>Updated by:</span>
                             @if ($topic->last_user_name)
-                                <a href="{{ $topic->last_user_params->get('raw_data.html_url', 'javascript:void(0)') }}" target="_blank">
+                                <a href="{{ $router->html('profile', ['id' => $topic->last_reply_user]) }}">
                                     <strong>{{ $topic->last_user_name }}</strong>
                                 </a>
                             @else

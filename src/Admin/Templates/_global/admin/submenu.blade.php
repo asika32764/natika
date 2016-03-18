@@ -11,6 +11,12 @@
 
 <ul class="nav nav-stacked nav-pills">
 
+    <li class="{{ $helper->menu->active('dashboard') }}">
+        <a href="{{ $router->html('home') }}">
+            Dashboard
+        </a>
+    </li>
+
     <li class="{{ $helper->menu->active('categories') }}">
         <a href="{{ $router->html('categories', ['type' => 'topic']) }}">
             @translate('luna.categories.title')

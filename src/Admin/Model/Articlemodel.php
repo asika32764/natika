@@ -8,6 +8,8 @@
 
 namespace Admin\Model;
 
+use Windwalker\Data\Data;
+
 /**
  * The Articlemodel class.
  *
@@ -15,5 +17,14 @@ namespace Admin\Model;
  */
 class ArticleModel extends \Lyrasoft\Luna\Admin\Model\ArticleModel
 {
-
+	/**
+	 * postGetItem
+	 *
+	 * @param Data $item
+	 *
+	 * @return  void
+	 */
+	protected function postGetItem(Data $item)
+	{
+	}
 }
