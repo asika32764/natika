@@ -153,18 +153,6 @@ class UserHelper
 			$user = User::get($user);
 		}
 
-		$config = Ioc::getConfig();
-
-		$roots = (array) $config->get('user.root');
-
-		foreach ($roots as $root)
-		{
-			if ($root == $user->username || $root == $user->email)
-			{
-				return true;
-			}
-		}
-
 		return $user->group >= static::getAdminGroup();
 	}
 

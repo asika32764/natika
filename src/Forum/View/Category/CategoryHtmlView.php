@@ -9,8 +9,10 @@
 namespace Forum\View\Category;
 
 use Forum\Helper\BreadcrumbHelper;
+use Phoenix\Html\HtmlHeader;
 use Phoenix\View\AbstractPhoenixHtmView;
 use Windwalker\Registry\Registry;
+use Windwalker\String\Utf8String;
 
 /**
  * The CategoryHtmlView class.
@@ -46,6 +48,17 @@ class CategoryHtmlView extends AbstractPhoenixHtmView
 		foreach ($data->topics as $topic)
 		{
 			$topic->last_user_params = new Registry($topic->last_user_params);
+		}
+
+		if ($data->currentCategory->id != 1)
+		{
+			$desc = $data->currentCategory->description;
+			$desc = Utf8String::substr(strip_tags($desc), 0, 150);
+
+			HtmlHeader::addMetadata('description', $desc, true);
+			HtmlHeader::addOpenGraph('og:title', HtmlHeader::getPageTitle(), true);
+			HtmlHeader::addOpenGraph('og:description', $desc, true);
+			HtmlHeader::addOpenGraph('og:image', $data->currentCategory->image, true);
 		}
 	}
 }

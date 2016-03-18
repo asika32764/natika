@@ -9,8 +9,13 @@
 namespace Forum;
 
 use Forum\Listener\ForumListener;
-use Lyrasoft\Unidev\Listener\UnidevRoutingListener;
+use Forum\User\UserHandler;
+use Phoenix\Asset\Asset;
+use Phoenix\Html\Document;
 use Phoenix\Html\HtmlHeader;
+use Phoenix\Script\BootstrapScript;
+use Phoenix\Script\JQueryScript;
+use Windwalker\Core\Authentication\User;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Core\Renderer\RendererHelper;
 use Windwalker\Event\Dispatcher;
@@ -44,8 +49,6 @@ class ForumPackage extends AbstractPackage
 	public function registerListeners(Dispatcher $dispatcher)
 	{
 		parent::registerListeners($dispatcher);
-
-		$dispatcher->addListener(new UnidevRoutingListener);
 	}
 
 	/**
@@ -59,9 +62,17 @@ class ForumPackage extends AbstractPackage
 
 		$config = $this->container->get('config');
 
-		HtmlHeader::setSiteName($config->get('site_name'));
+		HtmlHeader::setSiteName($config->get('natika.site_name'));
+		HtmlHeader::addMetadata('description', $config->get('natika.metadata.description'));
+//		HtmlHeader::addOpenGraph('og:title', HtmlHeader::getPageTitle());
+		HtmlHeader::addOpenGraph('og:description', $config->get('natika.metadata.og:description'));
+		HtmlHeader::addOpenGraph('og:image', $config->get('natika.metadata.og:image'));
+		HtmlHeader::addOpenGraph('og:site_title', $config->get('natika.site_name'));
 
-		RendererHelper::addGlobalPath(WINDWALKER_TEMPLATES . '/theme/' . $config->get('theme'), Priority::HIGH);
+		if ($config->get('natika.theme'))
+		{
+			RendererHelper::addGlobalPath(WINDWALKER_TEMPLATES . '/theme/' . $config->get('natika.theme'), Priority::HIGH);
+		}
 	}
 
 	/**

@@ -79,7 +79,7 @@ if (is_file(WINDWALKER_PUBLIC . '/media/css/custom.css'))
                     </li>
                     @else
                     <li>
-                        <a href="{{ $router->html('profile') }}">
+                        <a href="{{ $router->html('profile') }}" target="_blank">
                             <img height="18px" style="border-radius: 50%;" src="{{ $user->avatar }}" alt="Avatar">
                             {{ $user['name'] }}
                         </a>
@@ -107,7 +107,7 @@ if (is_file(WINDWALKER_PUBLIC . '/media/css/custom.css'))
                 @if (\Phoenix\Html\HtmlHeader::getTitle())
                     {{ \Phoenix\Html\HtmlHeader::getTitle() }}
                 @else
-                    {{ $app->get('banner.default') ? : 'Welcome to ' . \Phoenix\Html\HtmlHeader::getSiteName() }}
+                    {{ $app->get('natika.banner.default', 'Welcome to ' . \Phoenix\Html\HtmlHeader::getSiteName()) }}
                 @endif
             </h1>
             @show
@@ -142,7 +142,5 @@ if (is_file(WINDWALKER_PUBLIC . '/media/css/custom.css'))
 
     {!! \Phoenix\Asset\Asset::renderScripts(true) !!}
     @yield('script')
-
-{!! \Phoenix\Asset\Asset::getTemplate()->renderTemplates() !!}
 </body>
 </html>

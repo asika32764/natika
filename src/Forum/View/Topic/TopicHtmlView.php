@@ -10,7 +10,9 @@ namespace Forum\View\Topic;
 
 use Forum\Helper\BreadcrumbHelper;
 use Natika\Markdown\Markdown;
+use Phoenix\Html\HtmlHeader;
 use Phoenix\View\ItemView;
+use Windwalker\String\Utf8String;
 
 /**
  * The TopicHtmlView class.
@@ -46,5 +48,18 @@ class TopicHtmlView extends ItemView
 		{
 			$this->setTitle('New Topic');
 		}
+
+		$desc = $data->topic->title;
+
+		if ($data->posts[0])
+		{
+			$desc = $data->posts[0]->body;
+			$desc = Utf8String::substr(strip_tags($desc), 0, 150);
+		}
+
+		HtmlHeader::addMetadata('description', $desc, true);
+		HtmlHeader::addOpenGraph('og:title', HtmlHeader::getPageTitle(), true);
+		HtmlHeader::addOpenGraph('og:description', $desc, true);
+		HtmlHeader::getMetadata()->removeOpenGraph('og:image');
 	}
 }

@@ -8,7 +8,9 @@
 
 namespace Forum\View\Post;
 
+use Phoenix\Html\HtmlHeader;
 use Phoenix\View\EditView;
+use Windwalker\String\Utf8String;
 
 /**
  * The PostHtmlView class.

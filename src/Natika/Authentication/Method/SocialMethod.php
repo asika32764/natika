@@ -23,21 +23,6 @@ use Windwalker\Warder\WarderPackage;
 class SocialMethod extends \Windwalker\Warder\Authentication\Method\SocialMethod
 {
 	/**
-	 * getHAConfig
-	 *
-	 * @return  array
-	 */
-	protected function getHAConfig()
-	{
-		$config = parent::getHAConfig();
-
-		$config['providers']['GitHub']['wrapper']['path'] = WINDWALKER_VENDOR . '/hybridauth/hybridauth/additional-providers/hybridauth-github/Providers/GitHub.php';
-		$config['providers']['GitHub']['wrapper']['class'] = 'Hybrid_Providers_GitHub';
-
-		return $config;
-	}
-
-	/**
 	 * postAuthenticate
 	 *
 	 * @param UserData                 $user
@@ -50,31 +35,10 @@ class SocialMethod extends \Windwalker\Warder\Authentication\Method\SocialMethod
 	protected function postAuthenticate(UserData $user, Data $socialMapping, Credential $credential,
 		\Hybrid_Provider_Adapter $adapter)
 	{
-//		unset($credential->username);
-//
-//		$user->bind($credential);
-//		$user->id = $socialMapping->user_id;
-//
-//		User::save($user);
-	}
+		unset($credential->username);
 
-	/**
-	 * processGitHub
-	 *
-	 * @param \Hybrid_Provider_Adapter $adapter
-	 * @param Credential               $credential
-	 *
-	 * @return  Credential
-	 */
-	protected function processGitHub(\Hybrid_Provider_Adapter $adapter, Credential $credential)
-	{
-		$credential = parent::processGitHub($adapter, $credential);
+		$user->bind($credential);
 
-		$userProfile = $adapter->getUserProfile();
-
-		$credential->avatar = $userProfile->photoURL;
-		$credential->params = json_encode(array('profile_url' => $userProfile->profileURL));
-
-		return $credential;
+		User::save($user);
 	}
 }
