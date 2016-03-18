@@ -63,6 +63,18 @@ Asset::addScript('js/category.js');
                     <span class="fa fa-trash"></span>
                     Delete This Category
                 </button>
+
+                    @if ($isWatch)
+                        <a class="btn btn-default active pull-right hasTooltip"  title="You are watching this category. Click to stop watching."
+                            href="{{ $router->html('notification', ['target_id' => $currentCategory->id, 'type' => 'category', '_method' => 'DELETE', 'return' => base64_encode($uri['full'])]) }}">
+                            <span class="fa fa-eye"></span>
+                        </a>
+                    @else
+                        <a class="btn btn-default pull-right hasTooltip" title="Click to watch this category"
+                            href="{{ $router->html('notification', ['target_id' => $currentCategory->id, 'type' => 'category', '_method' => 'POST', 'return' => base64_encode($uri['full'])]) }}">
+                            <span class="fa fa-eye-slash"></span>
+                        </a>
+                    @endif
                 @endif
             </div>
         </div>

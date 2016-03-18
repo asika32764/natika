@@ -5,6 +5,7 @@ use Phoenix\Script\PhoenixScript;
 
 PhoenixScript::core('#admin-form');
 EditorScript::highlight('.topic-post pre');
+    \Phoenix\Script\BootstrapScript::tooltip();
 ?>
 
 @extends('_global.html')
@@ -93,6 +94,25 @@ Topic
                         <div class="panel-body markdown-body">
                             {!! $post->body !!}
                         </div>
+
+                        @if ($user->isMember() && $post->primary)
+
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                @if ($isWatch)
+                                    <a class="btn btn-default active hasTooltip" title="You are watching this topic. Click to stop watching."
+                                        href="{{ $router->html('notification', ['target_id' => $topic->id, 'type' => 'topic', '_method' => 'DELETE', 'return' => base64_encode($uri['full'])]) }}">
+                                        <span class="fa fa-eye"></span>
+                                    </a>
+                                @else
+                                    <a class="btn btn-default hasTooltip" title="Click to watch this topic"
+                                        href="{{ $router->html('notification', ['target_id' => $topic->id, 'type' => 'topic', '_method' => 'POST', 'return' => base64_encode($uri['full'])]) }}">
+                                        <span class="fa fa-eye-slash"></span>
+                                    </a>
+                                @endif
+                            </li>
+                        </ul>
+                        @endif
                     </div>
                 </div>
 

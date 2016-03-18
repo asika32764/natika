@@ -53,3 +53,7 @@ article:
         id: \d+
     extra:
         layout: article
+
+notification:
+    pattern: /notification(/id)
+    controller: Notification

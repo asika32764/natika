@@ -128,9 +128,12 @@ class SaveController extends \Phoenix\Controller\SaveController
 	 */
 	protected function sendMail($topic, $data)
 	{
-		$notifications = Notification::getNotifications('topic', $topic->id);
+		$topicNotifies = Notification::getNotifications('topic', $topic->id);
+		$catNotifies = Notification::getNotifications('category', $topic->category_id);
 
-		if ($notifications->isNull())
+		$notifications = array_merge($topicNotifies->email, $catNotifies->email);
+
+		if (!count($notifications))
 		{
 			return;
 		}
@@ -148,7 +151,7 @@ class SaveController extends \Phoenix\Controller\SaveController
 
 		foreach ($notifications as $notification)
 		{
-			$message->addTo($notification->email);
+			$message->addTo($notification);
 		}
 
 		SwiftMailer::send($message);

@@ -46,21 +46,23 @@ class CreateUserCommand extends Command
 	 */
 	protected function doExecute()
 	{
-		$name = (new NotNullPrompter)->ask('Full Name: ');
+		$this->out()->out('Create Admin User...');
 
-		$username = (new NotNullPrompter)->ask('username: ');
+		$name = (new NotNullPrompter)->ask("Full Name: \n") or $this->app->close();
+
+		$username = (new NotNullPrompter)->ask("username: \n") or $this->app->close();
 
 		$email = (new ValidatePrompter)->setHandler(function ($value)
 		{
 			return (new EmailValidator)->validate($value);
-		})->ask('Email: ');
+		})->ask("Email: \n") or $this->app->close();
 
-		$password = (new PasswordPrompter)->ask('Password: ');
+		$password = (new PasswordPrompter)->ask("Password: \n") or $this->app->close();
 
 		$password2 = (new PasswordPrompter)->setHandler(function($value) use ($password)
 		{
 			return $password = $value;
-		})->ask('Password Again: ');
+		})->ask("Password Again: \n") or $this->app->close();
 
 		$data = new UserData(array(
 			'name'     => $name,
@@ -68,7 +70,8 @@ class CreateUserCommand extends Command
 			'email'    => $email,
 			'password' => $password,
 			'password2' => $password2,
-			'group' => UserHelper::GROUP_ADMIN
+			'group' => UserHelper::GROUP_ADMIN,
+			'blocked' => 0
 		));
 
 		(new UserModel)->register($data);

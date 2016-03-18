@@ -9,8 +9,10 @@
 namespace Forum\View\Category;
 
 use Forum\Helper\BreadcrumbHelper;
+use Forum\Notification\Notification;
 use Phoenix\Html\HtmlHeader;
 use Phoenix\View\AbstractPhoenixHtmView;
+use Windwalker\Core\Authentication\User;
 use Windwalker\Registry\Registry;
 use Windwalker\String\Utf8String;
 
@@ -49,6 +51,9 @@ class CategoryHtmlView extends AbstractPhoenixHtmView
 		{
 			$topic->last_user_params = new Registry($topic->last_user_params);
 		}
+
+		$user = User::get();
+		$data->isWatch = Notification::getNotification('category', $data->currentCategory->id, $user->id)->notNull();
 
 		if ($data->currentCategory->id != 1)
 		{

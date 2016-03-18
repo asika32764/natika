@@ -74,29 +74,23 @@ class StarterInstaller
 		$etc = __DIR__ . '/../../../etc';
 		$secret = Yaml::parse(file_get_contents($etc . '/secret.dist.yml'));
 
-		if ($io->askConfirmation("\nDo you want to use database? [Y/n]: ", false))
-		{
-			$io->write('');
-			$io->write('Database driver only support mysql/postgresql now.');
+		$driver = 'mysql';
+		$host   = $io->ask("Database host [localhost]: ", 'localhost');
+		$name   = $io->ask("Database name [acme]: ", 'acme');
+		$user   = $io->ask("Database user [root]: ", 'root');
+		$pass   = $io->askAndHideAnswer("Database password: ");
+		$prefix = $io->ask("Table prefix [wind_]: ", 'wind_');
 
-			$driver = $io->ask("Database driver [mysql]: ", 'mysql');;
-			$host   = $io->ask("Database host [localhost]: ", 'localhost');
-			$name   = $io->ask("Database name [acme]: ", 'acme');
-			$user   = $io->ask("Database user [root]: ", 'root');
-			$pass   = $io->askAndHideAnswer("Database password: ");
-			$prefix = $io->ask("Table prefix [wind_]: ", 'wind_');
+		$secret['database'] = array(
+			'driver'   => $driver,
+			'host'     => $host,
+			'user'     => $user,
+			'password' => $pass,
+			'name'     => $name,
+			'prefix'   => $prefix
+		);
 
-			$secret['database'] = array(
-				'driver'   => $driver,
-				'host'     => $host,
-				'user'     => $user,
-				'password' => $pass,
-				'name'     => $name,
-				'prefix'   => $prefix
-			);
-		}
-
-		file_put_contents($etc . '/secret.yml', Yaml::dump($secret));
+		file_put_contents($etc . '/secret.yml', Yaml::dump($secret, 4));
 
 		$io->write('');
 		$io->write('Database config setting complete.');

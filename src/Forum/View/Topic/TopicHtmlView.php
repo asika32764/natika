@@ -9,9 +9,11 @@
 namespace Forum\View\Topic;
 
 use Forum\Helper\BreadcrumbHelper;
+use Forum\Notification\Notification;
 use Natika\Markdown\Markdown;
 use Phoenix\Html\HtmlHeader;
 use Phoenix\View\ItemView;
+use Windwalker\Core\Authentication\User;
 use Windwalker\String\Utf8String;
 
 /**
@@ -41,6 +43,10 @@ class TopicHtmlView extends ItemView
 				$post->raw_body = $post->body;
 				$post->body = Markdown::render($post->body);
 			}
+
+			$user = User::get();
+
+			$data->isWatch = Notification::getNotification('topic', $this['topic']->id, $user->id)->notNull();
 
 			$this->setTitle($data->topic->title);
 		}
