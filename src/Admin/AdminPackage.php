@@ -15,6 +15,7 @@ use Phoenix\Form\FieldDefinitionResolver;
 use Phoenix\Language\TranslatorHelper;
 use Phoenix\Record\RecordResolver;
 use Phoenix\Script\BootstrapScript;
+use Phoenix\Uri\Uri;
 use Symfony\Component\Yaml\Yaml;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Debugger\Helper\DebuggerHelper;
@@ -23,6 +24,7 @@ use Windwalker\Filesystem\File;
 use Windwalker\Filesystem\Folder;
 use Windwalker\Form\FieldHelper;
 use Windwalker\Form\ValidatorHelper;
+use Windwalker\Warder\Helper\UserHelper;
 use Windwalker\Warder\Helper\WarderHelper;
 
 if (!defined('ADMIN_ROOT'))
@@ -82,7 +84,10 @@ class AdminPackage extends AbstractPackage
 	 */
 	protected function checkAccess()
 	{
-
+		if (!UserHelper::authorise())
+		{
+			UserHelper::goToLogin(Uri::full());
+		}
 	}
 
 	/**
