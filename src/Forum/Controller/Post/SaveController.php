@@ -8,10 +8,14 @@
 
 namespace Forum\Controller\Post;
 
+use Forum\Notification\Notification;
 use Natika\User\UserHelper;
+use Phoenix\Html\HtmlHeader;
+use Phoenix\Mail\SwiftMailer;
 use Windwalker\Core\Authentication\User;
 use Windwalker\Core\DateTime\DateTime;
 use Windwalker\Core\Model\Exception\ValidFailException;
+use Windwalker\Core\Router\Router;
 use Windwalker\Data\Data;
 use Windwalker\Record\NestedRecord;
 use Windwalker\Record\Record;
@@ -106,6 +110,48 @@ class SaveController extends \Phoenix\Controller\SaveController
 
 			$this->category->store();
 		}
+
+		// Mail
+		$this->sendMail($topic, $data);
+
+		// Add Notification
+		Notification::addNotification('topic', $topic->id, $topic->user_id);
+	}
+
+	/**
+	 * sendMail
+	 *
+	 * @param Record $topic
+	 * @param Data   $data
+	 *
+	 * @return  void
+	 */
+	protected function sendMail($topic, $data)
+	{
+		$notifications = Notification::getNotifications('topic', $topic->id);
+
+		if ($notifications->isNull())
+		{
+			return;
+		}
+
+		$view = $this->getView('Mail');
+
+		$view['topic'] = $topic;
+		$view['siteName'] = HtmlHeader::getSiteName();
+		$view['link'] = $this->getSuccessRedirect($data);
+
+		$body = $view->setLayout('new-post')->render();
+
+		$message = SwiftMailer::newMessage('A new reply for topic: ' . $topic->title)
+			->setBody($body);
+
+		foreach ($notifications as $notification)
+		{
+			$message->addTo($notification->email);
+		}
+
+		SwiftMailer::send($message);
 	}
 
 	/**
@@ -165,7 +211,7 @@ class SaveController extends \Phoenix\Controller\SaveController
 
 		$page = floor(($post->ordering / $limit) + 1);
 
-		return $this->router->http('topic', array($this->pkName => $data->topic_id, 'path' => $this->category->path, 'page' => $page)) . '#reply-' . $post->id;
+		return $this->router->http('topic', array($this->pkName => $data->topic_id, 'path' => $this->category->path, 'page' => $page), Router::TYPE_FULL) . '#reply-' . $post->id;
 	}
 
 	/**

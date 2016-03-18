@@ -10,6 +10,7 @@ namespace Forum\Controller\Topic;
 
 use Admin\Record\CategoryRecord;
 use Forum\Model\PostModel;
+use Forum\Notification\Notification;
 use Natika\User\UserHelper;
 use Windwalker\Core\Model\Exception\ValidFailException;
 use Windwalker\Data\Data;
@@ -101,6 +102,9 @@ class SaveController extends \Phoenix\Controller\SaveController
 		$post = $controller->getPost();
 
 		$data->last_reply_post = $post->id;
+
+		// Add Notification
+		Notification::addNotification('topic', $data->id, $data->user_id);
 	}
 
 	/**
