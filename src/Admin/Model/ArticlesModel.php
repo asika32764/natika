@@ -9,6 +9,7 @@
 namespace Admin\Model;
 
 use Lyrasoft\Luna\Table\LunaTable;
+use Windwalker\Warder\Table\WarderTable;
 
 /**
  * The ArticlesModel class.
@@ -24,6 +25,7 @@ class ArticlesModel extends \Lyrasoft\Luna\Admin\Model\ArticlesModel
 	 */
 	protected function configureTables()
 	{
-		$this->addTable('article', LunaTable::ARTICLES);
+		$this->addTable('article', LunaTable::ARTICLES)
+			->addTable('user', WarderTable::USERS, 'user.id = article.created_by');
 	}
 }
