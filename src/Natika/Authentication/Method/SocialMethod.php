@@ -37,6 +37,8 @@ class SocialMethod extends \Windwalker\Warder\Authentication\Method\SocialMethod
 	{
 		unset($credential->username);
 
+		$user->id = $socialMapping->user_id;
+
 		$user->bind($credential);
 
 		User::save($user);

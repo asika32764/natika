@@ -142,5 +142,6 @@ if (is_file(WINDWALKER_PUBLIC . '/media/css/custom.css'))
 
     {!! \Phoenix\Asset\Asset::renderScripts(true) !!}
     @yield('script')
+{!! \Phoenix\Asset\Asset::getTemplate()->renderTemplates() !!}
 </body>
 </html>
