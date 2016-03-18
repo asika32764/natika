@@ -4,9 +4,53 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f94f83160d1c37d723e30917b6461c60",
-    "content-hash": "7fd4706ea961f22e446416ba772c21bf",
+    "hash": "4159ea751fd4d3529b2da88b89ba54ff",
+    "content-hash": "5f0d9f05833cd97e9a639e60d3c13298",
     "packages": [
+        {
+            "name": "adyg/php-imgur-api-client",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Adyg/php-imgur-api-client.git",
+                "reference": "9b617984faf66bde400d028289c3794529cbbc99"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Adyg/php-imgur-api-client/zipball/9b617984faf66bde400d028289c3794529cbbc99",
+                "reference": "9b617984faf66bde400d028289c3794529cbbc99",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "guzzle/guzzle": ">=3.7",
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Imgur\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrian Ghiuta",
+                    "email": "adrian.ghiuta@gmail.com",
+                    "homepage": "http://adyg.github.com"
+                }
+            ],
+            "description": "Imgur API v3 client",
+            "homepage": "https://github.com/Adyg/php-imgur-api-client",
+            "keywords": [
+                "api",
+                "imgur"
+            ],
+            "time": "2014-02-18 13:57:27"
+        },
         {
             "name": "asika/muse",
             "version": "1.0.1",
@@ -362,6 +406,101 @@
                 "image"
             ],
             "time": "2015-05-30 19:24:37"
+        },
+        {
+            "name": "guzzle/guzzle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle3.git",
+                "reference": "b3f5050cb6270c7a728a0b74ac2de50a262b3e02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle3/zipball/b3f5050cb6270c7a728a0b74ac2de50a262b3e02",
+                "reference": "b3f5050cb6270c7a728a0b74ac2de50a262b3e02",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.3",
+                "symfony/event-dispatcher": "~2.1"
+            },
+            "replace": {
+                "guzzle/batch": "self.version",
+                "guzzle/cache": "self.version",
+                "guzzle/common": "self.version",
+                "guzzle/http": "self.version",
+                "guzzle/inflection": "self.version",
+                "guzzle/iterator": "self.version",
+                "guzzle/log": "self.version",
+                "guzzle/parser": "self.version",
+                "guzzle/plugin": "self.version",
+                "guzzle/plugin-async": "self.version",
+                "guzzle/plugin-backoff": "self.version",
+                "guzzle/plugin-cache": "self.version",
+                "guzzle/plugin-cookie": "self.version",
+                "guzzle/plugin-curlauth": "self.version",
+                "guzzle/plugin-error-response": "self.version",
+                "guzzle/plugin-history": "self.version",
+                "guzzle/plugin-log": "self.version",
+                "guzzle/plugin-md5": "self.version",
+                "guzzle/plugin-mock": "self.version",
+                "guzzle/plugin-oauth": "self.version",
+                "guzzle/service": "self.version",
+                "guzzle/stream": "self.version"
+            },
+            "require-dev": {
+                "doctrine/cache": "~1.3",
+                "monolog/monolog": "~1.0",
+                "phpunit/phpunit": "3.7.*",
+                "psr/log": "~1.0",
+                "symfony/class-loader": "~2.1",
+                "zendframework/zend-cache": "2.*,<2.3",
+                "zendframework/zend-log": "2.*,<2.3"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "Guzzle 5 has moved to a new package name. The package you have installed, Guzzle 3, is deprecated."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.9-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Guzzle": "src/",
+                    "Guzzle\\Tests": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Guzzle Community",
+                    "homepage": "https://github.com/guzzle/guzzle/contributors"
+                }
+            ],
+            "description": "PHP HTTP client. This library is deprecated in favor of https://packagist.org/packages/guzzlehttp/guzzle",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "rest",
+                "web service"
+            ],
+            "time": "2015-04-29 17:06:53"
         },
         {
             "name": "hybridauth/hybridauth",
@@ -749,12 +888,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lyrasoft/luna.git",
-                "reference": "8ae3fb0401f584f9523522a8dd2f2328fe1b5ba9"
+                "reference": "a430c3e2d1235aa6c06f47c90d92421de3dd233d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lyrasoft/luna/zipball/8ae3fb0401f584f9523522a8dd2f2328fe1b5ba9",
-                "reference": "8ae3fb0401f584f9523522a8dd2f2328fe1b5ba9",
+                "url": "https://api.github.com/repos/lyrasoft/luna/zipball/a430c3e2d1235aa6c06f47c90d92421de3dd233d",
+                "reference": "a430c3e2d1235aa6c06f47c90d92421de3dd233d",
                 "shasum": ""
             },
             "require": {
@@ -780,7 +919,7 @@
             ],
             "description": "A CMF package for Windwalker.",
             "homepage": "https://github.com/lyrasoft/luna",
-            "time": "2016-03-16 15:21:58"
+            "time": "2016-03-18 03:46:00"
         },
         {
             "name": "lyrasoft/unidev",
@@ -1083,6 +1222,66 @@
             "time": "2016-01-03 15:42:47"
         },
         {
+            "name": "symfony/event-dispatcher",
+            "version": "2.8.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/event-dispatcher.git",
+                "reference": "47d2d8cade9b1c3987573d2943bb9352536cdb87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/47d2d8cade9b1c3987573d2943bb9352536cdb87",
+                "reference": "47d2d8cade9b1c3987573d2943bb9352536cdb87",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/config": "~2.0,>=2.0.5|~3.0.0",
+                "symfony/dependency-injection": "~2.6|~3.0.0",
+                "symfony/expression-language": "~2.6|~3.0.0",
+                "symfony/stopwatch": "~2.3|~3.0.0"
+            },
+            "suggest": {
+                "symfony/dependency-injection": "",
+                "symfony/http-kernel": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\EventDispatcher\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony EventDispatcher Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-03-07 14:04:32"
+        },
+        {
             "name": "symfony/finder",
             "version": "dev-master",
             "source": {
@@ -1304,6 +1503,43 @@
             "time": "2016-03-04 07:54:35"
         },
         {
+            "name": "tpyo/amazon-s3-php-class",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tpyo/amazon-s3-php-class.git",
+                "reference": "928bb511739c7fe419cbe78a2408624f1a6f66af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tpyo/amazon-s3-php-class/zipball/928bb511739c7fe419cbe78a2408624f1a6f66af",
+                "reference": "928bb511739c7fe419cbe78a2408624f1a6f66af",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "S3.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Donovan Schönknecht",
+                    "email": "don@tpyo.net"
+                }
+            ],
+            "description": "A standalone Amazon S3 (REST) client for PHP 5.2.x using CURL that does not require PEAR.",
+            "homepage": "https://github.com/tpyo/amazon-s3-php-class",
+            "time": "2015-10-25 12:22:27"
+        },
+        {
             "name": "windwalker/core",
             "version": "dev-master",
             "source": {
@@ -1489,12 +1725,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ventoviro/warder.git",
-                "reference": "cddd976d6c7248cba5ce1c45a11ca536cae362ac"
+                "reference": "b4a19ef4f440db2389851f1a7fef731e0eac839e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ventoviro/warder/zipball/cddd976d6c7248cba5ce1c45a11ca536cae362ac",
-                "reference": "cddd976d6c7248cba5ce1c45a11ca536cae362ac",
+                "url": "https://api.github.com/repos/ventoviro/warder/zipball/b4a19ef4f440db2389851f1a7fef731e0eac839e",
+                "reference": "b4a19ef4f440db2389851f1a7fef731e0eac839e",
                 "shasum": ""
             },
             "require": {
@@ -1520,7 +1756,7 @@
             ],
             "description": "A use package for Windwalker.",
             "homepage": "https://github.com/ventoviro/windwlaker-warder",
-            "time": "2016-03-17 17:28:21"
+            "time": "2016-03-18 03:46:23"
         }
     ],
     "packages-dev": [],

@@ -10,6 +10,7 @@ namespace Forum;
 
 use Forum\Listener\ForumListener;
 use Forum\User\UserHandler;
+use Lyrasoft\Unidev\Listener\UnidevRoutingListener;
 use Phoenix\Asset\Asset;
 use Phoenix\Html\Document;
 use Phoenix\Html\HtmlHeader;
@@ -49,6 +50,8 @@ class ForumPackage extends AbstractPackage
 	public function registerListeners(Dispatcher $dispatcher)
 	{
 		parent::registerListeners($dispatcher);
+
+		$dispatcher->addListener(new UnidevRoutingListener);
 	}
 
 	/**

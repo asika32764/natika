@@ -79,7 +79,7 @@ if (is_file(WINDWALKER_PUBLIC . '/media/css/custom.css'))
                     </li>
                     @else
                     <li>
-                        <a href="{{ $router->html('profile') }}" target="_blank">
+                        <a href="{{ $router->html('profile') }}">
                             <img height="18px" style="border-radius: 50%;" src="{{ $user->avatar }}" alt="Avatar">
                             {{ $user['name'] }}
                         </a>
