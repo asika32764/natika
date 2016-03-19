@@ -8,9 +8,11 @@
 
 namespace Windwalker\Web;
 
+use Symfony\Component\Yaml\Yaml;
 use Windwalker\Core\Application\WebApplication;
 use Windwalker\Core\Provider;
 use Windwalker\DI\ServiceProviderInterface;
+use Windwalker\Filesystem\Folder;
 use Windwalker\Ioc;
 use Windwalker\Listener\SystemListener;
 use Windwalker\Registry\Registry;
@@ -157,6 +159,18 @@ class Application extends WebApplication
 	 */
 	protected function loadRoutingConfiguration()
 	{
-		return Windwalker::loadRouting();
+		$routes = Windwalker::loadRouting();
+
+		$packages = (array) $this->get('package');
+
+		foreach ($packages as $name => $class)
+		{
+			$routes[$name] = array(
+				'pattern' => '/' . $name,
+				'package' => $name
+			);
+		}
+
+		return $routes;
 	}
 }
