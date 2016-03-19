@@ -11,6 +11,7 @@ namespace Windwalker\Web;
 use Windwalker\Core\Application\WebApplication;
 use Windwalker\Core\Provider;
 use Windwalker\DI\ServiceProviderInterface;
+use Windwalker\Ioc;
 use Windwalker\Listener\SystemListener;
 use Windwalker\Registry\Registry;
 use Windwalker\User\UserPackage;
@@ -56,6 +57,7 @@ class Application extends WebApplication
 		 * set it in Windwalker\Windwalker object.
 		 */
 		$providers = array_merge(parent::loadProviders(), Windwalker::loadProviders());
+		$providers = array_merge($providers, (array) Ioc::getConfig()->get('providers'));
 
 		/*
 		 * Default Providers:
@@ -103,6 +105,7 @@ class Application extends WebApplication
 		 * set it in Windwalker\Windwalker object.
 		 */
 		$packages = array_merge(parent::loadPackages(), Windwalker::loadPackages());
+		$packages = array_merge($packages, (array) Ioc::getConfig()->get('packages'));
 
 		/*
 		 * Get Packages for This Application
