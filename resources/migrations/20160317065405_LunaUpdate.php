@@ -24,21 +24,19 @@ class LunaUpdate extends AbstractMigration
 	 */
 	public function up()
 	{
-		$this->getTable(LunaTable::CATEGORIES, function (Schema $sc)
+		$this->updateTable(LunaTable::CATEGORIES, function (Schema $schema)
 		{
-			$sc->addColumn('type', new Column\Varchar)->position('AFTER path');
-		})->update();
+			$schema->varchar('type')->position('AFTER path');
+		})->changeColumn('images', 'image');
 
-		$this->db->getTable(LunaTable::CATEGORIES, true)->changeColumn('images', 'image');
-
-		$this->getTable(LunaTable::ARTICLES, function (Schema $sc)
+		$this->updateTable(LunaTable::ARTICLES, function (Schema $schema)
 		{
-			$sc->addColumn('short_title', new Column\Varchar)->position('AFTER alias');
-			$sc->addColumn('url', new Column\Varchar)->position('AFTER short_title');
-			$sc->addColumn('icon', new Column\Varchar)->position('AFTER url');
-		})->update();
+			$schema->varchar('short_title')->position('AFTER alias');
+			$schema->varchar('url')->position('AFTER short_title');
+			$schema->varchar('icon')->position('AFTER url');
+		});
 
-		$this->db->getTable(Table::NOTIFICATIONS, true)
+		$this->getTable(Table::NOTIFICATIONS)
 			->dropIndex('idx_notifications_topic_id')
 			->changeColumn('topic_id', 'target_id', DataType::INTEGER, false, false, 0)
 			->addIndex(Key::TYPE_INDEX, 'idx_notifications_target_id', 'target_id')
@@ -72,9 +70,13 @@ class LunaUpdate extends AbstractMigration
 	 */
 	public function down()
 	{
-		$this->getTable(LunaTable::CATEGORIES)->dropColumn('type')
+		$this->getTable(LunaTable::CATEGORIES)
+			->dropColumn('type')
 			->changeColumn('image', 'images');
 
-		$this->getTable(LunaTable::ARTICLES)->dropColumn('url')->dropColumn('icon');
+		$this->getTable(LunaTable::ARTICLES)
+			->dropColumn('short_title')
+			->dropColumn('url')
+			->dropColumn('icon');
 	}
 }
