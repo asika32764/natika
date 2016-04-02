@@ -3,7 +3,7 @@
     "description": "Natika Forum",
     "homepage": "https://github.com/ventoviro/windwalker",
     "license": "GNU Lesser General Public License",
-    "minimum-stability": "dev",
+    "minimum-stability": "beta",
     "authors": [
         {
             "name": "Simon Asika",

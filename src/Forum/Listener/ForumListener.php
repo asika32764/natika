@@ -10,6 +10,7 @@ namespace Forum\Listener;
 
 use Lyrasoft\Luna\Admin\DataMapper\ArticleMapper;
 use Windwalker\Core\Authentication\User;
+use Windwalker\Core\Renderer\RendererHelper;
 use Windwalker\Core\Router\Router;
 use Windwalker\Event\Event;
 use Windwalker\Ioc;
@@ -46,8 +47,9 @@ class ForumListener
 		// Template
 		$config = Ioc::getConfig();
 
-		$paths = $event['view']->getRenderer()->getPaths();
-
-		$paths->insert(WINDWALKER_TEMPLATES . '/theme/' . $config['theme'] . '/' . $event['view']->getName(), Priority::HIGH);
+		if ($config['natika.theme'])
+		{
+			$event['view']->getRenderer()->addPath(WINDWALKER_TEMPLATES . '/theme/' . $config['natika.theme'] . '/' . $event['view']->getName(), Priority::HIGH);
+		}
 	}
 }
