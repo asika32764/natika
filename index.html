@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Natika by asika32764</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Natika</h1>
+      <h2 class="project-tagline">Simple PHP Forum for Developers</h2>
+      <a href="https://github.com/asika32764/natika" class="btn">View on GitHub</a>
+      <a href="https://github.com/asika32764/natika/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/asika32764/natika/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="natika-forum" class="anchor" href="#natika-forum" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Natika Forum</h1>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1639206/14224723/2be048b0-f8d9-11e5-8e14-0ebf5c3a03a4.jpg" alt="p-2016-04-02-001"></p>
+
+<p>Simple PHP Forum system for developers.</p>
+
+<h2>
+<a id="installation-via-composer" class="anchor" href="#installation-via-composer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation Via Composer</h2>
+
+<div class="highlight highlight-source-shell"><pre>composer create-project asika/natika natika <span class="pl-k">*</span>
+
+<span class="pl-c1">cd</span> natika/</pre></div>
+
+<p>After composer installed, Natika will help you set some basic settings to enable site and create admin user.</p>
+
+<h3>
+<a id="other-commands" class="anchor" href="#other-commands" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Other Commands</h3>
+
+<p>If you want to test with fake data, you can add seeders by </p>
+
+<div class="highlight highlight-source-shell"><pre>php natika migration reset --seed</pre></div>
+
+<p>Create a new admin user</p>
+
+<div class="highlight highlight-source-shell"><pre>php natika create-user</pre></div>
+
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<p>Use your root user to login Natika. You can create category by click <code>New Category</code> button.</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1639206/14224754/4758401a-f8da-11e5-87ad-6485b9d31a2e.jpg" alt="p-2016-04-02-002"></p>
+
+<p>Fill category information, icon uses <a href="https://fortawesome.github.io/Font-Awesome/icons/">Font Awesome</a> classes.</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1639206/14224763/66200a32-f8da-11e5-952e-dcf60566cb86.jpg" alt="p-2016-04-02-003"></p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1639206/14224764/68c69a3a-f8da-11e5-9bfc-c9ff2b958e30.jpg" alt="p-2016-04-02-004"></p>
+
+<blockquote>
+<p>If you want to use image as category icon, you must go to admin. </p>
+</blockquote>
+
+<p>Create &amp; edit topics.</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1639206/14226411/0aaf950c-f914-11e5-88a3-d6594b828f05.jpg" alt="p-2016-04-02-012"></p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1639206/14226412/0ab1dc4a-f914-11e5-9eaf-506a1ec76793.jpg" alt="p-2016-04-02-014"></p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1639206/14226413/0ab58034-f914-11e5-9599-1338048865db.jpg" alt="p-2016-04-02-013"></p>
+
+<h2>
+<a id="admin" class="anchor" href="#admin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Admin</h2>
+
+<p>Go to <code>http://{your.site}/admin</code>, and login with admin account.</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1639206/14224781/3ccae25a-f8db-11e5-851a-b195b8177ce0.jpg" alt="p-2016-04-02-005"></p>
+
+<h2>
+<a id="category-edit" class="anchor" href="#category-edit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Category Edit</h2>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1639206/14224782/3ef7e06e-f8db-11e5-84b2-4fd55c04cf09.jpg" alt="p-2016-04-02-007"></p>
+
+<h2>
+<a id="article-edit" class="anchor" href="#article-edit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Article Edit</h2>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1639206/14226340/3d810c60-f912-11e5-9956-308239980656.jpg" alt="p-2016-04-02-009"></p>
+
+<p>Article will display on frontend top menu. If you fill the URL input, menu item will be an external link.</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1639206/14226353/7cad4534-f912-11e5-99f6-eb1e794baaa4.jpg" alt="p-2016-04-02-010"></p>
+
+<p>You can drag &amp; drop images to upload.</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1639206/14226395/b22dd0ec-f913-11e5-8591-34daafcbdecd.jpg" alt="p-2016-04-02-008"></p>
+
+<h2>
+<a id="config" class="anchor" href="#config" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Config</h2>
+
+<p>Open <code>etc/secret.yml</code>, there are some basic settings which you can change.</p>
+
+<h3>
+<a id="site-metadata" class="anchor" href="#site-metadata" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Site Metadata</h3>
+
+<div class="highlight highlight-source-yaml"><pre><span class="pl-s"><span class="pl-ent">natika:</span></span>
+    <span class="pl-s"><span class="pl-ent">site_name:</span> <span class="pl-s">Natika</span></span>
+    <span class="pl-s"><span class="pl-ent">metadata:</span></span>
+        <span class="pl-s"><span class="pl-ent">description:</span></span>
+        <span class="pl-s"><span class="pl-ent">'og:description':</span></span>
+        <span class="pl-s"><span class="pl-ent">'og:image':</span></span>
+    <span class="pl-s"><span class="pl-ent">banner:</span></span>
+        <span class="pl-s"><span class="pl-ent">default:</span> </span><span class="pl-c"># Banner title</span>
+    <span class="pl-s"><span class="pl-ent">theme:</span> </span><span class="pl-c"># Your custom theme</span></pre></div>
+
+<h3>
+<a id="mail-settings" class="anchor" href="#mail-settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mail Settings</h3>
+
+<div class="highlight highlight-source-yaml"><pre><span class="pl-s"><span class="pl-ent">mail:</span></span>
+    <span class="pl-s"><span class="pl-ent">from:</span></span>
+        <span class="pl-s"><span class="pl-ent">email:</span> <span class="pl-s">norply@domain.com</span></span>
+        <span class="pl-s"><span class="pl-ent">name:</span> <span class="pl-s">Natika Forum</span></span>
+    <span class="pl-s"><span class="pl-ent">transport:</span> <span class="pl-s">smtp </span></span><span class="pl-c"># smtp / sendmail or php</span>
+
+    <span class="pl-c"># SMTP setting</span>
+    <span class="pl-s"><span class="pl-ent">host:</span> <span class="pl-s">mailtrap.io</span></span>
+    <span class="pl-s"><span class="pl-ent">username:</span></span>
+    <span class="pl-s"><span class="pl-ent">password:</span></span>
+    <span class="pl-s"><span class="pl-ent">security:</span> <span class="pl-s">tls</span></span>
+    <span class="pl-c1"><span class="pl-ent">port:</span> 2525</span></pre></div>
+
+<h3>
+<a id="cloud-image-storage" class="anchor" href="#cloud-image-storage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cloud Image Storage</h3>
+
+<div class="highlight highlight-source-yaml"><pre><span class="pl-s"><span class="pl-ent">unidev:</span></span>
+    <span class="pl-s"><span class="pl-ent">image:</span></span>
+        <span class="pl-s"><span class="pl-ent">storage:</span> <span class="pl-s">s3 </span></span><span class="pl-c"># s3 or imgur</span>
+
+        <span class="pl-c"># Auto resize image</span>
+        <span class="pl-s"><span class="pl-ent">resize:</span></span>
+            <span class="pl-s"><span class="pl-ent">enabled:</span> <span class="pl-s">true</span></span>
+            <span class="pl-c1"><span class="pl-ent">width:</span> 1200</span>
+            <span class="pl-c1"><span class="pl-ent">height:</span> 1200</span>
+            <span class="pl-s"><span class="pl-ent">crop:</span> <span class="pl-s">false</span></span>
+            <span class="pl-c1"><span class="pl-ent">quality:</span> 85</span>
+
+    <span class="pl-c"># API information</span>
+    <span class="pl-s"><span class="pl-ent">amazon:</span></span>
+        <span class="pl-s"><span class="pl-ent">key:</span></span>
+        <span class="pl-s"><span class="pl-ent">secret:</span></span>
+        <span class="pl-s"><span class="pl-ent">bucket:</span></span>
+        <span class="pl-s"><span class="pl-ent">subfolder:</span></span>
+        <span class="pl-s"><span class="pl-ent">endpoint:</span></span>
+        <span class="pl-s"><span class="pl-ent">region:</span></span>
+    <span class="pl-s"><span class="pl-ent">imgur:</span></span>
+        <span class="pl-s"><span class="pl-ent">key:</span></span>
+        <span class="pl-s"><span class="pl-ent">secret:</span></span></pre></div>
+
+<h2>
+<a id="customize-theme" class="anchor" href="#customize-theme" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Customize Theme</h2>
+
+<p>See <a href="docs/customize.md">Customize Document</a></p>
+
+<h2>
+<a id="social-login" class="anchor" href="#social-login" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Social Login</h2>
+
+<p>See <a href="docs/social-login.md">Social Login Document</a></p>
+
+<h2>
+<a id="development" class="anchor" href="#development" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Development</h2>
+
+<p>Natika based on these packages:</p>
+
+<ul>
+<li><a href="http://windwalker.io/">Windwalker Framework</a></li>
+<li><a href="http://phoenix.windwalker.io/">Phoenix RAD</a></li>
+<li><a href="https://github.com/ventoviro/warder">Warder User Package</a></li>
+<li><a href="https://github.com/lyrasoft/luna/">Luna CMF Package</a></li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/asika32764/natika">Natika</a> is maintained by <a href="https://github.com/asika32764">asika32764</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
