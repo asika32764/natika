@@ -9,6 +9,7 @@
 namespace Admin\Model;
 
 use Phoenix\Model\AdminModel;
+use Windwalker\Core\Object\NullObject;
 use Windwalker\Data\Data;
 use Windwalker\Record\Record;
 
@@ -80,5 +81,17 @@ class DashboardModel extends AdminModel
 	public function setOrderPosition(Record $record, $position = self::ORDER_POSITION_LAST)
 	{
 		parent::setOrderPosition($record, $position);
+	}
+
+	/**
+	 * getRecord
+	 *
+	 * @param string $name
+	 *
+	 * @return  NullObject
+	 */
+	public function getRecord($name = null)
+	{
+		return new NullObject;
 	}
 }
