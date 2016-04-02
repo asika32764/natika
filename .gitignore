@@ -2,11 +2,14 @@
 .*
 !.gitignore
 !.gitkeep
+!.gitattributes
 !.htaccess
 
 # Development
 /vendor
 /media/css/custom.css
+/templates/theme
+!/templates/theme/.gitkeep
 
 #Windwalker
 /etc/secret.yml

@@ -97,6 +97,13 @@
             <textarea class="form-control input-lg" id="input-body" name="item[body]" placeholder="Your content here...">{{ $post->body }}</textarea>
         </div>
 
+        @if ($app->get('unidev.image.storage'))
+            <p class="text-muted">
+                <span class="fa fa-lightbulb-o"></span>
+                Drag & drop images to upload.
+            </p>
+        @endif
+
         @if (!empty($reply_button))
         <div class="post-buttons">
             <button class="btn btn-success btn-lg pull-right">Reply</button>
