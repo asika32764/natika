@@ -142,3 +142,12 @@ See [Customize Document](docs/customize.md)
 ## Social Login
 
 See [Social Login Document](docs/social-login.md)
+
+## Development
+
+Natika based on these packages:
+
+- [Windwalker Framework](http://windwalker.io/)
+- [Phoenix RAD](http://phoenix.windwalker.io/)
+- [Warder User Package](https://github.com/ventoviro/warder)
+- [Luna CMF Package](https://github.com/lyrasoft/luna/)
