@@ -16,9 +16,9 @@ Topic
 
 @section('banner_inner')
 
-    <h1>
+    <h1 title="topic-page-title">
         <span class="fa fa-bullhorn"></span>
-        {{ \Phoenix\Html\Document::getTitle() }}
+        {{ \Phoenix\Html\HtmlHeader::getTitle() }}
         @if (\Natika\User\UserHelper::canEditPost($posts[0]))
             <small><a href="" data-toggle="modal" data-target="#topicUpdateModal"><span class="fa fa-edit"></span></a></small>
         @endif
@@ -52,7 +52,7 @@ Topic
         <div class="topic-post-wrap left-line">
             <article class="topic-post row clearfix">
 
-                <div class="col-md-1">
+                <div class="col-md-1 post-avatar">
                     @if ($post->user_avatar)
                         <img class="post-img circle-icon icon-large" src="{{ $post->user_avatar }}" style="border: 1px solid rgba(0,0,0,.1)">
                     @else
@@ -60,17 +60,17 @@ Topic
                     @endif
                 </div>
 
-                <div class="col-md-11">
+                <div class="col-md-11 post-block">
                     <div class="panel {{ $post->primary ? 'panel-primary' : 'panel-default' }}">
                         <div class="panel-heading clearfix">
-                            <div class="pull-left">
+                            <div class="pull-left post-author">
                                 @if ($post->user_name)
                                     {{ $post->user_name }} &nbsp;<small class="{{ $post->primary ? '' : 'text-muted' }}">{{ '@' . $post->user_username }}</small>
                                 @else
                                     <span class="text-muted">Unknown User</span>
                                 @endif
                             </div>
-                            <div class="pull-right">
+                            <div class="pull-right post-created">
                                 <span id="reply-{{ $post->id }}" class="fixed-anchor"></span>
                                 <a href="#reply-{{ $post->id }}" class="text-muted">
                                     {{ $helper->date->since($post->created) }}
@@ -78,26 +78,26 @@ Topic
 
                                 @if (\Natika\User\UserHelper::canEditOwnPost($post))
                                     &nbsp;
-                                    <a href="{{ $router->html('post_edit', array('id' => $post->id)) }}" class="text-muted">
+                                    <a href="{{ $router->html('post_edit', array('id' => $post->id)) }}" class="text-muted post-edit-button">
                                         <span class="fa fa-edit"></span>
                                     </a>
                                 @endif
 
                                 @if (\Natika\User\UserHelper::canDeletePost($post))
                                     &nbsp;
-                                    <a href="javascript: void(0);" class="text-muted" onclick="if (confirm('Are you sure')) Phoenix.sendDelete(null, {cid: [{{ $post->id }}]});">
+                                    <a href="javascript: void(0);" class="text-muted post-delete-button" onclick="if (confirm('Are you sure')) Phoenix.sendDelete(null, {cid: [{{ $post->id }}]});">
                                         <span class="fa fa-trash"></span>
                                     </a>
                                 @endif
                             </div>
                         </div>
-                        <div class="panel-body markdown-body">
+                        <div class="panel-body markdown-body post-body">
                             {!! $post->body !!}
                         </div>
 
                         @if ($user->isMember() && $post->primary)
 
-                        <ul class="list-group">
+                        <ul class="list-group post-bottom-toolbar">
                             <li class="list-group-item">
                                 @if ($isWatch)
                                     <a class="btn btn-default active hasTooltip" title="You are watching this topic. Click to stop watching."

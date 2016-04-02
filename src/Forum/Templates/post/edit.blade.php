@@ -3,7 +3,7 @@
 @extends('_global.html')
 
 @section('banner_inner')
-    <h1 class="category-title">
+    <h1 class="post-edit-title">
         <span class="fa fa-edit"></span>
         {{ \Phoenix\Html\HtmlHeader::getTitle() }} in {{ $topic->title }}
     </h1>
@@ -15,7 +15,7 @@
 
 @section('content')
 
-    <div class="container post-item">
+    <div class="container post-item post-edit">
 
         <form action="{{ $router->html('post', array('id' => $item->id)) }}" method="post" id="admin-form">
 
