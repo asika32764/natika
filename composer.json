@@ -14,7 +14,7 @@
         "windwalker/core" : "~2.0",
         "windwalker/phoenix": "1.*",
         "symfony/yaml" : "~2.0",
-        "filp/whoops": "~1.0",
+        "filp/whoops": "~1.0 | ~2.0",
         "fzaninotto/faker": "~1.0",
         "monolog/monolog": "~1.0",
         "joomla/datetime": "~2.0",

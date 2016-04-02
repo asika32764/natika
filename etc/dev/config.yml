@@ -1,6 +1,7 @@
 system:
     debug: 1
     offline: 0
+    error_reporting: -1
 cache:
     enabled: 0
     time: 15

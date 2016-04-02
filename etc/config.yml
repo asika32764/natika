@@ -2,6 +2,7 @@ system:
     debug: 0
     timezone: 'UTC'
     secret: 2ffcaf26cb281852bf231f5ff85b476a
+    error_reporting: 0
 session:
     handler: native
     expire_time: 15

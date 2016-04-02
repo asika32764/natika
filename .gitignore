@@ -4,8 +4,9 @@
 !.gitkeep
 !.htaccess
 
-# Composer
+# Development
 /vendor
+/media/css/custom.css
 
 #Windwalker
 /etc/secret.yml

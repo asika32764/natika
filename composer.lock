@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "feb792fc4f6e16b88ebc637cdb4b2e46",
-    "content-hash": "b72ebb1d48a864eac2961755976bcb5d",
+    "hash": "8491e81c43f532646589a074a5ce56c1",
+    "content-hash": "9a29c926dc9846152d674ddf3302f18f",
     "packages": [
         {
             "name": "adyg/php-imgur-api-client",
@@ -53,16 +53,16 @@
         },
         {
             "name": "asika/muse",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/asika32764/muse.git",
-                "reference": "fa7ebdc53062aa4dd0ee6a78987d9fb5517f20c0"
+                "reference": "2df489118f2256950f49eb97a9bda56c56970e21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asika32764/muse/zipball/fa7ebdc53062aa4dd0ee6a78987d9fb5517f20c0",
-                "reference": "fa7ebdc53062aa4dd0ee6a78987d9fb5517f20c0",
+                "url": "https://api.github.com/repos/asika32764/muse/zipball/2df489118f2256950f49eb97a9bda56c56970e21",
+                "reference": "2df489118f2256950f49eb97a9bda56c56970e21",
                 "shasum": ""
             },
             "require": {
@@ -100,7 +100,7 @@
                 "scaffold",
                 "scaffolding"
             ],
-            "time": "2015-08-23 12:56:50"
+            "time": "2016-03-23 12:47:07"
         },
         {
             "name": "doctrine/inflector",
@@ -210,37 +210,40 @@
         },
         {
             "name": "filp/whoops",
-            "version": "1.1.10",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "72538eeb70bbfb11964412a3d098d109efd012f7"
+                "reference": "8da9523f07c62d56fe1cf36f8ae29b333afc181f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/72538eeb70bbfb11964412a3d098d109efd012f7",
-                "reference": "72538eeb70bbfb11964412a3d098d109efd012f7",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/8da9523f07c62d56fe1cf36f8ae29b333afc181f",
+                "reference": "8da9523f07c62d56fe1cf36f8ae29b333afc181f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.5.9"
             },
             "require-dev": {
-                "mockery/mockery": "0.9.*"
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "^4.8 || ^5.0",
+                "symfony/var-dumper": "~3.0"
+            },
+            "suggest": {
+                "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
+                "whoops/soap": "Formats errors as SOAP responses"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Whoops": "src/"
-                },
-                "classmap": [
-                    "src/deprecated"
-                ]
+                "psr-4": {
+                    "Whoops\\": "src/Whoops/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -260,11 +263,10 @@
                 "exception",
                 "handling",
                 "library",
-                "silex-provider",
                 "whoops",
                 "zf2"
             ],
-            "time": "2015-06-29 05:42:04"
+            "time": "2016-03-13 10:22:39"
         },
         {
             "name": "fzaninotto/faker",
@@ -558,16 +560,16 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v5.2.21",
+            "version": "v5.2.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "ba7a8b3c24535ab102ebe9738a0003846c372b95"
+                "reference": "1e156f8017490f5583ab161030bf839c77c95e54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/ba7a8b3c24535ab102ebe9738a0003846c372b95",
-                "reference": "ba7a8b3c24535ab102ebe9738a0003846c372b95",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/1e156f8017490f5583ab161030bf839c77c95e54",
+                "reference": "1e156f8017490f5583ab161030bf839c77c95e54",
                 "shasum": ""
             },
             "require": {
@@ -597,20 +599,20 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "http://laravel.com",
-            "time": "2016-02-22 06:42:06"
+            "time": "2016-03-16 17:19:17"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.2.21",
+            "version": "v5.2.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "eea3cf7ce90651e067a914d16383b019da45fcb5"
+                "reference": "411b851962c211078ade7664a6976e77a78cd2a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/eea3cf7ce90651e067a914d16383b019da45fcb5",
-                "reference": "eea3cf7ce90651e067a914d16383b019da45fcb5",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/411b851962c211078ade7664a6976e77a78cd2a5",
+                "reference": "411b851962c211078ade7664a6976e77a78cd2a5",
                 "shasum": ""
             },
             "require": {
@@ -639,20 +641,20 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "http://laravel.com",
-            "time": "2016-02-22 09:18:57"
+            "time": "2016-03-07 20:37:17"
         },
         {
             "name": "illuminate/events",
-            "version": "v5.2.21",
+            "version": "v5.2.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
-                "reference": "aeebcd54a61ce3bddddcb0273b532256201cd9d1"
+                "reference": "5a5e5d72bf3a2d01d8b15e89440026a60bc4a81b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/events/zipball/aeebcd54a61ce3bddddcb0273b532256201cd9d1",
-                "reference": "aeebcd54a61ce3bddddcb0273b532256201cd9d1",
+                "url": "https://api.github.com/repos/illuminate/events/zipball/5a5e5d72bf3a2d01d8b15e89440026a60bc4a81b",
+                "reference": "5a5e5d72bf3a2d01d8b15e89440026a60bc4a81b",
                 "shasum": ""
             },
             "require": {
@@ -688,16 +690,16 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v5.2.21",
+            "version": "v5.2.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "ec2df9bb97fbc08776ed1df399a323440e6db563"
+                "reference": "e197f38660beab95743d9d5565d0f11d956288ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/ec2df9bb97fbc08776ed1df399a323440e6db563",
-                "reference": "ec2df9bb97fbc08776ed1df399a323440e6db563",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/e197f38660beab95743d9d5565d0f11d956288ea",
+                "reference": "e197f38660beab95743d9d5565d0f11d956288ea",
                 "shasum": ""
             },
             "require": {
@@ -734,32 +736,32 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "http://laravel.com",
-            "time": "2016-02-24 03:13:07"
+            "time": "2016-03-21 14:55:26"
         },
         {
             "name": "illuminate/support",
-            "version": "v5.2.21",
+            "version": "v5.2.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "6749fab3f3d38d8b15427536a8e7bbdc57497c9e"
+                "reference": "e4aa03c5f26db752e838354a7d71b85e6138f4ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/6749fab3f3d38d8b15427536a8e7bbdc57497c9e",
-                "reference": "6749fab3f3d38d8b15427536a8e7bbdc57497c9e",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/e4aa03c5f26db752e838354a7d71b85e6138f4ec",
+                "reference": "e4aa03c5f26db752e838354a7d71b85e6138f4ec",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "~1.0",
                 "ext-mbstring": "*",
                 "illuminate/contracts": "5.2.*",
+                "paragonie/random_compat": "~1.4",
                 "php": ">=5.5.9"
             },
             "suggest": {
                 "illuminate/filesystem": "Required to use the composer class (5.2.*).",
                 "jeremeamia/superclosure": "Required to be able to serialize closures (~2.2).",
-                "paragonie/random_compat": "Provides a compatible interface like PHP7's random_bytes() in PHP 5 projects (~1.1).",
                 "symfony/polyfill-php56": "Required to use the hash_equals function on PHP 5.5 (~1.0).",
                 "symfony/process": "Required to use the composer class (2.8.*|3.0.*).",
                 "symfony/var-dumper": "Improves the dd function (2.8.*|3.0.*)."
@@ -790,20 +792,20 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "http://laravel.com",
-            "time": "2016-02-22 20:29:02"
+            "time": "2016-03-30 18:18:45"
         },
         {
             "name": "illuminate/view",
-            "version": "v5.2.21",
+            "version": "v5.2.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
-                "reference": "ba8f02a40e8e66fa4b913df42a57f058ed7faf7d"
+                "reference": "a0e77662f06eaae851469ebf132868c9024a259d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/view/zipball/ba8f02a40e8e66fa4b913df42a57f058ed7faf7d",
-                "reference": "ba8f02a40e8e66fa4b913df42a57f058ed7faf7d",
+                "url": "https://api.github.com/repos/illuminate/view/zipball/a0e77662f06eaae851469ebf132868c9024a259d",
+                "reference": "a0e77662f06eaae851469ebf132868c9024a259d",
                 "shasum": ""
             },
             "require": {
@@ -837,7 +839,7 @@
             ],
             "description": "The Illuminate View package.",
             "homepage": "http://laravel.com",
-            "time": "2016-02-02 16:45:07"
+            "time": "2016-03-28 15:19:10"
         },
         {
             "name": "joomla/datetime",
@@ -887,16 +889,16 @@
         },
         {
             "name": "lyrasoft/luna",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lyrasoft/luna.git",
-                "reference": "35f0077fd54f8c47e9f158cc6972b3abef7eda27"
+                "reference": "9a544d14dcc89ddfd4b69612325063a0259b9255"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lyrasoft/luna/zipball/35f0077fd54f8c47e9f158cc6972b3abef7eda27",
-                "reference": "35f0077fd54f8c47e9f158cc6972b3abef7eda27",
+                "url": "https://api.github.com/repos/lyrasoft/luna/zipball/9a544d14dcc89ddfd4b69612325063a0259b9255",
+                "reference": "9a544d14dcc89ddfd4b69612325063a0259b9255",
                 "shasum": ""
             },
             "require": {
@@ -922,20 +924,20 @@
             ],
             "description": "A CMF package for Windwalker.",
             "homepage": "https://github.com/lyrasoft/luna",
-            "time": "2016-03-18 06:06:20"
+            "time": "2016-03-23 14:57:48"
         },
         {
             "name": "lyrasoft/unidev",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lyrasoft/unidev.git",
-                "reference": "338bd6c1f438c08726527a9e58bbfe08e1b10eb4"
+                "reference": "f7c0a93287bf92bf98f713f40a8da975997c8275"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lyrasoft/unidev/zipball/338bd6c1f438c08726527a9e58bbfe08e1b10eb4",
-                "reference": "338bd6c1f438c08726527a9e58bbfe08e1b10eb4",
+                "url": "https://api.github.com/repos/lyrasoft/unidev/zipball/f7c0a93287bf92bf98f713f40a8da975997c8275",
+                "reference": "f7c0a93287bf92bf98f713f40a8da975997c8275",
                 "shasum": ""
             },
             "require": {
@@ -955,7 +957,7 @@
             ],
             "description": "LYRASOFT dev tools",
             "homepage": "https://github.com/lyrasoft/unidev",
-            "time": "2016-03-17 17:19:31"
+            "time": "2016-03-24 11:33:28"
         },
         {
             "name": "monolog/monolog",
@@ -1079,6 +1081,54 @@
             "description": "Minify is a PHP5 app that helps you follow several rules for client-side performance. It combines multiple CSS or Javascript files, removes unnecessary whitespace and comments, and serves them with gzip encoding and optimal client-side cache headers",
             "homepage": "http://code.google.com/p/minify/",
             "time": "2016-03-08 11:49:57"
+        },
+        {
+            "name": "paragonie/random_compat",
+            "version": "v1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/random_compat.git",
+                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c7e26a21ba357863de030f0b9e701c7d04593774",
+                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*|5.*"
+            },
+            "suggest": {
+                "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/random.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com"
+                }
+            ],
+            "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+            "keywords": [
+                "csprng",
+                "pseudorandom",
+                "random"
+            ],
+            "time": "2016-03-18 20:34:03"
         },
         {
             "name": "psr/http-message",
@@ -1222,16 +1272,16 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.3",
+            "version": "v2.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "78c468665c9568c3faaa9c416a7134308f2d85c3"
+                "reference": "47d2d8cade9b1c3987573d2943bb9352536cdb87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/78c468665c9568c3faaa9c416a7134308f2d85c3",
-                "reference": "78c468665c9568c3faaa9c416a7134308f2d85c3",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/47d2d8cade9b1c3987573d2943bb9352536cdb87",
+                "reference": "47d2d8cade9b1c3987573d2943bb9352536cdb87",
                 "shasum": ""
             },
             "require": {
@@ -1278,20 +1328,20 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-01-27 05:14:19"
+            "time": "2016-03-07 14:04:32"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.0.3",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "623bda0abd9aa29e529c8e9c08b3b84171914723"
+                "reference": "c54e407b35bc098916704e9fd090da21da4c4f52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/623bda0abd9aa29e529c8e9c08b3b84171914723",
-                "reference": "623bda0abd9aa29e529c8e9c08b3b84171914723",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/c54e407b35bc098916704e9fd090da21da4c4f52",
+                "reference": "c54e407b35bc098916704e9fd090da21da4c4f52",
                 "shasum": ""
             },
             "require": {
@@ -1327,7 +1377,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2016-01-27 05:14:46"
+            "time": "2016-03-10 11:13:05"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1390,16 +1440,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v2.8.3",
+            "version": "v2.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "b7b4ebadd2b5e614ff7d2d6fc63e0ed0578909c7"
+                "reference": "d60b8e076d22953aabebeebda53bf334438e7aca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/b7b4ebadd2b5e614ff7d2d6fc63e0ed0578909c7",
-                "reference": "b7b4ebadd2b5e614ff7d2d6fc63e0ed0578909c7",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/d60b8e076d22953aabebeebda53bf334438e7aca",
+                "reference": "d60b8e076d22953aabebeebda53bf334438e7aca",
                 "shasum": ""
             },
             "require": {
@@ -1450,20 +1500,20 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-02-02 09:49:18"
+            "time": "2016-03-25 01:40:30"
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.8.3",
+            "version": "v2.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "2a4ee40acb880c56f29fb1b8886e7ffe94f3b995"
+                "reference": "584e52cb8f788a887553ba82db6caacb1d6260bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/2a4ee40acb880c56f29fb1b8886e7ffe94f3b995",
-                "reference": "2a4ee40acb880c56f29fb1b8886e7ffe94f3b995",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/584e52cb8f788a887553ba82db6caacb1d6260bb",
+                "reference": "584e52cb8f788a887553ba82db6caacb1d6260bb",
                 "shasum": ""
             },
             "require": {
@@ -1499,7 +1549,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-02-23 07:41:20"
+            "time": "2016-03-04 07:54:35"
         },
         {
             "name": "tpyo/amazon-s3-php-class",
@@ -1540,19 +1590,20 @@
         },
         {
             "name": "windwalker/core",
-            "version": "2.1.7.2",
+            "version": "2.1.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ventoviro/windwalker-core.git",
-                "reference": "4a449bc090cffc57a351aa8ccfbb07d2d29ef12a"
+                "reference": "b090aec7112d4650f104f95ba2ba97a6e785b29a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ventoviro/windwalker-core/zipball/4a449bc090cffc57a351aa8ccfbb07d2d29ef12a",
-                "reference": "4a449bc090cffc57a351aa8ccfbb07d2d29ef12a",
+                "url": "https://api.github.com/repos/ventoviro/windwalker-core/zipball/b090aec7112d4650f104f95ba2ba97a6e785b29a",
+                "reference": "b090aec7112d4650f104f95ba2ba97a6e785b29a",
                 "shasum": ""
             },
             "require": {
+                "filp/whoops": "~2.0",
                 "monolog/monolog": "~1.0",
                 "symfony/yaml": "~2.0",
                 "windwalker/framework": "~2.0"
@@ -1579,20 +1630,20 @@
             ],
             "description": "A modern PHP framework.",
             "homepage": "https://github.com/ventoviro/windwalker-core",
-            "time": "2016-03-15 09:18:06"
+            "time": "2016-04-01 17:43:06"
         },
         {
             "name": "windwalker/framework",
-            "version": "2.1.7",
+            "version": "2.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ventoviro/windwalker.git",
-                "reference": "3f12b57596bbe6a6d3d109658bd874e1fb59fa5e"
+                "reference": "633be2451fa419d29bce606ad63e3ade0d52ee37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ventoviro/windwalker/zipball/3f12b57596bbe6a6d3d109658bd874e1fb59fa5e",
-                "reference": "3f12b57596bbe6a6d3d109658bd874e1fb59fa5e",
+                "url": "https://api.github.com/repos/ventoviro/windwalker/zipball/633be2451fa419d29bce606ad63e3ade0d52ee37",
+                "reference": "633be2451fa419d29bce606ad63e3ade0d52ee37",
                 "shasum": ""
             },
             "require": {
@@ -1677,20 +1728,20 @@
             ],
             "description": "A Modern PHP framework.",
             "homepage": "https://github.com/ventoviro/windwalker",
-            "time": "2016-03-08 11:41:23"
+            "time": "2016-03-23 15:03:50"
         },
         {
             "name": "windwalker/phoenix",
-            "version": "1.0.21",
+            "version": "1.0.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ventoviro/phoenix.git",
-                "reference": "517f865a36a5aa0c23e4cd965b5195c19060cdeb"
+                "reference": "ee61ed67336d78a630893518da07cb8035c5cc6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ventoviro/phoenix/zipball/517f865a36a5aa0c23e4cd965b5195c19060cdeb",
-                "reference": "517f865a36a5aa0c23e4cd965b5195c19060cdeb",
+                "url": "https://api.github.com/repos/ventoviro/phoenix/zipball/ee61ed67336d78a630893518da07cb8035c5cc6d",
+                "reference": "ee61ed67336d78a630893518da07cb8035c5cc6d",
                 "shasum": ""
             },
             "require": {
@@ -1716,20 +1767,20 @@
             ],
             "description": "A powerful RAD framework to support Rapid Application Development.",
             "homepage": "https://github.com/ventoviro/phoenix",
-            "time": "2016-03-16 15:22:29"
+            "time": "2016-04-01 15:29:16"
         },
         {
             "name": "windwalker/warder",
-            "version": "1.0.7",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ventoviro/warder.git",
-                "reference": "be90d45cb81dc76fd5be15b085c99758595718cd"
+                "reference": "bab74e7459c6d1a7b21fe0106dd3f578489c624a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ventoviro/warder/zipball/be90d45cb81dc76fd5be15b085c99758595718cd",
-                "reference": "be90d45cb81dc76fd5be15b085c99758595718cd",
+                "url": "https://api.github.com/repos/ventoviro/warder/zipball/bab74e7459c6d1a7b21fe0106dd3f578489c624a",
+                "reference": "bab74e7459c6d1a7b21fe0106dd3f578489c624a",
                 "shasum": ""
             },
             "require": {
@@ -1755,7 +1806,7 @@
             ],
             "description": "A use package for Windwalker.",
             "homepage": "https://github.com/ventoviro/windwlaker-warder",
-            "time": "2016-03-18 05:20:40"
+            "time": "2016-03-24 18:07:31"
         }
     ],
     "packages-dev": [],
