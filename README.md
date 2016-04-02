@@ -7,22 +7,22 @@ Simple PHP Forum system for developers.
 ## Installation Via Composer
 
 ``` bash
-composer create-project askia/natika natika * -s
+composer create-project asika/natika natika *
 
 cd natika/
 ```
 
-After composer installation, you must run these commands to continue Natika install.
+After composer installed, Natika will help you set some basic settings to enable site and create admin user.
 
-Run migration.
+### Other Commands
+
+If you want to test with fake data, you can add seeders by 
 
 ``` bash
-php natika migration migrate
+php natika migration reset --seed
 ```
 
-> You can add seeders by `php natika migration migrate --seed`
-
-Create admin user
+Create a new admin user
 
 ``` bash
 php natika create-user

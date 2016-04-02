@@ -61,4 +61,6 @@ natika:
 
 Now if you create a `templates/theme/flower/_global/html.blade.php` file, it will override `src/Forum/Templates/_global/html.blade.php` output.
 
+Natika uses [Blade Template Engine](https://laravel.com/docs/master/blade)
+
 Here we prepare an example theme files: [download](https://github.com/asika32764/natika/releases/download/0.2.2/natika-example-theme.zip)

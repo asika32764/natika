@@ -28,6 +28,21 @@ class NatikaInstaller
 	 */
 	public static function rootInstall(Event $event)
 	{
-		system('php ' . __DIR__ . '/../../../bin/console create-user');
+		$io = $event->getIO();
+
+		if ($io->askConfirmation("\nDo you want to import tables? [Y/n]: ", true))
+		{
+			system('php ' . __DIR__ . '/../../../bin/console migration migrate');
+
+			if ($io->askConfirmation("\nDo you want to install fake data to test? [Y/n]: ", true))
+			{
+				system('php ' . __DIR__ . '/../../../bin/console seed import');
+			}
+
+			if ($io->askConfirmation("\nDo you want to create admin user? [Y/n]: ", true))
+			{
+				system('php ' . __DIR__ . '/../../../bin/console create-user');
+			}
+		}
 	}
 }
