@@ -128,8 +128,8 @@ unidev:
         secret:
         bucket:
         subfolder:
-        endpoint:
-        region:
+        endpoint: # Keep empty
+        region: # Keep empty
     imgur:
         key:
         secret:
