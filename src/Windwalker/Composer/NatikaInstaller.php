@@ -44,5 +44,7 @@ class NatikaInstaller
 				system('php ' . __DIR__ . '/../../../bin/console create-user');
 			}
 		}
+
+		$io->write("\nNatika install completed.");
 	}
 }

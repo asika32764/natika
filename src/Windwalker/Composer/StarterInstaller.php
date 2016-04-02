@@ -51,7 +51,7 @@ class StarterInstaller
 
 		$config = file_get_contents($file);
 
-		$hash = 'Windwalker-' . uniqid();
+		$hash = 'Natika-' . uniqid();
 
 		$salt = $io->ask("\nSalt to generate secret [{$hash}]: ", $hash);
 
@@ -76,10 +76,10 @@ class StarterInstaller
 
 		$driver = 'mysql';
 		$host   = $io->ask("Database host [localhost]: ", 'localhost');
-		$name   = $io->ask("Database name [acme]: ", 'acme');
+		$name   = $io->ask("Database name [natika]: ", 'natika');
 		$user   = $io->ask("Database user [root]: ", 'root');
 		$pass   = $io->askAndHideAnswer("Database password: ");
-		$prefix = $io->ask("Table prefix [wind_]: ", 'wind_');
+		$prefix = '';
 
 		$secret['database'] = array(
 			'driver'   => $driver,
