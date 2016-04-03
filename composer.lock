@@ -1590,16 +1590,16 @@
         },
         {
             "name": "windwalker/core",
-            "version": "2.1.8.5",
+            "version": "2.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ventoviro/windwalker-core.git",
-                "reference": "b090aec7112d4650f104f95ba2ba97a6e785b29a"
+                "reference": "16903269509adbc4bef9edc57aa52e7319d9ebbf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ventoviro/windwalker-core/zipball/b090aec7112d4650f104f95ba2ba97a6e785b29a",
-                "reference": "b090aec7112d4650f104f95ba2ba97a6e785b29a",
+                "url": "https://api.github.com/repos/ventoviro/windwalker-core/zipball/16903269509adbc4bef9edc57aa52e7319d9ebbf",
+                "reference": "16903269509adbc4bef9edc57aa52e7319d9ebbf",
                 "shasum": ""
             },
             "require": {
@@ -1630,7 +1630,7 @@
             ],
             "description": "A modern PHP framework.",
             "homepage": "https://github.com/ventoviro/windwalker-core",
-            "time": "2016-04-01 17:43:06"
+            "time": "2016-04-03 14:23:01"
         },
         {
             "name": "windwalker/framework",

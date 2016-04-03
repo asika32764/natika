@@ -18,3 +18,5 @@ language:
     default: en-GB
     format: ini
     path: resources/languages
+database:
+    mysql_strict_mode: false

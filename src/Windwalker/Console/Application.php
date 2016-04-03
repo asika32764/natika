@@ -34,8 +34,6 @@ class Application extends WindwalkerConsole
 		Windwalker::prepareSystemPath($this->config);
 
 		parent::initialise();
-
-		Ioc::getDatabase()->setQuery("SET sql_mode = ''")->execute();
 	}
 
 	/**

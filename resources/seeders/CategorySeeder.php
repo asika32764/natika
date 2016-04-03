@@ -73,6 +73,8 @@ class CategorySeeder extends AbstractSeeder
 		CategoryRecord::resetFieldsCache();
 		$record = new CategoryRecord;
 
+		$ids = array();
+
 		foreach (range(1, 30) as $i)
 		{
 			$record->reset();
@@ -105,7 +107,7 @@ class CategorySeeder extends AbstractSeeder
 
 			if ($i > 6)
 			{
-				$record->setLocation(rand(2, $i - 1), $record::LOCATION_LAST_CHILD);
+				$record->setLocation($faker->randomElement($ids), $record::LOCATION_LAST_CHILD);
 			}
 			else
 			{
@@ -114,6 +116,8 @@ class CategorySeeder extends AbstractSeeder
 
 			$record->store();
 			$record->rebuildPath();
+
+			$ids[] = $record->id;
 
 			$this->command->out('.', false);
 		}
