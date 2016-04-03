@@ -11,6 +11,7 @@ namespace Windwalker\Console;
 use Windwalker\Core\Console\WindwalkerConsole;
 use Windwalker\Core\Provider;
 use Windwalker\DI\ServiceProviderInterface;
+use Windwalker\Ioc;
 use Windwalker\Registry\Registry;
 use Windwalker\User\UserPackage;
 use Windwalker\Windwalker;
@@ -33,6 +34,8 @@ class Application extends WindwalkerConsole
 		Windwalker::prepareSystemPath($this->config);
 
 		parent::initialise();
+
+		Ioc::getDatabase()->setQuery("SET sql_mode = ''")->execute();
 	}
 
 	/**
