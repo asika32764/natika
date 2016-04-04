@@ -160,4 +160,4 @@ Natika based on these packages:
 - [Warder User Package](https://github.com/ventoviro/warder)
 - [Luna CMF Package](https://github.com/lyrasoft/luna/)
 
-Currently Natika provides package and event system to help develops create their plugins, but we need more test to release this feature, so there are no documentation about plugins currently, please wiat for future inforamtion.
+Currently Natika provides package and event system to help develops create their plugins, but we need more test to release this feature, so there are no documentation about plugins currently, please wait for future inforamtion.
