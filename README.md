@@ -26,8 +26,7 @@ After composer installed, Natika will help you set some basic settings to enable
 
 ### Via Git
 
-Composer `create-project` will remove `composer.json` and `composer.lock` files, if you want to use Natika for development,
-or you want to use git to keep Natika update to newest version, you can use git to install Natika.
+If you want to use git to keep Natika update to newest version, you can use git to install Natika.
 
 ``` bash
 git clone git@github.com:asika32764/natika.git
