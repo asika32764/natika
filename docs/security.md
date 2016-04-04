@@ -32,11 +32,11 @@ $autoload = __DIR__ . '/../vendor/autoload.php';
 And
 
 ``` php
-include_once __DIR__ . '/../etc/define.php';
+include_once __DIR__ . '/etc/define.php';
 
 // To
 
-include_once __DIR__ . '/etc/define.php';
+include_once __DIR__ . '/../etc/define.php';
 ```
 
 ## Change Public Path
