@@ -9,6 +9,7 @@
 use Windwalker\Core\Migration\AbstractMigration;
 use Windwalker\Core\Migration\Schema;
 use Windwalker\Database\Schema\Column;
+use Windwalker\Database\Schema\DataType;
 use Windwalker\Database\Schema\Key;
 use Windwalker\Warder\Table\WarderTable;
 
@@ -22,38 +23,21 @@ class UserInit extends AbstractMigration
 	 */
 	public function up()
 	{
-		$this->getTable(WarderTable::USERS, function (Schema $sc)
-		{
-			$sc->addColumn('id',         new Column\Primary)->comment('Primary Key');
-			$sc->addColumn('name',       new Column\Varchar)->comment('Full Name');
-			$sc->addColumn('username',   new Column\Varchar)->comment('Login name');
-			$sc->addColumn('email',      new Column\Varchar)->comment('Email');
-			$sc->addColumn('password',   new Column\Varchar)->comment('Password');
-			$sc->addColumn('avatar',     new Column\Varchar)->comment('Avatar');
-			$sc->addColumn('group',      new Column\Varchar)->comment('Group');
-			$sc->addColumn('blocked',    new Column\Tinyint)->comment('0: normal, 1: blocked');
-			$sc->addColumn('activation', new Column\Varchar)->comment('Activation code.');
-			$sc->addColumn('reset_token', new Column\Varchar)->comment('Reset Token');
-			$sc->addColumn('last_reset', new Column\Datetime)->comment('Last Reset Time');
-			$sc->addColumn('last_login', new Column\Datetime)->comment('Last Login Time');
-			$sc->addColumn('registered', new Column\Datetime)->comment('Register Time');
-			$sc->addColumn('modified',   new Column\Datetime)->comment('Modified Time');
-			$sc->addColumn('params',     new Column\Varchar)->comment('Params');
+		$db = $this->db;
 
-			$sc->addIndex(Key::TYPE_INDEX, 'idx_users_name', 'id');
-			$sc->addIndex(Key::TYPE_INDEX, 'idx_users_username', 'username');
-			$sc->addIndex(Key::TYPE_INDEX, 'idx_users_email', 'email');
-		})->create(true);
-
-		$this->getTable(WarderTable::USER_SOCIALS, function (Schema $sc)
-		{
-			$sc->addColumn('user_id',    new Column\Integer)->comment('User ID');
-			$sc->addColumn('identifier', new Column\Varchar)->comment('User identifier name');
-			$sc->addColumn('provider',   new Column\Char)->length(15)->comment('Social provider');
-
-			$sc->addIndex(Key::TYPE_INDEX, 'user_socials_user_id', 'user_id');
-			$sc->addIndex(Key::TYPE_INDEX, 'user_socials_identifier', 'identifier');
-		})->create(true);
+		$db->getTable(WarderTable::USERS, true)
+			->addColumn('id',          DataType::INTEGER,  Column::UNSIGNED, Column::NOT_NULL, null, 'Primary Key', ['primary' => true])
+			->addColumn('name',        DataType::VARCHAR,  Column::SIGNED,   Column::NOT_NULL, null, 'Name')
+			->addColumn('username',    DataType::VARCHAR,  Column::SIGNED,   Column::NOT_NULL, null, 'Username')
+			->addColumn('email',       DataType::VARCHAR,  Column::SIGNED,   Column::NOT_NULL, null, 'Email')
+			->addColumn('password',    DataType::VARCHAR,  Column::SIGNED,   Column::NOT_NULL, null, 'Password')
+			->addColumn('avatar',      DataType::VARCHAR,  Column::SIGNED,   Column::NOT_NULL, null, 'Avatar')
+			->addColumn('group',       DataType::INTEGER,  Column::UNSIGNED, Column::NOT_NULL, null, 'Group')
+			->addColumn('activation',  DataType::VARCHAR,  Column::SIGNED,   Column::NOT_NULL, null, 'Activated')
+			->addColumn('reset_token', DataType::VARCHAR,  Column::SIGNED,   Column::NOT_NULL, null, 'Reset Password Token')
+			->addColumn('reset_last',  DataType::DATETIME, Column::SIGNED,   Column::ALLOW_NULL, null, 'Reset Password Time')
+			->addColumn('params',      DataType::TEXT,     Column::SIGNED,   Column::ALLOW_NULL, null, 'Params')
+			->create();
 	}
 
 	/**
