@@ -2,7 +2,13 @@
 
 ![p-2016-04-02-001](https://cloud.githubusercontent.com/assets/1639206/14224723/2be048b0-f8d9-11e5-8e14-0ebf5c3a03a4.jpg)
 
+[![Latest Stable Version](https://poser.pugx.org/asika/natika/v/stable)](https://packagist.org/packages/asika/natika) [![Total Downloads](https://poser.pugx.org/asika/natika/downloads)](https://packagist.org/packages/asika/natika) [![Latest Unstable Version](https://poser.pugx.org/asika/natika/v/unstable)](https://packagist.org/packages/asika/natika) [![License](https://poser.pugx.org/asika/natika/license)](https://packagist.org/packages/asika/natika)
+
 Simple PHP Forum system for developers.
+
+- [Official Site](http://natika.windwalker.io/)
+- [Support](http://natika.windwalker.io/category/natika)
+- [Packagist](https://packagist.org/packages/asika/natika)
 
 ## Installation Via Composer
 
