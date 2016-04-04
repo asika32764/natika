@@ -11,7 +11,9 @@ Simple PHP Forum system for developers.
 - [Support](http://natika.windwalker.io/category/natika)
 - [Packagist](https://packagist.org/packages/asika/natika)
 
-## Installation Via Composer
+## Installation 
+
+### Via Composer
 
 ``` bash
 composer create-project asika/natika natika *
@@ -20,6 +22,19 @@ cd natika/
 ```
 
 After composer installed, Natika will help you set some basic settings to enable site and create admin user.
+
+### Via Git
+
+Composer `create-project` will remove `composer.json` and `composer.lock` files, if you want to use Natika for development,
+or you want to use git to keep Natika update to newest version, you can use git to install Natika.
+
+``` bash
+git clone git@github.com:asika32764/natika.git
+
+cd natika/
+
+composer install
+```
 
 ### Other Commands
 
@@ -149,6 +164,10 @@ See [Customize Document](docs/customize.md)
 ## Social Login
 
 See [Social Login Document](docs/social-login.md)
+
+## Hide Source Files
+
+If you want to create a `/public` folder to hide all source files. See [Hide Source Files](docs/security.md)
 
 ## Development
 
