@@ -1,4 +1,5 @@
-# Natika Forum
+# Natika Forum [![Analytics](https://ga-beacon.appspot.com/UA-48372917-1/natika/readme)](https://github.com/igrigorik/ga-beacon)
+
 
 [![Join the chat at https://gitter.im/asika32764/natika](https://badges.gitter.im/asika32764/natika.svg)](https://gitter.im/asika32764/natika?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Latest Stable Version](https://poser.pugx.org/asika/natika/v/stable)](https://packagist.org/packages/asika/natika) [![Total Downloads](https://poser.pugx.org/asika/natika/downloads)](https://packagist.org/packages/asika/natika) [![Latest Unstable Version](https://poser.pugx.org/asika/natika/v/unstable)](https://packagist.org/packages/asika/natika) [![License](https://poser.pugx.org/asika/natika/license)](https://packagist.org/packages/asika/natika)
