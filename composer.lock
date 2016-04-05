@@ -928,16 +928,16 @@
         },
         {
             "name": "lyrasoft/unidev",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lyrasoft/unidev.git",
-                "reference": "f7c0a93287bf92bf98f713f40a8da975997c8275"
+                "reference": "34e590c71ff3a1e673f5f323585044f06a70ddbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lyrasoft/unidev/zipball/f7c0a93287bf92bf98f713f40a8da975997c8275",
-                "reference": "f7c0a93287bf92bf98f713f40a8da975997c8275",
+                "url": "https://api.github.com/repos/lyrasoft/unidev/zipball/34e590c71ff3a1e673f5f323585044f06a70ddbe",
+                "reference": "34e590c71ff3a1e673f5f323585044f06a70ddbe",
                 "shasum": ""
             },
             "require": {
@@ -957,7 +957,7 @@
             ],
             "description": "LYRASOFT dev tools",
             "homepage": "https://github.com/lyrasoft/unidev",
-            "time": "2016-03-24 11:33:28"
+            "time": "2016-04-04 22:09:53"
         },
         {
             "name": "monolog/monolog",
@@ -1590,16 +1590,16 @@
         },
         {
             "name": "windwalker/core",
-            "version": "2.1.9",
+            "version": "2.1.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ventoviro/windwalker-core.git",
-                "reference": "16903269509adbc4bef9edc57aa52e7319d9ebbf"
+                "reference": "2e365ba4a7a41ddb4426b35c362e8f97f1bad4ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ventoviro/windwalker-core/zipball/16903269509adbc4bef9edc57aa52e7319d9ebbf",
-                "reference": "16903269509adbc4bef9edc57aa52e7319d9ebbf",
+                "url": "https://api.github.com/repos/ventoviro/windwalker-core/zipball/2e365ba4a7a41ddb4426b35c362e8f97f1bad4ca",
+                "reference": "2e365ba4a7a41ddb4426b35c362e8f97f1bad4ca",
                 "shasum": ""
             },
             "require": {
@@ -1630,7 +1630,7 @@
             ],
             "description": "A modern PHP framework.",
             "homepage": "https://github.com/ventoviro/windwalker-core",
-            "time": "2016-04-03 14:23:01"
+            "time": "2016-04-04 22:51:43"
         },
         {
             "name": "windwalker/framework",
@@ -1771,16 +1771,16 @@
         },
         {
             "name": "windwalker/warder",
-            "version": "1.0.10",
+            "version": "1.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ventoviro/warder.git",
-                "reference": "fef5fea16b61e823a19c789b66070299c90e1140"
+                "reference": "06ab7cca04dd5e88e87792b896a0500a9c3b0a66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ventoviro/warder/zipball/fef5fea16b61e823a19c789b66070299c90e1140",
-                "reference": "fef5fea16b61e823a19c789b66070299c90e1140",
+                "url": "https://api.github.com/repos/ventoviro/warder/zipball/06ab7cca04dd5e88e87792b896a0500a9c3b0a66",
+                "reference": "06ab7cca04dd5e88e87792b896a0500a9c3b0a66",
                 "shasum": ""
             },
             "require": {
@@ -1806,7 +1806,7 @@
             ],
             "description": "A use package for Windwalker.",
             "homepage": "https://github.com/ventoviro/windwlaker-warder",
-            "time": "2016-04-02 13:50:44"
+            "time": "2016-04-04 22:51:25"
         }
     ],
     "packages-dev": [],
