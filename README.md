@@ -36,6 +36,8 @@ cd natika/
 composer install
 ```
 
+Then copy `etc/secret.dist.yml` to `etc/secret.yml` and open it to fill database account.
+
 ### Other Commands
 
 If you want to test with fake data, you can add seeders by 
